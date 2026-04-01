@@ -1,548 +1,121 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Markéta Zahradníčková – Finanční poradkyně</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --sage: #b8cdb8;
-    --blush: #e8c9c1;
-    --lavender: #c9c1d8;
-    --sand: #e8dfd0;
-    --cream: #f7f3ee;
-    --sky: #bdd3de;
-    --text: #2e2e2e;
-    --muted: #6b6a63;
-    --accent: #c2a251;
-    --success: #6b8f71;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markéta Zahradníčková | Finance s lehkostí</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.4rem 6vw;
-    background: rgba(247, 243, 238, 0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(184, 205, 184, 0.3);
-  }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.65rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.8rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.88rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: var(--accent);
-  }
-
-  .nav-cta {
-    font-size: 0.84rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--accent);
-    padding: 0.75rem 1.8rem;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .nav-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(194, 162, 81, 0.3);
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 9rem 5vw 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(85px);
-    opacity: 0.48;
-    animation: drift 18s ease-in-out infinite alternate;
-  }
-
-  .blob-1 { width: 620px; height: 620px; background: var(--blush); top: -180px; right: -120px; }
-  .blob-2 { width: 480px; height: 480px; background: var(--lavender); bottom: -100px; left: -140px; animation-delay: -6s; }
-  .blob-3 { width: 340px; height: 340px; background: var(--sage); top: 35%; left: 45%; animation-delay: -11s; }
-
-  @keyframes drift {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(45px, 35px) scale(1.08); }
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 920px;
-    text-align: center;
-  }
-
-  .hero-badge {
-    display: inline-block;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(194, 162, 81, 0.12);
-    padding: 0.45rem 1.4rem;
-    border-radius: 50px;
-    margin-bottom: 2.2rem;
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 7vw, 5.4rem);
-    font-weight: 300;
-    line-height: 1.05;
-    margin-bottom: 1.6rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-sub {
-    font-size: 1.22rem;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 620px;
-    margin: 0 auto 3rem;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1.4rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    padding: 1.05rem 2.8rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 8px 25px rgba(194, 162, 81, 0.25);
-    transition: all 0.3s ease;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(194, 162, 81, 0.35);
-  }
-
-  .btn-secondary {
-    color: var(--text);
-    font-weight: 500;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
-  }
-
-  /* ─── SECTIONS ─── */
-  section {
-    padding: 7rem 6vw;
-  }
-
-  .section-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 5vw, 3.6rem);
-    font-weight: 300;
-    line-height: 1.15;
-    margin-bottom: 1.8rem;
-  }
-
-  /* ─── SERVICES ─── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3.5rem;
-  }
-
-  .service-card {
-    background: #fff;
-    border-radius: 28px;
-    padding: 3rem 2.4rem;
-    border: 1px solid rgba(0,0,0,0.04);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .service-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.07);
-  }
-
-  .card-icon {
-    font-size: 2.8rem;
-    margin-bottom: 1.6rem;
-    display: block;
-  }
-
-  .service-card h3 {
-    font-size: 1.45rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-
-  /* ─── WHY ME ─── */
-  #proc-ja {
-    background: var(--sand);
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .why-item {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 20px;
-    text-align: center;
-  }
-
-  /* ─── ABOUT ─── */
-  #o-mne {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6vw;
-    align-items: center;
-    background: var(--sand);
-  }
-
-  @media (max-width: 900px) {
-    #o-mne { grid-template-columns: 1fr; }
-  }
-
-  .about-avatar {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--sage), var(--blush));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    color: #fff;
-    box-shadow: 0 15px 40px rgba(184, 205, 184, 0.4);
-    margin-bottom: 2rem;
-  }
-
-  /* ─── CONTACT ─── */
-  .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 5vw;
-    background: #fff;
-    border-radius: 32px;
-    padding: 4rem;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.06);
-  }
-
-  @media (max-width: 900px) {
-    .contact-container { grid-template-columns: 1fr; padding: 2.5rem; }
-  }
-
-  .form-group {
-    margin-bottom: 1.6rem;
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 1rem 1.2rem;
-    border: 1.5px solid #e8e4db;
-    border-radius: 14px;
-    background: var(--cream);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border 0.3s;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: #2a2a2a;
-    color: #bbb;
-    padding: 5rem 6vw 3rem;
-  }
-
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9F7F2; color: #334155; }
+        h1, h2, h3 { font-family: 'Lora', serif; }
+        .pastel-sage { background-color: #E8F3F1; }
+        .pastel-card { background-color: #ffffff; transition: transform 0.3s ease; border: 1px solid #E2E8F0; }
+        .pastel-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
+        .btn-primary { background-color: #7D9D96; color: white; transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: #63827B; transform: scale(1.05); }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="#">Markéta Zahradníčková</a>
-  <ul class="nav-links">
-    <li><a href="#sluzby">Služby</a></li>
-    <li><a href="#proc-ja">Proč já</a></li>
-    <li><a href="#o-mne">O mně</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ul>
-  <a href="#kontakt" class="nav-cta">Objednat konzultaci</a>
-</nav>
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-2xl font-semibold tracking-tight text-slate-800">Markéta<span class="text-teal-600">.</span></div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
+            <a href="#sluzby" class="hover:text-teal-600 transition">Služby</a>
+            <a href="#o-mne" class="hover:text-teal-600 transition">O mně</a>
+            <a href="#kontakt" class="px-5 py-2 btn-primary rounded-full">Konzultace</a>
+        </div>
+    </nav>
 
-<section class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  
-  <div class="hero-inner">
-    <span class="hero-badge">Finanční poradenství s lidským přístupem</span>
-    <h1>Vaše finance v bezpečných rukou</h1>
-    <p class="hero-sub">Pomáhám rodinám a jednotlivcům z Brna a okolí budovat finanční jistotu, plánovat budoucnost a dosahovat svých snů.</p>
-    
-    <div class="hero-actions">
-      <a href="#kontakt" class="btn-primary">Chci nezávaznou konzultaci</a>
-      <a href="#sluzby" class="btn-secondary">Zjistit více o službách →</a>
-    </div>
-  </div>
-</section>
+    <section class="relative px-6 py-20 md:py-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2" data-aos="fade-right">
+            <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-slate-900">Finance, které vám konečně <span class="italic text-teal-700">dávají smysl.</span></h1>
+            <p class="text-lg text-slate-600 mb-8 max-w-md leading-relaxed">
+                Jmenuji se Markéta Zahradníčková a pomáhám lidem budovat stabilitu na pevných základech. Bez tlaku, srozumitelně a s lidským přístupem.
+            </p>
+            <a href="#sluzby" class="px-8 py-4 btn-primary rounded-full text-lg inline-block shadow-lg">Zjistit více</a>
+        </div>
+        <div class="md:w-1/2 mt-12 md:mt-0 relative" data-aos="zoom-in">
+            <div class="w-80 h-80 md:w-[500px] md:h-[500px] bg-teal-100 rounded-full overflow-hidden mx-auto border-8 border-white shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Markéta Zahradníčková" class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition duration-500">
+            </div>
+        </div>
+    </section>
 
-<section id="sluzby">
-  <span class="section-label reveal">Co nabízím</span>
-  <h2 class="section-title reveal">S čím vám <em>rada pomohu</em></h2>
-  
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="card-icon">📈</span>
-      <h3>Investice &amp; Portfolio</h3>
-      <p>Strategické investování s ohledem na vaše cíle, rizikový profil a daňovou optimalizaci.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="card-icon">🏠</span>
-      <h3>Hypotéky a úvěry</h3>
-      <p>Najdu pro vás nejvýhodnější financování bydlení na aktuálním trhu.</p>
-    </div>
-    <div class="service-card reveal">
-      <span class="card-icon">🛡️</span>
-      <h3>Pojištění a zajištění</h3>
-      <p>Komplexní ochrana vás, vaší rodiny a majetku pro klidný život.</p>
-    </div>
-  </div>
-</section>
+    <section id="sluzby" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl mb-4">Moje služby</h2>
+                <p class="text-slate-500">Komplexní péče o vaše finanční zdraví.</p>
+            </div>
 
-<section id="proc-ja" style="background: var(--sand);">
-  <span class="section-label reveal">Proč klienti volí mě</span>
-  <h2 class="section-title reveal">Lidský přístup k financím</h2>
-  
-  <div class="why-grid">
-    <div class="why-item reveal">
-      <h4>✅ Nezávislost</h4>
-      <p>Nejsem vázaná na žádnou banku ani pojišťovnu – vždy hledám nejlepší řešení pro vás.</p>
-    </div>
-    <div class="why-item reveal">
-      <h4>✅ Transparentnost</h4>
-      <p>Vše vysvětlím srozumitelně, bez odborných výrazů a skrytých poplatků.</p>
-    </div>
-    <div class="why-item reveal">
-      <h4>✅ Dlouhodobý vztah</h4>
-      <p>Nejde mi o jednorázový obchod. Chci být vaším finančním průvodcem na mnoho let.</p>
-    </div>
-  </div>
-</section>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="pastel-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 pastel-sage rounded-xl flex items-center justify-center mb-6 text-teal-700">🛡️</div>
+                    <h3 class="text-xl font-semibold mb-3 text-slate-800">Bezpečný přístav</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a váš klid.</p>
+                </div>
 
-<section id="o-mne">
-  <div class="reveal">
-    <div class="about-avatar">MZ</div>
-    <h3>Markéta Zahradníčková</h3>
-    <p style="color: var(--muted); margin-top: 0.5rem;">Certifikovaná finanční poradkyně</p>
-  </div>
-  
-  <div class="reveal">
-    <span class="section-label">Kdo jsem</span>
-    <h2 class="section-title">Finance s <em>lidskou tváří</em></h2>
-    <p>Finance nejsou jen o číslech. Jsou o vašich snech, bezpečí vaší rodiny a klidném spánku.</p>
-    <p style="margin-top: 1.2rem;">Pracuji s maximální transparentností a vždy upřednostňuji vaše dlouhodobé zájmy před krátkodobým ziskem.</p>
-  </div>
-</section>
+                <div class="pastel-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 pastel-sage rounded-xl flex items-center justify-center mb-6 text-teal-700">📈</div>
+                    <h3 class="text-xl font-semibold mb-3 text-slate-800">Růst bez stresu</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu, ať už začínáte, nebo budujete impérium.</p>
+                </div>
 
-<section id="kontakt">
-  <div class="contact-container reveal">
-    <div>
-      <span class="section-label">Pojďme se sejít</span>
-      <h2 class="section-title">První konzultace je <em>zdarma</em></h2>
-      <p style="margin-top: 1.5rem; color: var(--muted); font-size: 1.1rem;">
-        Můžeme se setkat osobně v Brně nebo online přes videohovor. Ráda si vyslechnu vaši situaci a navrhnu první kroky.
-      </p>
-      
-      <div style="margin-top: 3rem; line-height: 2.1;">
-        <p><strong>📍</strong> Brno a okolí / Online</p>
-        <p><strong>📞</strong> +420 777 123 456</p>
-        <p><strong>✉️</strong> marketa@mzahradnickova.cz</p>
-      </div>
-    </div>
+                <div class="pastel-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 pastel-sage rounded-xl flex items-center justify-center mb-6 text-teal-700">☕</div>
+                    <h3 class="text-xl font-semibold mb-3 text-slate-800">Budoucnost v rukou</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Vytvoříme plán, díky kterému nebudete závislí na státu. Užívejte si stáří přesně tak, jak jste si vysnili.</p>
+                </div>
 
-    <form action="https://formspree.io/f/TVOJE_ID" method="POST" id="contact-form">
-      <div class="form-group">
-        <label>Jméno a příjmení</label>
-        <input type="text" name="name" placeholder="Vaše jméno" required>
-      </div>
-      <div class="form-group">
-        <label>E-mail</label>
-        <input type="email" name="email" placeholder="vas@email.cz" required>
-      </div>
-      <div class="form-group">
-        <label>S čím vám mám pomoci?</label>
-        <select name="topic" required>
-          <option value="">Vyberte téma...</option>
-          <option value="investice">Investice a spoření</option>
-          <option value="hypoteka">Hypotéka / financování bydlení</option>
-          <option value="pojisteni">Pojištění a zajištění</option>
-          <option value="jine">Jiná otázka</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Zpráva</label>
-        <textarea name="message" rows="5" placeholder="Popište mi stručně vaši situaci..."></textarea>
-      </div>
-      <button type="submit" class="btn-primary" style="width: 100%; padding: 1.2rem;">Odeslat zprávu</button>
-    </form>
-  </div>
-</section>
+                <div class="pastel-card p-8 rounded-3xl md:col-span-2 pastel-sage border-none" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-semibold mb-3 text-slate-800">Cesta k vlastnímu bydlení</h3>
+                            <p class="text-slate-600">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce. Pomáháme s novými hypotékami i refinancováním.</p>
+                        </div>
+                        <div class="text-6xl md:text-8xl opacity-20 mt-6 md:mt-0">🏠</div>
+                    </div>
+                </div>
 
-<footer>
-  <div class="footer-content">
-    <div>
-      <p style="color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Markéta Zahradníčková</p>
-      <p>Finanční poradenství s důrazem na důvěru a dlouhodobý vztah.</p>
-    </div>
-    <div style="text-align: right; line-height: 1.8;">
-      <p>© 2026 Markéta Zahradníčková</p>
-      <p style="font-size: 0.75rem; opacity: 0.7;">Všechna práva vyhrazena</p>
-    </div>
-  </div>
-</footer>
+                <div class="pastel-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 pastel-sage rounded-xl flex items-center justify-center mb-6 text-teal-700">🔍</div>
+                    <h3 class="text-xl font-semibold mb-3 text-slate-800">Penzijní audit</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení, která vám přinesou větší jistotu.</p>
+                </div>
 
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
+            </div>
+        </div>
+    </section>
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    <section id="kontakt" class="py-20 max-w-4xl mx-auto px-6" data-aos="zoom-in">
+        <div class="bg-slate-900 rounded-[3rem] p-10 md:p-16 text-center text-white">
+            <h2 class="text-4xl mb-6 italic">Pojďme si o tom promluvit u kávy.</h2>
+            <p class="text-slate-400 mb-10">Stačí vyplnit krátký formulář a já se vám ozvu zpět.</p>
+            
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Vaše jméno" class="bg-slate-800 border-none rounded-2xl p-4 focus:ring-2 focus:ring-teal-500 outline-none">
+                <input type="email" placeholder="E-mail" class="bg-slate-800 border-none rounded-2xl p-4 focus:ring-2 focus:ring-teal-500 outline-none">
+                <textarea placeholder="O co máte zájem?" class="bg-slate-800 border-none rounded-2xl p-4 md:col-span-2 focus:ring-2 focus:ring-teal-500 outline-none h-32"></textarea>
+                <button class="btn-primary py-4 rounded-2xl md:col-span-2 font-semibold">Odeslat nezávaznou poptávku</button>
+            </form>
+        </div>
+    </section>
 
-  // Form submit feedback
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', function() {
-    const btn = form.querySelector('button');
-    const originalText = btn.innerText;
-    btn.innerText = "Odesílám...";
-    btn.disabled = true;
-    
-    setTimeout(() => {
-      btn.innerText = "Děkuji! Ozvu se co nejdříve.";
-    }, 1800);
-  });
-</script>
+    <footer class="py-10 text-center text-slate-400 text-sm">
+        <p>© 2026 Markéta Zahradníčková. Všechna práva vyhrazena.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
 </body>
 </html>
