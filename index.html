@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markéta Zahradníčková | Prémiové finanční poradenství</title>
+    <title>Markéta Zahradníčková | Finance s lehkostí</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -15,7 +15,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        heading: ['Syne', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
                     },
                     colors: {
                         pastel: {
@@ -32,9 +32,9 @@
     </script>
 
     <style>
-        body { background-color: #FBF9F6; color: #2D3639; overflow-x: hidden; }
+        body { background-color: #FBF9F6; color: #2D3639; overflow-x: hidden; font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Lora', serif; }
         
-        /* Glassmorphism pro menu */
         .glass-nav {
             background: rgba(251, 249, 246, 0.8);
             backdrop-filter: blur(12px);
@@ -42,7 +42,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Animace podtržení v menu */
         .nav-link { position: relative; }
         .nav-link::after {
             content: '';
@@ -58,17 +57,14 @@
         }
         .nav-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
 
-        /* Super moderní karty */
         .premium-card {
             background: linear-gradient(145deg, #ffffff, #fdfbf9);
             border: 1px solid rgba(226, 232, 240, 0.6);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02), 0 4px 6px -2px rgba(0, 0, 0, 0.01);
         }
         .premium-card:hover {
-            transform: translateY(-12px) scale(1.02);
+            transform: translateY(-12px);
             box-shadow: 0 25px 50px -12px rgba(125, 157, 150, 0.15);
-            border-color: rgba(125, 157, 150, 0.3);
         }
 
         .btn-premium {
@@ -79,172 +75,127 @@
         }
         .btn-premium:hover {
             background-color: #63827B;
-            box-shadow: 0 6px 20px 0 rgba(125, 157, 150, 0.5);
             transform: translateY(-2px);
         }
 
-        /* Stylování mapy */
         .map-container iframe {
-            filter: grayscale(100%) invert(5%) contrast(85%); /* Moderní tmavší/šedá mapa */
+            filter: grayscale(100%) contrast(90%);
             border-radius: 1.5rem;
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased">
 
     <header class="fixed top-0 left-0 w-full z-50 px-4 pt-4 md:px-6 md:pt-6">
-        <nav class="glass-nav max-w-7xl mx-auto rounded-full px-6 py-3 flex justify-between items-center shadow-lg border border-white/40">
-            <a href="#" class="font-heading text-2xl font-bold tracking-tight text-pastel-text hover:opacity-80 transition">
+        <nav class="glass-nav max-w-7xl mx-auto rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
+            <a href="#" class="font-serif text-2xl font-bold text-pastel-text">
                 Markéta<span class="text-pastel-sageDark">.</span>Z
             </a>
-
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium uppercase tracking-wider">
                 <a href="#sluzby" class="nav-link text-pastel-text/90">Služby</a>
                 <a href="#o-mne" class="nav-link text-pastel-text/90">O mně</a>
                 <a href="#kontakt" class="nav-link text-pastel-text/90">Kontakt</a>
             </div>
-
-            <div class="flex items-center gap-3">
-                <a href="tel:+420123456789" class="hidden sm:inline text-sm font-medium text-pastel-sageDark hover:text-pastel-text transition">
-                    +420 123 456 789
-                </a>
-                <a href="#kontakt" class="px-6 py-2.5 btn-premium rounded-full text-sm font-semibold tracking-wide">
-                    Konzultace
-                </a>
-            </div>
+            <a href="#kontakt" class="px-6 py-2.5 btn-premium rounded-full text-sm font-semibold uppercase tracking-wider">
+                Konzultace
+            </a>
         </nav>
     </header>
 
     <section class="relative px-6 pt-32 pb-20 md:pt-48 md:pb-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 md:pr-12" data-aos="fade-right">
-            <span class="inline-block px-4 py-1.5 rounded-full pastel-sage text-pastel-sageDark text-xs font-semibold tracking-widest uppercase mb-4">
-                Lidský přístup k financím
-            </span>
-            <h1 class="font-heading text-5xl md:text-7xl font-extrabold mb-6 leading-[1.1] text-pastel-text">
-                Finance, které vám <span class="italic text-pastel-sageDark font-light">konečně dají smysl.</span>
+            <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-pastel-text font-serif">
+                Finance, které vám <span class="italic text-pastel-sageDark font-normal">konečně dají smysl.</span>
             </h1>
             <p class="text-lg text-pastel-text/80 mb-10 max-w-md leading-relaxed">
-                Stavíme vaši budoucnost na pevných a srozumitelných základech. Bez tlaku a zbytečného chaosu.
+                Jmenuji se Markéta Zahradníčková a pomáhám lidem budovat stabilitu na pevných základech. Bez tlaku a s lidským přístupem.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#sluzby" class="px-8 py-4 btn-premium rounded-full text-lg font-semibold inline-block text-center">Moje služby</a>
-                <a href="#o-mne" class="px-8 py-4 bg-white hover:bg-slate-50 rounded-full text-lg font-medium inline-block text-center border border-slate-200 transition">O mně</a>
+                <a href="#sluzby" class="px-8 py-4 btn-premium rounded-full text-lg font-semibold inline-block text-center shadow-lg">Moje služby</a>
             </div>
         </div>
-        <div class="md:w-1/2 mt-16 md:mt-0 relative" data-aos="zoom-in" data-aos-delay="200">
-            <div class="w-80 h-80 md:w-[480px] md:h-[480px] bg-pastel-sage rounded-full overflow-hidden mx-auto border-[12px] border-white shadow-2xl relative z-10">
-                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?&w=800&q=80&auto=format&fit=crop&crop=faces&h=800" alt="Markéta Zahradníčková" class="w-full h-full object-cover">
+        <div class="md:w-1/2 mt-16 md:mt-0 relative" data-aos="zoom-in">
+            <div class="w-72 h-72 md:w-[450px] md:h-[450px] bg-pastel-sage rounded-full overflow-hidden mx-auto border-[10px] border-white shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Markéta Zahradníčková" class="w-full h-full object-cover">
             </div>
-            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-pastel-sageDark/10 rounded-full blur-3xl z-0"></div>
         </div>
     </section>
 
-    <section id="sluzby" class="py-24 bg-white relative z-10">
+    <section id="sluzby" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-5 text-pastel-text">Komplexní řešení pro váš klid</h2>
-                <p class="text-lg text-pastel-subtle max-w-2xl mx-auto">Vše, co potřebujete pro zdravé finance, pod jednou střechou a srozumitelně.</p>
+                <h2 class="text-4xl md:text-5xl font-serif mb-5 text-pastel-text font-bold">Moje služby</h2>
+                <p class="text-pastel-subtle">Komplexní péče o vaše finanční zdraví.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
-                        <span class="text-4xl">🛡️</span>
-                    </div>
-                    <h3 class="font-heading text-2xl font-semibold mb-4 text-pastel-text">Bezpečný přístav</h3>
-                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a váš klidný spánek.</p>
-                    <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <div class="w-14 h-14 rounded-2xl pastel-sage flex items-center justify-center mb-6 text-2xl">🛡️</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-pastel-text">Bezpečný přístav</h3>
+                    <p class="text-pastel-text/80 text-sm leading-relaxed mb-6">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a klid.</p>
                 </div>
 
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
-                        <span class="text-4xl">📈</span>
-                    </div>
-                    <h3 class="font-heading text-2xl font-semibold mb-4 text-pastel-text">Růst bez stresu</h3>
-                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu, ať už začínáte, nebo už budujete kapitál.</p>
-                    <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <div class="w-14 h-14 rounded-2xl pastel-sage flex items-center justify-center mb-6 text-2xl">📈</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-pastel-text">Růst bez stresu</h3>
+                    <p class="text-pastel-text/80 text-sm leading-relaxed mb-6">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu i cílům.</p>
                 </div>
 
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
-                        <span class="text-4xl">☕</span>
-                    </div>
-                    <h3 class="font-heading text-2xl font-semibold mb-4 text-pastel-text">Budoucnost v rukou</h3>
-                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Vytvoříme plán, díky kterému nebudete závislí na státu. Užívejte si stáří přesně tak, jak jste si vždy vysnili.</p>
-                    <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <div class="w-14 h-14 rounded-2xl pastel-sage flex items-center justify-center mb-6 text-2xl">☕</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-pastel-text">Budoucnost v rukou</h3>
+                    <p class="text-pastel-text/80 text-sm leading-relaxed mb-6">Vytvoříme plán, díky kterému nebudete ve stáří závislí jen na státu.</p>
                 </div>
 
-                <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-pastel-sage/30 border-pastel-sageDark/10" data-aos="fade-up">
+                <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-pastel-sage/30 border-none" data-aos="fade-up">
                     <div class="flex-grow">
-                        <span class="inline-block px-3 py-1 rounded-full bg-white text-pastel-sageDark text-xs font-medium mb-3 border border-slate-100">Nejoblíbenější</span>
-                        <h3 class="font-heading text-3xl font-semibold mb-4 text-pastel-text">Cesta k vlastnímu bydlení</h3>
-                        <p class="text-pastel-text/80 text-base leading-relaxed mb-0">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce. Kompletní servis od A do Z.</p>
+                        <h3 class="text-3xl font-serif font-bold mb-4 text-pastel-text">Cesta k vlastnímu</h3>
+                        <p class="text-pastel-text/80 leading-relaxed">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
                     </div>
-                    <div class="text-9xl md:text-[10rem] opacity-30 sm:opacity-100">🏠</div>
+                    <div class="text-8xl opacity-20">🏠</div>
                 </div>
 
-                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
-                        <span class="text-4xl">🔍</span>
-                    </div>
-                    <h3 class="font-heading text-2xl font-semibold mb-4 text-pastel-text">Penzijní audit</h3>
-                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení, která vám přinesou větší jistotu.</p>
-                    <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 rounded-2xl pastel-sage flex items-center justify-center mb-6 text-2xl">🔍</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-pastel-text">Penzijní audit</h3>
+                    <p class="text-pastel-text/80 text-sm leading-relaxed mb-6">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení pro větší jistotu.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
     <section id="kontakt" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="bg-pastel-text rounded-[3rem] p-6 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-10 items-stretch border-4 border-white" data-aos="fade-up">
+        <div class="bg-pastel-text rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch border-4 border-white" data-aos="fade-up">
             
-            <div class="lg:w-1/2 p-4 md:p-6 flex flex-col">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Ozvu se vám <br> <span class="italic text-pastel-sage font-light">do 24 hodin.</span></h2>
-                <p class="text-pastel-subtle mb-12 max-w-md">Vyberte si termín nebo mi napište svůj dotaz. Nezávazně a diskrétně.</p>
+            <div class="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight">Ozvu se vám <br> <span class="italic text-pastel-sage font-normal">do 24 hodin.</span></h2>
                 
-                <form class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-grow">
-                    <input type="text" placeholder="Vaše jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none transition col-span-2 sm:col-span-1">
-                    <input type="tel" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none transition col-span-2 sm:col-span-1">
-                    <input type="email" placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none transition col-span-2">
-                    <textarea placeholder="O co máte zájem?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none h-32 col-span-2"></textarea>
-                    <button class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-lg">Odeslat poptávku</button>
+                <form class="grid grid-cols-1 gap-5">
+                    <input type="text" placeholder="Vaše jméno" class="bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder:text-slate-400 outline-none focus:border-pastel-sage transition">
+                    <input type="email" placeholder="E-mail" class="bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder:text-slate-400 outline-none focus:border-pastel-sage transition">
+                    <textarea placeholder="V čem vám mohu pomoci?" class="bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder:text-slate-400 outline-none h-32 focus:border-pastel-sage transition"></textarea>
+                    <button class="btn-premium py-4 rounded-xl font-bold uppercase tracking-widest">Odeslat</button>
                 </form>
             </div>
 
-            <div class="lg:w-1/2 map-container relative min-h-[350px] lg:min-h-full" data-aos="fade-left" data-aos-delay="200">
+            <div class="lg:w-1/2 map-container relative min-h-[400px]">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163989.26425977534!2d14.300681326269145!3d50.05980581414444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b939c0970798b%3A0x400af0f66164090!2zUHJhaGE!5e0!3m2!1scs!2scz!4v1709123456789!5m2!1scs!2scz" 
-                    class="absolute inset-0 w-full h-full shadow-inner"
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.8475253160454!2d14.421111!3d50.083549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94ec296458f7%3A0x2ff7d794cc41f5f2!2zVsOhY2xhdnNrw6kgbsOhbS4gMSwgMTEwIDAwIE5vdsOpIE3Em3N0bw!5e0!3m2!1scs!2scz!4v1711111111111" 
+                    class="absolute inset-0 w-full h-full"
+                    style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
-                <div class="absolute bottom-6 left-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 z-10 max-w-xs">
-                    <p class="font-semibold text-pastel-text">Kancelář Praha</p>
-                    <p class="text-sm text-pastel-subtle">Václavské náměstí 1, 110 00 Praha 1</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-pastel-base border-t border-slate-100 text-center text-pastel-subtle text-sm">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="font-heading text-lg font-bold text-pastel-text mb-3">Markéta Zahradníčková</p>
-            <p class="mb-6">IČO: 12345678 | Vázaný zástupce společnosti XY s.r.o.</p>
-            <p>© 2026 Markéta Zahradníčková. Všechna práva vyhrazena.</p>
-        </div>
+    <footer class="py-12 text-center text-pastel-subtle text-sm">
+        <p class="font-serif text-lg font-bold text-pastel-text mb-2">Markéta Zahradníčková</p>
+        <p>© 2026 Všechna práva vyhrazena.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1200, // Trochu pomalejší a plynulejší animace
-            once: true,
-            offset: 100 // Spustí animaci trochu dříve
-        });
+        AOS.init({ duration: 1000, once: true });
     </script>
 </body>
 </html>
