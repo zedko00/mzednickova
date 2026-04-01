@@ -35,7 +35,6 @@
         body { background-color: #FBF9F6; color: #2D3639; overflow-x: hidden; font-family: 'Inter', sans-serif; }
         h1, h2, h3, .font-heading { font-family: 'Lora', serif; }
         
-        /* Glassmorphism pro menu */
         .glass-nav {
             background: rgba(251, 249, 246, 0.8);
             backdrop-filter: blur(12px);
@@ -43,28 +42,19 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Animace podtržení v menu */
         .nav-link { position: relative; }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #7D9D96;
-            transform-origin: bottom right;
+            content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px;
+            bottom: -4px; left: 0; background-color: #7D9D96; transform-origin: bottom right;
             transition: transform 0.3s ease-out;
         }
         .nav-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
 
-        /* Super moderní karty */
         .premium-card {
             background: linear-gradient(145deg, #ffffff, #fdfbf9);
             border: 1px solid rgba(226, 232, 240, 0.6);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02), 0 4px 6px -2px rgba(0, 0, 0, 0.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02);
         }
         .premium-card:hover {
             transform: translateY(-12px) scale(1.02);
@@ -80,15 +70,20 @@
         }
         .btn-premium:hover {
             background-color: #63827B;
-            box-shadow: 0 6px 20px 0 rgba(125, 157, 150, 0.5);
             transform: translateY(-2px);
         }
 
-        /* Stylování mapy */
         .map-container iframe {
-            filter: grayscale(100%) invert(5%) contrast(85%); /* Moderní tmavší/šedá mapa */
+            filter: grayscale(100%) invert(5%) contrast(85%);
             border-radius: 1.5rem;
         }
+
+        /* Styl pro Cookie lištu */
+        #cookie-banner {
+            transform: translateY(150%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #cookie-banner.show { transform: translateY(0); }
     </style>
 </head>
 <body class="antialiased">
@@ -118,7 +113,7 @@
 
     <section class="relative px-6 pt-32 pb-20 md:pt-48 md:pb-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 md:pr-12" data-aos="fade-right">
-            <span class="inline-block px-4 py-1.5 rounded-full pastel-sage text-pastel-sageDark text-xs font-semibold tracking-widest uppercase mb-4 font-sans">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-[#E3EFEA] text-pastel-sageDark text-xs font-semibold tracking-widest uppercase mb-4 font-sans text-pastel-sageDark">
                 Lidský přístup k financím
             </span>
             <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6 leading-[1.1] text-pastel-text">
@@ -133,7 +128,7 @@
             </div>
         </div>
         <div class="md:w-1/2 mt-16 md:mt-0 relative" data-aos="zoom-in" data-aos-delay="200">
-            <div class="w-80 h-80 md:w-[480px] md:h-[480px] bg-pastel-sage rounded-full overflow-hidden mx-auto border-[12px] border-white shadow-2xl relative z-10">
+            <div class="w-80 h-80 md:w-[480px] md:h-[480px] bg-[#E3EFEA] rounded-full overflow-hidden mx-auto border-[12px] border-white shadow-2xl relative z-10 text-pastel-sageDark">
                 <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?&w=800&q=80&auto=format&fit=crop&crop=faces&h=800" alt="Markéta Zahradníčková" class="w-full h-full object-cover">
             </div>
             <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-pastel-sageDark/10 rounded-full blur-3xl z-0"></div>
@@ -150,7 +145,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
+                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
                         <span class="text-4xl">🛡️</span>
                     </div>
                     <h3 class="font-heading text-2xl font-bold mb-4 text-pastel-text">Bezpečný přístav</h3>
@@ -159,7 +154,7 @@
                 </div>
 
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
+                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
                         <span class="text-4xl">📈</span>
                     </div>
                     <h3 class="font-heading text-2xl font-bold mb-4 text-pastel-text">Růst bez stresu</h3>
@@ -168,7 +163,7 @@
                 </div>
 
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
+                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
                         <span class="text-4xl">☕</span>
                     </div>
                     <h3 class="font-heading text-2xl font-bold mb-4 text-pastel-text">Budoucnost v rukou</h3>
@@ -176,7 +171,7 @@
                     <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm font-sans">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
                 </div>
 
-                <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-pastel-sage/30 border-pastel-sageDark/10" data-aos="fade-up">
+                <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-[#E3EFEA]/30 border-pastel-sageDark/10" data-aos="fade-up">
                     <div class="flex-grow">
                         <span class="inline-block px-3 py-1 rounded-full bg-white text-pastel-sageDark text-xs font-medium mb-3 border border-slate-100 font-sans">Nejoblíbenější</span>
                         <h3 class="font-heading text-3xl font-bold mb-4 text-pastel-text text-center sm:text-left">Cesta k vlastnímu bydlení</h3>
@@ -186,7 +181,7 @@
                 </div>
 
                 <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-3xl pastel-sage flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
+                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner">
                         <span class="text-4xl">🔍</span>
                     </div>
                     <h3 class="font-heading text-2xl font-bold mb-4 text-pastel-text">Penzijní audit</h3>
@@ -200,29 +195,19 @@
 
     <section id="kontakt" class="py-24 max-w-7xl mx-auto px-6">
         <div class="bg-pastel-text rounded-[3rem] p-6 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-10 items-stretch border-4 border-white" data-aos="fade-up">
-            
-            <div class="lg:w-1/2 p-4 md:p-6 flex flex-col">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Ozvu se vám <br> <span class="italic text-pastel-sage font-light">do 24 hodin.</span></h2>
+            <div class="lg:w-1/2 p-4 md:p-6 flex flex-col text-white">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6 leading-tight">Ozvu se vám <br> <span class="italic text-pastel-sage font-light">do 24 hodin.</span></h2>
                 <p class="text-pastel-subtle mb-12 max-w-md font-sans">Vyberete si termín nebo mi napište svůj dotaz. Nezávazně a diskrétně.</p>
-                
                 <form class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-grow font-sans">
-                    <input type="text" placeholder="Vaše jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none transition col-span-2 sm:col-span-1">
-                    <input type="tel" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none transition col-span-2 sm:col-span-1">
-                    <input type="email" placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none transition col-span-2">
-                    <textarea placeholder="O co máte zájem?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage focus:border-transparent outline-none h-32 col-span-2"></textarea>
+                    <input type="text" placeholder="Vaše jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage outline-none transition col-span-2 sm:col-span-1">
+                    <input type="tel" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage outline-none transition col-span-2 sm:col-span-1">
+                    <input type="email" placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage outline-none transition col-span-2">
+                    <textarea placeholder="O co máte zájem?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-pastel-sage outline-none h-32 col-span-2"></textarea>
                     <button class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-lg">Odeslat poptávku</button>
                 </form>
             </div>
-
             <div class="lg:w-1/2 map-container relative min-h-[350px] lg:min-h-full" data-aos="fade-left" data-aos-delay="200">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163989.26425977534!2d14.300681326269145!3d50.05980581414444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b939c0970798b%3A0x400af0f66164090!2zUHJhaGE!5e0!3m2!1scs!2scz!4v1709123456789!5m2!1scs!2scz" 
-                    class="absolute inset-0 w-full h-full shadow-inner"
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.111!2d14.421!3d50.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDA0JzQ4LjAiTiAxNMKwMjUnMTUuNiJF!5e0!3m2!1scs!2scz!4v1614123456789" class="absolute inset-0 w-full h-full shadow-inner" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 <div class="absolute bottom-6 left-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 z-10 max-w-xs font-sans">
                     <p class="font-semibold text-pastel-text">Kancelář Praha</p>
                     <p class="text-sm text-pastel-subtle">Václavské náměstí 1, 110 00 Praha 1</p>
@@ -239,13 +224,36 @@
         </div>
     </footer>
 
+    <div id="cookie-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl glass-nav z-[100] p-5 rounded-3xl shadow-2xl border border-white/50 flex flex-col md:flex-row items-center gap-4">
+        <div class="flex-grow">
+            <p class="text-sm text-pastel-text leading-relaxed">
+                Tento web používá k poskytování služeb a analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím souhlasíte.
+            </p>
+        </div>
+        <div class="flex gap-2 w-full md:w-auto">
+            <button onclick="acceptCookies()" class="flex-grow md:flex-none px-8 py-3 btn-premium rounded-2xl text-sm font-bold whitespace-nowrap">
+                Rozumím
+            </button>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1200,
-            once: true,
-            offset: 100
+        AOS.init({ duration: 1200, once: true, offset: 100 });
+
+        // Funkce pro cookie lištu
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.add('show');
+                }, 2000);
+            }
         });
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
     </script>
 </body>
 </html>
