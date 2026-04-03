@@ -32,6 +32,7 @@
     </script>
 
     <style>
+        html { scroll-behavior: smooth; }
         body { background-color: #FBF9F6; color: #2D3639; overflow-x: hidden; font-family: 'Inter', sans-serif; }
         h1, h2, h3, .font-heading { font-family: 'Lora', serif; }
         
@@ -92,9 +93,38 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         #cookie-banner.show { transform: translateY(0); }
+
+        /* WhatsApp Button Animation */
+        @keyframes pulse-soft {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-soft 2s infinite;
+        }
     </style>
 </head>
 <body class="antialiased">
+
+    <a href="https://wa.me/420123456789" class="whatsapp-float" target="_blank">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
 
     <header class="fixed top-0 left-0 w-full z-50 px-4 pt-4 md:px-6 md:pt-6">
         <nav class="glass-nav max-w-7xl mx-auto rounded-full px-6 py-3 flex justify-between items-center shadow-lg border border-white/40">
@@ -172,42 +202,40 @@
                 <p class="text-lg text-pastel-subtle max-w-2xl mx-auto">Vše, co potřebujete pro zdravé finance, pod jednou střechou a srozumitelně.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up">
                     <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner"><span class="text-4xl">🛡️</span></div>
                     <h3 class="font-heading text-2xl font-bold mb-4 text-slate-800">Bezpečný přístav</h3>
                     <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a váš klidný spánek.</p>
                     <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
                 </div>
 
-                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner"><span class="text-4xl">📈</span></div>
                     <h3 class="font-heading text-2xl font-bold mb-4 text-slate-800">Růst bez stresu</h3>
                     <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu, ať už začínáte, nebo už budujete kapitál.</p>
                     <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
                 </div>
 
-                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner"><span class="text-4xl">☕</span></div>
-                    <h3 class="font-heading text-2xl font-bold mb-4 text-slate-800">Budoucnost v rukou</h3>
-                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Vytvoříme plán, díky kterému nebudete závislí na státu. Užívejte si stáří přesně tak, jak jste si vždy vysnili.</p>
+                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner"><span class="text-4xl">🏠</span></div>
+                    <h3 class="font-heading text-2xl font-bold mb-4 text-slate-800">Cesta k bydlení</h3>
+                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
                     <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
                 </div>
+            </div>
 
-                <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-[#E3EFEA]/30 border-pastel-sageDark/10" data-aos="fade-up">
-                    <div class="flex-grow">
-                        <span class="inline-block px-3 py-1 rounded-full bg-white text-pastel-sageDark text-xs font-medium mb-3 border border-slate-100">Nejoblíbenější</span>
-                        <h3 class="font-heading text-3xl font-bold mb-4 text-slate-800">Cesta k vlastnímu bydlení</h3>
-                        <p class="text-pastel-text/80 text-base leading-relaxed mb-0">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
-                    </div>
-                    <div class="text-9xl md:text-[10rem] opacity-30 sm:opacity-100">🏠</div>
+            <div class="bg-pastel-sage/30 rounded-[3rem] p-8 md:p-12 border border-pastel-sageDark/20 flex flex-col md:flex-row items-center gap-8" data-aos="fade-up">
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h3 class="font-heading text-2xl md:text-3xl font-bold text-slate-800 mb-4">Nejste si jistí, kde začít?</h3>
+                    <p class="text-slate-600 mb-0">Stáhněte si můj stručný <strong>Checklist: 5 pilířů zdravých financí</strong> a udělejte si jasno ve svých úsporách během 10 minut.</p>
                 </div>
-
-                <div class="premium-card p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-3xl bg-[#E3EFEA] flex items-center justify-center mb-8 border border-pastel-sageDark/20 shadow-inner"><span class="text-4xl">🔍</span></div>
-                    <h3 class="font-heading text-2xl font-bold mb-4 text-slate-800">Penzijní audit</h3>
-                    <p class="text-pastel-text/80 text-base leading-relaxed mb-6 flex-grow">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení, která vám přinesou větší jistotu.</p>
-                    <a href="#kontakt" class="text-pastel-sageDark font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                <div class="md:w-1/3 w-full">
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Váš e-mail" class="px-6 py-4 rounded-2xl border border-white bg-white/80 outline-none focus:ring-2 focus:ring-pastel-sageDark transition" required>
+                        <button type="submit" class="btn-premium px-6 py-4 rounded-2xl font-bold text-sm uppercase tracking-wider">Získat checklist</button>
+                    </form>
+                    <p class="text-[10px] text-slate-400 mt-3 text-center">Vaše data jsou u mě v bezpečí.</p>
                 </div>
             </div>
         </div>
@@ -228,15 +256,15 @@
             </div>
             <div class="lg:w-1/2 map-container relative min-h-[400px]">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2583.565158223403!2d16.657530377044813!3d49.48981245648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47129b63435d79e5%3A0xe5628b0f174ace05!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.457883236052!2d16.657864876878235!3d49.48530397142416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471295b9c6560001%3A0x633516599b5a034f!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1700000000000!5m2!1scs!2scz" 
                     class="absolute inset-0 w-full h-full shadow-inner border-0" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
                 <div class="absolute bottom-6 left-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 z-10 max-w-xs font-sans">
-                    <p class="font-semibold text-slate-800">Kancelář Boskovice</p>
-                    <p class="text-sm text-pastel-subtle">Komenského 295/44, 680 01 Boskovice</p>
+                    <p class="font-semibold text-slate-800 text-sm">Kancelář Boskovice</p>
+                    <p class="text-xs text-pastel-subtle">Komenského 295/44, 680 01 Boskovice</p>
                 </div>
             </div>
         </div>
@@ -247,7 +275,7 @@
             <p class="font-heading text-lg font-bold text-slate-800 mb-3">Markéta Zahradníčková</p>
             <p class="mb-4">IČO: 12345678 | Vázaný zástupce společnosti XY s.r.o.</p>
             <p class="mb-6">
-                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" class="text-pastel-sageDark hover:underline">
+                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" class="text-pastel-sageDark hover:underline font-medium">
                     Zpracování osobních údajů (GDPR)
                 </a>
             </p>
