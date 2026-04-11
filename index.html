@@ -88,16 +88,17 @@
             border-radius: 1.5rem;
         }
 
+        /* OPRAVA COOKIE LIŠTY */
         #cookie-banner {
-            transform: translateY(150%);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
+            display: none; /* Výchozí stav */
+            transform: translateY(100px);
+            transition: all 0.5s ease-in-out;
             opacity: 0;
             z-index: 9999;
         }
         #cookie-banner.show { 
+            display: block;
             transform: translateY(0); 
-            pointer-events: auto;
             opacity: 1;
         }
 
@@ -122,10 +123,10 @@
             </div>
 
             <div class="flex items-center gap-2 md:gap-3">
-                <a href="tel:+420606055750" class="hidden sm:inline text-xs md:text-sm font-medium text-warm-accent hover:text-warm-text transition">
+                <a href="tel:+420606055750" class="text-[10px] md:text-sm font-medium text-warm-accent hover:text-warm-text transition">
                     +420 606 055 750
                 </a>
-                <a href="#kontakt" class="px-4 py-2 md:px-6 md:py-2.5 btn-premium rounded-full text-xs md:text-sm font-semibold tracking-wide">
+                <a href="#kontakt" class="px-3 py-1.5 md:px-6 md:py-2.5 btn-premium rounded-full text-[10px] md:text-sm font-semibold tracking-wide">
                     Konzultace
                 </a>
             </div>
@@ -213,7 +214,7 @@
                         <h3 class="font-heading text-3xl font-bold mb-4 text-warm-text">Cesta k vlastnímu bydlení</h3>
                         <p class="text-warm-subtle text-base leading-relaxed mb-0">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
                     </div>
-                    <div class="text-9xl md:text-[10rem] opacity-20 sm:opacity-100">🏠</div>
+                    <div class="text-9xl md:text-[10rem] text-warm-accent">🏠</div>
                 </div>
 
                 <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
@@ -231,11 +232,21 @@
             <div class="lg:w-1/2 p-2 md:p-6 flex flex-col text-white">
                 <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
                 
-                <div class="mb-8 md:mb-12">
-                    <p class="text-warm-sand/60 mb-4 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
-                    <div class="flex flex-col gap-2 text-warm-sand font-medium">
-                        <a href="tel:+420606055750" class="hover:text-warm-accent transition">+420 606 055 750</a>
-                        <a href="mailto:marketa.zednickova@zfpa.cz" class="hover:text-warm-accent transition">marketa.zednickova@zfpa.cz</a>
+                <div class="mb-8 md:mb-10">
+                    <p class="text-warm-sand/60 mb-6 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
+                    <div class="space-y-4">
+                        <a href="tel:+420606055750" class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
+                                <span class="text-lg">📞</span>
+                            </div>
+                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
+                        </a>
+                        <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
+                                <span class="text-lg">✉️</span>
+                            </div>
+                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
+                        </a>
                     </div>
                 </div>
 
@@ -260,9 +271,9 @@
     <footer class="py-12 bg-warm-base border-t border-warm-sand text-center text-warm-subtle text-sm">
         <div class="max-w-7xl mx-auto px-6">
             <p class="font-heading text-lg font-bold text-warm-text mb-3">Markéta Zedníčková</p>
-            <p class="mb-4">IČO: 88313531 | Vázaný zástupce společnosti ZFP akademie, a.s.,</p>
+            <p class="mb-4">IČO: 88313531 | Vázaný zástupce společnosti ZFP akademie, a.s.</p>
             <p class="mb-6">
-                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" class="text-warm-accent hover:underline">Zpracování osobních údajů (GDPR)</a>
+                <a href="#" target="_blank" class="text-warm-accent hover:underline">Zpracování osobních údajů (GDPR)</a>
             </p>
             <p>© 2026 Markéta Zedníčková. Všechna práva vyhrazena.</p>
         </div>
@@ -287,7 +298,11 @@
 
         window.addEventListener('load', function() {
             if (!localStorage.getItem('cookieConsent')) {
-                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
+                // OPRAVA: Opraveno časování a třída pro zobrazení
+                setTimeout(() => { 
+                    const banner = document.getElementById('cookie-banner');
+                    banner.classList.add('show'); 
+                }, 1000);
             }
         });
 
@@ -295,7 +310,7 @@
             localStorage.setItem('cookieConsent', type);
             const banner = document.getElementById('cookie-banner');
             banner.classList.remove('show');
-            setTimeout(() => { banner.style.display = 'none'; }, 600);
+            setTimeout(() => { banner.style.display = 'none'; }, 500);
         }
     </script>
 </body>
