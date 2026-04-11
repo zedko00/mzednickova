@@ -88,7 +88,6 @@
             border-radius: 1.5rem;
         }
 
-        /* OPRAVA COOKIE LIŠTY - PŘIDÁNO ZVIDITELNĚNÍ */
         #cookie-banner {
             position: fixed;
             bottom: 24px;
@@ -115,7 +114,7 @@
 
     <header class="fixed top-0 left-0 w-full z-50 px-3 pt-3 md:px-6 md:pt-6">
         <nav class="glass-nav max-w-7xl mx-auto rounded-full px-4 py-2.5 md:px-6 md:py-3 flex justify-between items-center shadow-lg border border-white/40">
-            <a href="#" class="font-heading text-base md:text-xl font-bold tracking-tight text-warm-text whitespace-nowrap">
+            <a href="#" class="font-heading text-lg md:text-xl font-bold tracking-tight text-warm-text whitespace-nowrap">
                 Markéta Zedníčková<span class="text-warm-accent font-sans">.</span>
             </a>
 
@@ -126,7 +125,7 @@
             </div>
 
             <div class="flex items-center gap-2 md:gap-3">
-                <a href="tel:+420606055750" class="text-[10px] md:text-sm font-medium text-warm-accent hover:text-warm-text transition">
+                <a href="tel:+420606055750" class="text-xs md:text-sm font-semibold text-warm-accent hover:text-warm-text transition">
                     +420 606 055 750
                 </a>
                 <a href="#kontakt" class="px-3 py-1.5 md:px-6 md:py-2.5 btn-premium rounded-full text-[10px] md:text-sm font-semibold tracking-wide">
@@ -277,7 +276,7 @@
             <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                 <div class="flex flex-col items-center">
                     <div class="h-12 w-auto font-heading font-bold text-2xl flex items-center">ČNB</div>
-                    <span class="text-[10px] mt-2">Vázaný zástupce</span>
+                    <span class="text-[10px] mt-2">Certifikovaný specialista</span>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="h-12 w-auto font-heading font-bold text-2xl flex items-center italic">ZFP <span class="text-warm-accent ml-1 font-sans">akademie</span></div>
@@ -315,7 +314,6 @@
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
-        // OPRAVENÁ LOGIKA COOKIE LIŠTY
         window.addEventListener('load', function() {
             const consent = localStorage.getItem('cookieConsent');
             if (!consent) {
