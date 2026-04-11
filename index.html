@@ -88,18 +88,21 @@
             border-radius: 1.5rem;
         }
 
-        /* OPRAVA COOKIE LIŠTY */
+        /* OPRAVA COOKIE LIŠTY - PŘIDÁNO ZVIDITELNĚNÍ */
         #cookie-banner {
-            display: none; /* Výchozí stav */
-            transform: translateY(100px);
-            transition: all 0.5s ease-in-out;
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translate(-50%, 150%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             z-index: 9999;
+            visibility: hidden;
         }
         #cookie-banner.show { 
-            display: block;
-            transform: translateY(0); 
+            transform: translate(-50%, 0); 
             opacity: 1;
+            visibility: visible;
         }
 
         .hero-image-fit {
@@ -268,6 +271,22 @@
         </div>
     </section>
 
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-warm-subtle text-xs font-semibold tracking-widest uppercase mb-8">Odbornost a regulace</p>
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex flex-col items-center">
+                    <div class="h-12 w-auto font-heading font-bold text-2xl flex items-center">ČNB</div>
+                    <span class="text-[10px] mt-2">Vázaný zástupce</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-12 w-auto font-heading font-bold text-2xl flex items-center italic">ZFP <span class="text-warm-accent ml-1 font-sans">akademie</span></div>
+                    <span class="text-[10px] mt-2">Partnerství</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="py-12 bg-warm-base border-t border-warm-sand text-center text-warm-subtle text-sm">
         <div class="max-w-7xl mx-auto px-6">
             <p class="font-heading text-lg font-bold text-warm-text mb-3">Markéta Zedníčková</p>
@@ -279,7 +298,7 @@
         </div>
     </footer>
 
-    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:bottom-6 md:left-1/2 md:-translate-x-1/2 w-[92%] md:max-w-3xl glass-nav p-5 md:p-6 rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl border border-white/50">
+    <div id="cookie-banner" class="w-[92%] md:max-w-3xl glass-nav p-5 md:p-6 rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl border border-white/50">
         <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <div class="flex-grow text-center md:text-left">
                 <h4 class="font-heading font-bold text-warm-text mb-1 text-sm md:text-base">Ochrana vašeho soukromí</h4>
@@ -296,9 +315,10 @@
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
+        // OPRAVENÁ LOGIKA COOKIE LIŠTY
         window.addEventListener('load', function() {
-            if (!localStorage.getItem('cookieConsent')) {
-                // OPRAVA: Opraveno časování a třída pro zobrazení
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
                 setTimeout(() => { 
                     const banner = document.getElementById('cookie-banner');
                     banner.classList.add('show'); 
@@ -310,7 +330,7 @@
             localStorage.setItem('cookieConsent', type);
             const banner = document.getElementById('cookie-banner');
             banner.classList.remove('show');
-            setTimeout(() => { banner.style.display = 'none'; }, 500);
+            setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
         }
     </script>
 </body>
