@@ -74,6 +74,19 @@
             transform: translateY(-2px);
         }
 
+        /* NOVÝ STYL PRO KONTRASTNÍ CTA */
+        .btn-cta-highlight {
+            background-color: #A65D37;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -5px rgba(166, 93, 55, 0.4);
+        }
+        .btn-cta-highlight:hover {
+            background-color: #8C4A2B;
+            transform: scale(1.02);
+            box-shadow: 0 15px 25px -5px rgba(166, 93, 55, 0.5);
+        }
+
         .btn-secondary {
             background-color: rgba(243, 229, 216, 0.5);
             color: #4A3E38;
@@ -177,9 +190,14 @@
                         <p>Ke každému klientovi přistupuji tak, jako bych řešila finance své vlastní rodině. Důvěra a dlouhodobé partnerství jsou pro mě víc než jednorázový obchod.</p>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-3xl bg-warm-base border border-warm-sand/30">
-                        <p class="text-sm font-medium text-warm-text text-center sm:text-left">Zajímá vás, jak můžeme společně vylepšit vaše finance?</p>
-                        <a href="#kontakt" class="px-8 py-3 btn-premium rounded-full text-sm font-bold whitespace-nowrap">Nezávazná konzultace</a>
+                    <div class="flex flex-col sm:flex-row items-center gap-6 p-7 md:p-8 rounded-[2rem] bg-[#F3E5D8]/30 border border-warm-sand/50">
+                        <div class="flex-grow text-center sm:text-left">
+                            <h4 class="text-lg font-bold text-warm-text mb-1">Nejste si jistí, kde začít?</h4>
+                            <p class="text-sm text-warm-subtle">Ráda s vámi proberu vaši situaci u nezávazné kávy.</p>
+                        </div>
+                        <a href="#kontakt" class="px-10 py-4 btn-cta-highlight rounded-full text-base font-bold whitespace-nowrap shadow-lg">
+                            Chci nezávaznou konzultaci
+                        </a>
                     </div>
                 </div>
             </div>
