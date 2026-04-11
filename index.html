@@ -120,6 +120,10 @@
             object-fit: cover;
             object-position: 50% 10%;
         }
+
+        /* Styl pro stav odesílání */
+        #form-status.success { color: #D29156; font-weight: bold; }
+        #form-status.error { color: #ef4444; font-weight: bold; }
     </style>
 </head>
 <body class="antialiased">
@@ -271,35 +275,22 @@
                     </div>
                 </div>
 
-                <form class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
-                    <input type="text" placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                    <input type="tel" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                    <input type="email" placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
-                    <textarea placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
-                    <button class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all">Odeslat</button>
-                </form>
+                <div id="form-container">
+                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
+                        <input type="text" name="name" required placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
+                        <input type="tel" name="phone" required placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
+                        <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
+                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
+                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all">Odeslat</button>
+                    </form>
+                    <p id="form-status" class="mt-4 text-center hidden"></p>
+                </div>
             </div>
             <div class="lg:w-1/2 map-container relative min-h-[300px] md:min-h-[400px]">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2583.565158223403!2d16.657530377044813!3d49.48981245648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47129b63435d79e5%3A0xe5628b0f174ace05!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" class="absolute inset-0 w-full h-full shadow-inner border-0" allowfullscreen="" loading="lazy"></iframe>
                 <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
                     <p class="font-semibold text-warm-text text-sm md:text-base">Kancelář Boskovice</p>
                     <p class="text-xs md:text-sm text-warm-subtle">Komenského 295/44, 680 01 Boskovice</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-warm-subtle text-xs font-semibold tracking-widest uppercase mb-8">Odbornost a regulace</p>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <div class="flex flex-col items-center">
-                    <div class="h-12 w-auto font-heading font-bold text-2xl flex items-center">ČNB</div>
-                    <span class="text-[10px] mt-2">Certifikovaný specialista</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="h-12 w-auto font-heading font-bold text-2xl flex items-center italic">ZFP <span class="text-warm-accent ml-1 font-sans">akademie</span></div>
-                    <span class="text-[10px] mt-2">Partnerství</span>
                 </div>
             </div>
         </div>
@@ -333,6 +324,47 @@
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
+        // AJAX odesílání formuláře
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+        const submitBtn = document.getElementById("form-submit");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Odesílám...";
+            
+            const data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "Děkuji! Vaše zpráva byla úspěšně odeslána.";
+                    status.className = "mt-4 text-center success block";
+                    form.reset();
+                    form.classList.add("hidden"); // Schová formulář po úspěchu
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "Chyba při odesílání. Zkuste to prosím znovu.";
+                        }
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "Chyba při odesílání. Zkontrolujte připojení.";
+                status.className = "mt-4 text-center error block";
+            }).finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Odeslat";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+
+        // Cookies
         window.addEventListener('load', function() {
             const consent = localStorage.getItem('cookieConsent');
             if (!consent) {
