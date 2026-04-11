@@ -121,9 +121,11 @@
             object-position: 50% 10%;
         }
 
-        /* Styl pro stav odesílání */
         #form-status.success { color: #D29156; font-weight: bold; }
         #form-status.error { color: #ef4444; font-weight: bold; }
+
+        /* Styl pro schování honeypot pole proti botům */
+        .hidden-field { display: none !important; }
     </style>
 </head>
 <body class="antialiased">
@@ -276,11 +278,20 @@
                 </div>
 
                 <div id="form-container">
-                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
+                    <form id="contact-form" action="https://formspree.io/f/TVŮJ_KÓD" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
+                        
+                        <input type="hidden" name="_to" value="marketa.zednickova@zfpa.cz">
+                        <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
+                        <input type="text" name="_gotcha" class="hidden-field">
+
                         <input type="text" name="name" required placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                        <input type="tel" name="phone" required placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
+                        
+                        <input type="tel" name="phone" required pattern="[0-9+ ]{9,}" title="Zadejte prosím platné telefonní číslo (alespoň 9 číslic)" placeholder="Telefon (min. 9 čísel)" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
+                        
                         <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
+                        
                         <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
+                        
                         <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all">Odeslat</button>
                     </form>
                     <p id="form-status" class="mt-4 text-center hidden"></p>
@@ -324,13 +335,18 @@
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
-        // AJAX odesílání formuláře
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
         const submitBtn = document.getElementById("form-submit");
 
         async function handleSubmit(event) {
             event.preventDefault();
+            
+            // Základní ochrana proti botům (honeypot check)
+            if (form.elements["_gotcha"].value !== "") {
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.innerText = "Odesílám...";
             
@@ -341,18 +357,13 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "Děkuji! Vaše zpráva byla úspěšně odeslána.";
+                    status.innerHTML = "Děkuji! Vaše zpráva byla úspěšně odeslána. Brzy se vám ozvu.";
                     status.className = "mt-4 text-center success block";
                     form.reset();
-                    form.classList.add("hidden"); // Schová formulář po úspěchu
+                    form.classList.add("hidden");
                 } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "Chyba při odesílání. Zkuste to prosím znovu.";
-                        }
-                    })
+                    status.innerHTML = "Chyba při odesílání. Zkuste to prosím znovu.";
+                    status.className = "mt-4 text-center error block";
                 }
             }).catch(error => {
                 status.innerHTML = "Chyba při odesílání. Zkontrolujte připojení.";
@@ -364,7 +375,6 @@
         }
         form.addEventListener("submit", handleSubmit);
 
-        // Cookies
         window.addEventListener('load', function() {
             const consent = localStorage.getItem('cookieConsent');
             if (!consent) {
