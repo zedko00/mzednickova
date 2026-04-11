@@ -101,7 +101,6 @@
             opacity: 1;
         }
 
-        /* VRÁCENO NA PŮVODNÍ HODNOTU Z TVÉHO KÓDU */
         .hero-image-fit {
             object-fit: cover;
             object-position: 50% 10%;
@@ -214,7 +213,7 @@
                         <h3 class="font-heading text-3xl font-bold mb-4 text-warm-text">Cesta k vlastnímu bydlení</h3>
                         <p class="text-warm-subtle text-base leading-relaxed mb-0">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
                     </div>
-                    <div class="text-9xl md:text-[10rem] text-warm-accent opacity-40 sm:opacity-100">🏠</div>
+                    <div class="text-9xl md:text-[10rem] opacity-20 sm:opacity-100">🏠</div>
                 </div>
 
                 <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
@@ -231,17 +230,15 @@
         <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-10 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
             <div class="lg:w-1/2 p-2 md:p-6 flex flex-col text-white">
                 <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+                
                 <div class="mb-8 md:mb-12">
                     <p class="text-warm-sand/60 mb-4 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
-                    <div class="space-y-3 text-warm-sand/90 font-medium">
-                        <p class="flex items-center gap-3"><span class="text-warm-accent">📞</span> +420 606 055 750</p>
-                        <p class="flex items-center gap-3"><span class="text-warm-accent">✉️</span> marketa.zednickova@zfpa.cz</p>
-                        <p class="flex items-start gap-3 pt-2">
-                            <span class="text-warm-accent mt-1">📍</span> 
-                            <span>Kancelář Boskovice<br>Komenského 295/44, 680 01 Boskovice</span>
-                        </p>
+                    <div class="flex flex-col gap-2 text-warm-sand font-medium">
+                        <a href="tel:+420606055750" class="hover:text-warm-accent transition">+420 606 055 750</a>
+                        <a href="mailto:marketa.zednickova@zfpa.cz" class="hover:text-warm-accent transition">marketa.zednickova@zfpa.cz</a>
                     </div>
                 </div>
+
                 <form class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
                     <input type="text" placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
                     <input type="tel" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
