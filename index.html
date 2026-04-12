@@ -270,10 +270,10 @@
         </div>
     </section>
 
-    <section id="kontakt" class="py-12 md:py-20 max-w-6xl mx-auto px-4 md:px-6">
-        <div class="bg-warm-text rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-2xl flex flex-col lg:flex-row gap-8 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
+    <section id="kontakt" class="py-12 md:py-20 max-w-7xl mx-auto px-4 md:px-6">
+        <div class="bg-warm-text rounded-[2.5rem] p-6 md:p-10 shadow-2xl flex flex-col lg:flex-row gap-8 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
             <div class="lg:w-1/2 p-2 flex flex-col text-white">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-5 leading-tight text-white">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
                 
                 <div class="mb-6 md:mb-8">
                     <p class="text-warm-sand font-semibold mb-3 text-sm md:text-base italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
@@ -297,7 +297,7 @@
                         <input type="text" name="name" required placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-3.5 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1 text-sm">
                         <input type="tel" name="phone" required pattern="[0-9+ ]{9,}" title="Zadejte prosím platné telefonní číslo" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-3.5 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1 text-sm">
                         <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-3.5 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 text-sm">
-                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-3.5 text-white outline-none h-28 col-span-2 transition focus:ring-2 focus:ring-warm-accent text-sm"></textarea>
+                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-3.5 text-white outline-none h-24 col-span-2 transition focus:ring-2 focus:ring-warm-accent text-sm"></textarea>
                         
                         <button type="submit" id="form-submit" class="btn-premium py-3.5 rounded-xl col-span-2 font-semibold text-sm md:text-base uppercase tracking-widest transition-all">Odeslat</button>
                     </form>
@@ -305,7 +305,7 @@
                 </div>
             </div>
             <div class="lg:w-1/2 map-container relative min-h-[250px] md:min-h-full">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2591.353386629707!2d16.65792447688229!3d49.49673055554344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471295988e0b9b39%3A0x677b10214619f70b!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1715694856000!5m2!1scs!2scz" class="absolute inset-0 w-full h-full shadow-inner border-0" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="http://googleusercontent.com/maps.google.com/4" class="absolute inset-0 w-full h-full shadow-inner border-0" allowfullscreen="" loading="lazy"></iframe>
                 <div class="absolute bottom-4 left-4 bg-white/95 p-4 rounded-xl shadow-xl border border-warm-sand z-10 max-w-[240px] font-sans">
                     <p class="font-semibold text-warm-text text-xs md:text-sm mb-1.5">Kde se potkáme?</p>
                     <ul class="text-[10px] md:text-xs text-warm-subtle space-y-1">
@@ -352,14 +352,9 @@
 
         async function handleSubmit(event) {
             event.preventDefault();
-            
-            if (form.elements["_gotcha"].value !== "") {
-                return;
-            }
-
+            if (form.elements["_gotcha"].value !== "") return;
             submitBtn.disabled = true;
             submitBtn.innerText = "Odesílám...";
-            
             const data = new FormData(event.target);
             fetch(event.target.action, {
                 method: form.method,
@@ -367,16 +362,16 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "Děkuji! Vaše zpráva byla úspěšně odeslána. Brzy se vám ozvu.";
+                    status.innerHTML = "Děkuji! Brzy se vám ozvu.";
                     status.className = "mt-4 text-center success block";
                     form.reset();
                     form.classList.add("hidden");
                 } else {
-                    status.innerHTML = "Chyba při odesílání. Zkuste to prosím znovu.";
+                    status.innerHTML = "Chyba při odesílání.";
                     status.className = "mt-4 text-center error block";
                 }
-            }).catch(error => {
-                status.innerHTML = "Chyba při odesílání. Zkontrolujte připojení.";
+            }).catch(() => {
+                status.innerHTML = "Chyba připojení.";
                 status.className = "mt-4 text-center error block";
             }).finally(() => {
                 submitBtn.disabled = false;
@@ -386,20 +381,14 @@
         form.addEventListener("submit", handleSubmit);
 
         window.addEventListener('load', function() {
-            const consent = localStorage.getItem('cookieConsent');
-            if (!consent) {
-                setTimeout(() => { 
-                    const banner = document.getElementById('cookie-banner');
-                    banner.classList.add('show'); 
-                }, 1000);
+            if (!localStorage.getItem('cookieConsent')) {
+                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 1000);
             }
         });
 
         function acceptCookies(type) {
             localStorage.setItem('cookieConsent', type);
-            const banner = document.getElementById('cookie-banner');
-            banner.classList.remove('show');
-            setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
+            document.getElementById('cookie-banner').classList.remove('show');
         }
     </script>
 </body>
