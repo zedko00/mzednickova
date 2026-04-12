@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jak funguje důchodový systém v ČR? | Markéta Zedníčková</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d7a4f;
+    --green-light: #e8f5ee;
+    --green-mid: #3a9962;
+    --dark: #1a2e23;
+    --text: #374151;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f9fafb;
+    --white: #ffffff;
+    --accent: #f0faf4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .nav-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--green); }
+
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--green); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e4a30 100%);
+    color: white;
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    flex-wrap: wrap;
+  }
+
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .intro-quote {
+    background: var(--white);
+    border-left: 4px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .intro-quote p {
+    font-size: 1.08rem;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 2.5rem 0 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  p { margin-bottom: 1rem; color: var(--text); }
+  strong { font-weight: 600; color: var(--dark); }
+
+  .info-box {
+    background: var(--accent);
+    border: 1px solid #c3e6d2;
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .info-box-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .info-box p { margin: 0; font-size: 0.95rem; color: #2d4a38; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+  @media (max-width: 580px) { .pillars { grid-template-columns: 1fr; } }
+
+  .pillar-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.2rem;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .pillar-card:hover {
+    box-shadow: 0 6px 20px rgba(45,122,79,0.1);
+    transform: translateY(-2px);
+  }
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+  .pillar-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .pillar-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
+  .pillar-card p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.5; }
+
+  .stat-card {
+    background: linear-gradient(135deg, var(--dark), #1e4a30);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    color: white;
+  }
+  .stat-number {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #6ee89a;
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .stat-card p { margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  @media (max-width: 480px) { .stat-card { flex-direction: column; text-align: center; } }
+
+  .steps { margin: 1.5rem 0; }
+  .step { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start; }
+  .step-num {
+    background: var(--green);
+    color: white;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700;
+    flex-shrink: 0; margin-top: 0.15rem;
+  }
+  .step-body strong { display: block; font-size: 0.95rem; color: var(--dark); margin-bottom: 0.15rem; }
+  .step-body p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+  .checklist { list-style: none; margin: 1rem 0 1.5rem; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.97rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 0.9rem; margin-top: 0.1rem; flex-shrink: 0; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+  .cta-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .cta-box h3 { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 0.6rem; }
+  .cta-box p { color: var(--muted); font-size: 0.95rem; max-width: 380px; margin: 0 auto 1.5rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--green); color: white;
+    font-weight: 600; font-size: 0.95rem;
+    padding: 0.75rem 1.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    font-family: inherit; border: none; cursor: pointer;
+  }
+  .btn:hover { background: var(--dark); transform: translateY(-1px); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .tag { background: var(--green-light); color: var(--green); font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 999px; }
+
+  .disclaimer { font-size: 0.82rem; color: var(--muted); text-align: center; margin-top: 1.5rem; font-style: italic; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.5s ease both; }
+  .hero-tag  { animation-delay: 0.05s; }
+  .hero h1   { animation-delay: 0.15s; }
+  .hero p    { animation-delay: 0.25s; }
+  .hero-meta { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://zedko00.github.io/mzednickova/" class="nav-brand">Markéta <span>Zedníčková</span></a>
+  <a href="https://zedko00.github.io/mzednickova/" class="nav-back">← Zpět na web</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">☕ Finanční rezerva a důchod</div>
+  <h1>Jak funguje důchodový systém v&nbsp;ČR?</h1>
+  <p>Průvodce pro každého, kdo chce vědět, co ho čeká v důchodu – bez zbytečného chaosu</p>
+  <div class="hero-meta">
+    <span>📅 Duben 2025</span>
+    <span>⏱ 5 minut čtení</span>
+    <span>✍️ Markéta Zedníčková</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="intro-quote">
+    <p>Důchod. Pro mladé abstraktní pojem, pro starší palčivá realita. Přesto málokdo opravdu ví, jak celý systém funguje, odkud peníze přicházejí a co ovlivňuje výši jeho budoucí penze. Pojďme si to vysvětlit lidsky.</p>
+  </div>
+
+  <h2>Základ: průběžný systém</h2>
+  <p>Český důchodový systém stojí na tzv. <strong>průběžném financování</strong>. To znamená, že peníze, které dnes odvádíte ze mzdy, nejdou na váš osobní účet – jdou přímo důchodcům, kteří pobírají penzi teď. Až půjdete do důchodu vy, budou vám platit ti, kdo budou tehdy pracovat.</p>
+
+  <div class="info-box">
+    <span class="info-box-label">💡 Jak to funguje v praxi</span>
+    <p>Z každé výplaty odvádíte <strong>6,5 % na sociální pojištění</strong>. Zaměstnavatel za vás přidává dalších <strong>21,5 %</strong>. Tyto prostředky spravuje <strong>Česká správa sociálního zabezpečení (ČSSZ)</strong> a okamžitě je přerozděluje stávajícím důchodcům.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Tři pilíře důchodového zabezpečení</h2>
+  <p>Systém se skládá ze tří pilířů. Každý z nich plní jinou roli a liší se mírou povinnosti i flexibility.</p>
+
+  <div class="pillars">
+    <div class="pillar-card">
+      <span class="pillar-icon">🏛️</span>
+      <span class="pillar-label">I. pilíř</span>
+      <h3>Státní důchod</h3>
+      <p>Povinný pro všechny. Spravuje ČSSZ. Závisí na odpracovaných letech a výši příjmů.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">📈</span>
+      <span class="pillar-label">II. pilíř</span>
+      <h3>Penzijní spoření</h3>
+      <p>Dobrovolné spoření se státním příspěvkem a daňovými výhodami.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">🏠</span>
+      <span class="pillar-label">III. pilíř</span>
+      <h3>Vlastní rezerva</h3>
+      <p>Investice, nemovitosti, pojištění – vše, co si sami zbudujete.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Co rozhoduje o výši vašeho důchodu?</h2>
+  <p>Výše státního důchodu se počítá ze dvou složek:</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Základní výměra</strong>
+        <p>Pevná částka pro každého důchodce bez ohledu na příjmy. V roce 2025 přibližně <strong>4 400 Kč měsíčně</strong>.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Procentní výměra</strong>
+        <p>Odvíjí se od doby pojištění a výše průměrné mzdy. Za každý rok pojištění získáte <strong>1,5 % výpočtového základu</strong>.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Věk odchodu do důchodu</strong>
+        <p>Pro ročníky narozené po roce 1966 je standardní věk <strong>65 let</strong>. Odchodem dříve důchod klesá, odchodem později roste.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number">20 600 Kč</div>
+    <p>Průměrná výše starobního důchodu v ČR v roce 2024. Mnohým to nestačí — proto jsou druhý a třetí pilíř tak zásadní pro důstojné stáří.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Aplikace IDA: váš přehled online</h2>
+  <p>Česká správa sociálního zabezpečení provozuje <strong>informativní aplikaci IDA</strong>, kde si každý pojištěnec může online zkontrolovat svůj individuální účet. Uvidíte:</p>
+
+  <ul class="checklist">
+    <li>Kolik let pojištění máte odpracováno</li>
+    <li>Jaké příjmy ČSSZ za vaši kariéru eviduje</li>
+    <li>Orientační výši budoucího důchodu</li>
+  </ul>
+
+  <div class="info-box">
+    <span class="info-box-label">💡 Tip</span>
+    <p>Přihlásit se lze přes <strong>eIdentitu nebo datovou schránku</strong>. Doporučuji stav zkontrolovat jednou ročně — chyby v evidenci se dají opravit, ale čím dříve, tím lépe.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Proč nestačí spoléhat jen na stát?</h2>
+  <p>Průběžný systém funguje dobře, když pracujících je víc než důchodců. Jenže Česká republika stárne. Zatímco dnes připadají na jednoho důchodce přibližně <strong>dva pracující</strong>, za dvacet let to může být jen jeden a půl.</p>
+  <p>To neznamená, že státní důchod zmizí — ale jeho reálná hodnota se může snižovat. Proto doporučuji kombinovat všechny tři pilíře a nezůstávat závislý pouze na průběžném systému.</p>
+
+  <div class="cta-box">
+    <h3>Nevíte, jak na váš důchod?</h3>
+    <p>Pojďme si to probrat u nezávazné kávy. Společně nastavíme plán, díky kterému nebudete závislí jen na státu.</p>
+    <a href="https://zedko00.github.io/mzednickova/#kontakt" class="btn">☕ Chci nezávaznou konzultaci</a>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Důchody</span>
+    <span class="tag">ČSSZ</span>
+    <span class="tag">Osobní finance</span>
+    <span class="tag">Sociální pojištění</span>
+    <span class="tag">Penzijní spoření</span>
+  </div>
+
+  <p class="disclaimer">Tento článek má pouze informační charakter a nepředstavuje finanční poradenství. Pro konkrétní doporučení se obraťte na odborníka.</p>
+
+</div>
+</body>
+</html>
