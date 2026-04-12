@@ -125,7 +125,6 @@
         #form-status.success { color: #D29156; font-weight: bold; }
         #form-status.error { color: #ef4444; font-weight: bold; }
 
-        /* Styl pro schování honeypot pole proti botům */
         .hidden-field { display: none !important; }
     </style>
 </head>
@@ -137,10 +136,9 @@
                 Markéta Zedníčková<span class="text-warm-accent font-sans">.</span>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
-                <a href="#sluzby" class="nav-link text-warm-text">Služby</a>
-                <a href="#o-mne" class="nav-link text-warm-text">O mně</a>
-                <a href="#kontakt" class="nav-link text-warm-text">Kontakt</a>
+            <div class="flex items-center space-x-4 md:space-x-8 text-[11px] md:text-sm font-medium tracking-wide">
+                <a href="#sluzby" class="nav-link text-warm-text hidden sm:block">Služby</a>
+                <a href="#o-mne" class="nav-link text-warm-text hidden sm:block">O mně</a>
                 <a href="blog/" class="nav-link text-warm-text">Blog</a>
             </div>
 
@@ -265,13 +263,13 @@
                     <p class="text-warm-sand/60 mb-6 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
                     <div class="space-y-4">
                         <a href="tel:+420606055750" class="flex items-center gap-4 group">
-                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-content-center group-hover:bg-warm-accent transition-colors">
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
                                 <span class="text-lg">📞</span>
                             </div>
                             <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
                         </a>
                         <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
-                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-content-center group-hover:bg-warm-accent transition-colors">
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
                                 <span class="text-lg">✉️</span>
                             </div>
                             <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
@@ -343,7 +341,6 @@
         async function handleSubmit(event) {
             event.preventDefault();
             
-            // Základní ochrana proti botům (honeypot check)
             if (form.elements["_gotcha"].value !== "") {
                 return;
             }
