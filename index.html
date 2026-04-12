@@ -87,34 +87,9 @@
             box-shadow: 0 15px 25px -5px rgba(166, 93, 55, 0.5);
         }
 
-        .btn-secondary {
-            background-color: rgba(243, 229, 216, 0.5);
-            color: #4A3E38;
-            transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            background-color: rgba(243, 229, 216, 1);
-        }
-
         .map-container iframe {
             filter: sepia(20%) contrast(90%);
             border-radius: 1.5rem;
-        }
-
-        #cookie-banner {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translate(-50%, 150%);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            z-index: 9999;
-            visibility: hidden;
-        }
-        #cookie-banner.show { 
-            transform: translate(-50%, 0); 
-            opacity: 1;
-            visibility: visible;
         }
 
         .hero-image-fit {
@@ -135,32 +110,30 @@
             <a href="#" class="font-heading text-lg md:text-xl font-bold tracking-tight text-warm-text whitespace-nowrap">
                 Markéta Zedníčková<span class="text-warm-accent font-sans">.</span>
             </a>
-
             <div class="flex items-center space-x-4 md:space-x-8 text-[11px] md:text-sm font-medium tracking-wide">
                 <a href="#sluzby" class="nav-link text-warm-text hidden sm:block">Služby</a>
                 <a href="#o-mne" class="nav-link text-warm-text hidden sm:block">O mně</a>
                 <a href="blog/" class="nav-link text-warm-text">Blog</a>
             </div>
-
             <div class="flex items-center">
-                <a href="#kontakt" class="px-5 py-2 md:px-7 md:py-3 btn-premium rounded-full text-[11px] md:text-sm font-semibold tracking-wide">
-                    Konzultace
-                </a>
+                <a href="#kontakt" class="px-5 py-2 md:px-7 md:py-3 btn-premium rounded-full text-[11px] md:text-sm font-semibold tracking-wide">Konzultace</a>
             </div>
         </nav>
     </header>
 
     <section class="relative px-6 pt-24 pb-12 md:pt-48 md:pb-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center">
         <div class="w-full md:w-1/2 md:pr-12 text-center md:text-left" data-aos="fade-right">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-[#F3E5D8] text-warm-accent text-[10px] md:text-xs font-semibold tracking-widest uppercase mb-4">
-                Lidský přístup k financím
-            </span>
-            <h1 class="font-heading text-3xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight text-warm-text">
-                Finance, které vám <span class="italic text-warm-accent font-normal">konečně dají smysl.</span>
-            </h1>
-            <p class="text-base md:text-lg text-warm-subtle mb-8 md:mb-10 max-w-md mx-auto md:mx-0 leading-relaxed">
-                Stavíme vaši budoucnost na pevných a srozumitelných základech. Bez tlaku a zbytečného chaosu.
-            </p>
+            <span class="inline-block px-4 py-1.5 rounded-full bg-[#F3E5D8] text-warm-accent text-[10px] md:text-xs font-semibold tracking-widest uppercase mb-4">Lidský přístup k financím</span>
+            <h1 class="font-heading text-3xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight text-warm-text">Finance, které vám <span class="italic text-warm-accent font-normal">konečně dají smysl.</span></h1>
+            <p class="text-base md:text-lg text-warm-subtle mb-6 max-w-md mx-auto md:mx-0 leading-relaxed">Stavíme vaši budoucnost na pevných a srozumitelných základech. Bez tlaku a zbytečného chaosu.</p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-8">
+                <div class="flex items-center gap-2 text-warm-text/80 bg-warm-sand/30 px-3 py-1.5 rounded-full border border-warm-sand/50">
+                    <span class="text-sm">📍</span><span class="text-[11px] md:text-xs font-medium uppercase tracking-wider">Boskovice, Blansko a okolí</span>
+                </div>
+                <div class="flex items-center gap-2 text-warm-text/80 bg-warm-sand/30 px-3 py-1.5 rounded-full border border-warm-sand/50">
+                    <span class="text-sm">🚗</span><span class="text-[11px] md:text-xs font-medium uppercase tracking-wider">Přijedu za vámi</span>
+                </div>
+            </div>
             <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <a href="#sluzby" class="px-8 py-3.5 md:py-4 btn-premium rounded-full text-base md:text-lg font-semibold inline-block text-center">Moje služby</a>
                 <a href="#o-mne" class="px-8 py-3.5 md:py-4 bg-white hover:bg-warm-base rounded-full text-base md:text-lg font-medium inline-block text-center border border-warm-sand transition">O mně</a>
@@ -170,137 +143,49 @@
             <div class="w-60 h-60 sm:w-80 sm:h-80 md:w-[480px] md:h-[480px] bg-[#F3E5D8] rounded-full flex items-center justify-center mx-auto border-[8px] md:border-[12px] border-white shadow-2xl relative z-10 overflow-hidden">
                 <img src="markéta_profil.png" alt="Markéta Zedníčková" class="w-full h-full hero-image-fit">
             </div>
-            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-warm-accent/10 rounded-full blur-3xl z-0"></div>
         </div>
     </section>
 
-    <section id="o-mne" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col-reverse md:flex-row items-center md:items-start gap-10 md:gap-16">
-                <div class="w-full max-w-xs md:w-1/3" data-aos="fade-up">
-                    <div class="relative">
-                        <div class="bg-[#F3E5D8] rounded-[2rem] md:rounded-[3rem] aspect-square flex items-center justify-center shadow-xl relative z-10 border-4 md:border-8 border-white overflow-hidden">
-                             <img src="makina_foto_2.JPG" alt="Markéta Zedníčková" class="w-full h-full object-cover object-[center_20%]">
-                        </div>
-                        <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-warm-sand rounded-[2rem] md:rounded-[3rem] z-0"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-2/3 text-center md:text-left" data-aos="fade-up">
-                    <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 md:mb-8 text-warm-text leading-tight">Proč pracovat <br class="hidden md:block"><span class="italic text-warm-accent font-normal">právě se mnou?</span></h2>
-                    <div class="space-y-4 md:space-y-6 text-base md:text-lg text-warm-subtle leading-relaxed mb-10">
-                        <p>Věřím, že finance nejsou o číslech v tabulce, ale o <strong>svobodě a klidu</strong>, který vám přinášejí. Moje práce spočívá v tom, že složitý svět bank a pojišťoven překládám do lidské řeči.</p>
-                        <p>Ke každému klientovi přistupuji tak, jako bych řešila finance své vlastní rodině. Důvěra a dlouhodobé partnerství jsou pro mě víc než jednorázový obchod.</p>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row items-center gap-6 p-7 md:p-8 rounded-[2rem] bg-[#F3E5D8]/30 border border-warm-sand/50">
-                        <div class="flex-grow text-center sm:text-left">
-                            <h4 class="text-lg font-bold text-warm-text mb-1">Nejste si jistí, kde začít?</h4>
-                            <p class="text-sm text-warm-subtle">Ráda s vámi proberu vaši situaci u nezávazné kávy.</p>
-                        </div>
-                        <a href="#kontakt" class="px-10 py-4 btn-cta-highlight rounded-full text-base font-bold whitespace-nowrap shadow-lg">
-                            Chci nezávaznou konzultaci
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sluzby" class="py-16 md:py-24 bg-warm-base relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12 md:mb-20" data-aos="fade-up">
-                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4 text-warm-text">Komplexní řešení pro váš klid</h2>
-                <p class="text-base md:text-lg text-warm-subtle max-w-2xl mx-auto">Vše, co potřebujete pro zdravé finance, pod jednou střechou a srozumitelně.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">🛡️</span></div>
-                    <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Životní a neživotní pojištění</h3>
-                    <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a váš klidný spánek.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
-                </div>
-
-                <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">📈</span></div>
-                    <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Růst bez stresu</h3>
-                    <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu, ať už začínáte, nebo už budujete kapitál.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
-                </div>
-
-                <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">☕</span></div>
-                    <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Finanční rezerva a důchod</h3>
-                    <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Vytvoříme plán, díky kterému nebudete závislí na státu. Užívejte si stáří přesně tak, jak jste si vždy vysnili.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
-                </div>
-
-                <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-white border-warm-accent/10" data-aos="fade-up">
-                    <div class="flex-grow">
-                        <span class="inline-block px-3 py-1 rounded-full bg-warm-sand text-warm-accent text-xs font-medium mb-3 border border-warm-accent/10">Nejoblíbenější</span>
-                        <h3 class="font-heading text-3xl font-bold mb-4 text-warm-text">Cesta k vlastnímu bydlení</h3>
-                        <p class="text-warm-subtle text-base leading-relaxed mb-0">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
-                    </div>
-                    <div class="text-9xl md:text-[10rem] text-warm-accent">🏠</div>
-                </div>
-
-                <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">🔍</span></div>
-                    <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Kontrola penzijního spoření</h3>
-                    <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení, která vám přinesou větší jistotu.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="kontakt" class="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-6">
-        <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-10 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
-            <div class="lg:w-1/2 p-2 md:p-6 flex flex-col text-white">
-                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+    <section id="kontakt" class="py-12 md:py-20 max-w-5xl mx-auto px-4 md:px-6">
+        <div class="bg-warm-text rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row border-2 md:border-4 border-white" data-aos="fade-up">
+            
+            <div class="lg:w-7/12 p-6 md:p-10 flex flex-col text-white">
+                <h2 class="font-heading text-2xl md:text-4xl font-bold mb-4 leading-tight">Pojďme to probrat <br class="hidden md:block"> <span class="italic text-warm-sand font-light text-xl md:text-3xl">u nezávazné kávy.</span></h2>
                 
-                <div class="mb-8 md:mb-10">
-                    <p class="text-warm-sand/60 mb-6 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
-                    <div class="space-y-4">
-                        <a href="tel:+420606055750" class="flex items-center gap-4 group">
-                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
-                                <span class="text-lg">📞</span>
-                            </div>
-                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
-                        </a>
-                        <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
-                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
-                                <span class="text-lg">✉️</span>
-                            </div>
-                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
-                        </a>
-                    </div>
+                <div class="mb-6 space-y-3">
+                    <a href="tel:+420606055750" class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors text-sm">📞</div>
+                        <span class="text-warm-sand font-medium text-base group-hover:text-white transition-colors">+420 606 055 750</span>
+                    </a>
+                    <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors text-sm">✉️</div>
+                        <span class="text-warm-sand font-medium text-base group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
+                    </a>
                 </div>
 
                 <div id="form-container">
-                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
-                        
+                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-3 font-sans">
                         <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
                         <input type="text" name="_gotcha" class="hidden-field">
-
-                        <input type="text" name="name" required placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                        
-                        <input type="tel" name="phone" required pattern="[0-9+ ]{9,}" title="Zadejte prosím platné telefonní číslo (alespoň 9 číslic)" placeholder="Telefon (min. 9 čísel)" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                        
-                        <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
-                        
-                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
-                        
-                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all">Odeslat</button>
+                        <input type="text" name="name" required placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
+                        <input type="tel" name="phone" required placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
+                        <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
+                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white outline-none h-24 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
+                        <button type="submit" id="form-submit" class="btn-premium py-3 rounded-xl col-span-2 font-semibold text-sm uppercase tracking-widest transition-all">Odeslat</button>
                     </form>
-                    <p id="form-status" class="mt-4 text-center hidden"></p>
+                    <p id="form-status" class="mt-3 text-center hidden"></p>
                 </div>
             </div>
-            <div class="lg:w-1/2 map-container relative min-h-[300px] md:min-h-[400px]">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2583.565158223403!2d16.657530377044813!3d49.48981245648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47129b63435d79e5%3A0xe5628b0f174ace05!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" class="absolute inset-0 w-full h-full shadow-inner border-0" allowfullscreen="" loading="lazy"></iframe>
-                <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
-                    <p class="font-semibold text-warm-text text-sm md:text-base">Kancelář Boskovice</p>
-                    <p class="text-xs md:text-sm text-warm-subtle">Komenského 295/44, 680 01 Boskovice</p>
+            
+            <div class="lg:w-5/12 map-container relative min-h-[300px] lg:min-h-full">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2583.565158223403!2d16.657530377044813!3d49.48981245648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47129b63435d79e5%3A0xe5628b0f174ace05!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 p-3 rounded-xl shadow-xl border border-warm-sand z-10 font-sans text-warm-text">
+                    <p class="font-semibold text-xs mb-1">Možnosti setkání:</p>
+                    <ul class="text-[10px] text-warm-subtle space-y-1">
+                        <li>📍 Boskovice (Komenského 295/44)</li>
+                        <li>🚗 Přijedu za vámi kamkoliv</li>
+                        <li>💻 Konzultace online</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -310,85 +195,41 @@
         <div class="max-w-7xl mx-auto px-6">
             <p class="font-heading text-lg font-bold text-warm-text mb-3">Markéta Zedníčková</p>
             <p class="mb-4">IČO: 88313531 | Vázaný zástupce společnosti ZFP akademie, a.s.</p>
-            <p class="mb-6">
-                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" class="text-warm-accent hover:underline">Zpracování osobních údajů (GDPR)</a>
-            </p>
             <p>© 2026 Markéta Zedníčková. Všechna práva vyhrazena.</p>
         </div>
     </footer>
 
-    <div id="cookie-banner" class="w-[92%] md:max-w-3xl glass-nav p-5 md:p-6 rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl border border-white/50">
-        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-            <div class="flex-grow text-center md:text-left">
-                <h4 class="font-heading font-bold text-warm-text mb-1 text-sm md:text-base">Ochrana vašeho soukromí</h4>
-                <p class="text-xs md:text-sm text-warm-subtle leading-relaxed">Používáme cookies k analýze návštěvnosti a zlepšení webu.</p>
-            </div>
-            <div class="flex gap-2 w-full md:w-auto">
-                <button onclick="acceptCookies('essential')" class="flex-1 md:flex-none px-4 py-2.5 md:px-6 md:py-3 btn-secondary rounded-xl md:rounded-2xl text-xs md:text-sm font-semibold whitespace-nowrap text-warm-text">Nezbytné</button>
-                <button onclick="acceptCookies('all')" class="flex-1 md:flex-none px-4 py-2.5 md:px-6 md:py-3 btn-premium rounded-xl md:rounded-2xl text-xs md:text-sm font-bold whitespace-nowrap">Vše</button>
-            </div>
-        </div>
-    </div>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
-
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
         const submitBtn = document.getElementById("form-submit");
 
-        async function handleSubmit(event) {
-            event.preventDefault();
-            
-            if (form.elements["_gotcha"].value !== "") {
-                return;
-            }
-
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
             submitBtn.disabled = true;
             submitBtn.innerText = "Odesílám...";
-            
-            const data = new FormData(event.target);
-            fetch(event.target.action, {
+            const data = new FormData(e.target);
+            fetch(e.target.action, {
                 method: form.method,
                 body: data,
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "Děkuji! Vaše zpráva byla úspěšně odeslána. Brzy se vám ozvu.";
-                    status.className = "mt-4 text-center success block";
+                    status.innerHTML = "Děkuji! Brzy se vám ozvu.";
+                    status.className = "mt-4 text-center text-warm-accent block";
                     form.reset();
                     form.classList.add("hidden");
                 } else {
-                    status.innerHTML = "Chyba při odesílání. Zkuste to prosím znovu.";
-                    status.className = "mt-4 text-center error block";
+                    status.innerHTML = "Chyba při odesílání.";
+                    status.className = "mt-4 text-center text-red-500 block";
                 }
-            }).catch(error => {
-                status.innerHTML = "Chyba při odesílání. Zkontrolujte připojení.";
-                status.className = "mt-4 text-center error block";
             }).finally(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Odeslat";
             });
-        }
-        form.addEventListener("submit", handleSubmit);
-
-        window.addEventListener('load', function() {
-            const consent = localStorage.getItem('cookieConsent');
-            if (!consent) {
-                setTimeout(() => { 
-                    const banner = document.getElementById('cookie-banner');
-                    banner.classList.add('show'); 
-                }, 1000);
-            }
         });
-
-        function acceptCookies(type) {
-            localStorage.setItem('cookieConsent', type);
-            const banner = document.getElementById('cookie-banner');
-            banner.classList.remove('show');
-            setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
-        }
     </script>
 </body>
 </html>
