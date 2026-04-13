@@ -208,14 +208,19 @@
                         <p>Ke každému klientovi přistupuji tak, jako bych řešila finance své vlastní rodině. Důvěra a dlouhodobé partnerství jsou pro mě víc než jednorázový obchod.</p>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row items-center gap-6 p-7 md:p-8 rounded-[2rem] bg-[#F3E5D8]/30 border border-warm-sand/50">
-                        <div class="flex-grow text-center sm:text-left">
-                            <h4 class="text-lg font-bold text-warm-text mb-1">Nejste si jistí, kde začít?</h4>
-                            <p class="text-sm text-warm-subtle">Ráda s vámi proberu vaši situaci u nezávazné kávy.</p>
+                    <div class="relative mt-12 p-1 md:p-1.5 rounded-[2.5rem] bg-gradient-to-br from-warm-sand/40 to-transparent">
+                        <div class="flex flex-col sm:flex-row items-center gap-6 p-8 md:p-10 rounded-[2.3rem] bg-white shadow-[0_20px_50px_rgba(210,145,86,0.08)] relative overflow-hidden">
+                            <div class="absolute -right-10 -top-10 text-9xl opacity-[0.03] pointer-events-none italic font-heading">☕</div>
+                            <div class="flex-grow text-center sm:text-left relative z-10">
+                                <h4 class="text-xl md:text-2xl font-heading font-bold text-warm-text mb-2">Nejste si jistí, kde začít?</h4>
+                                <p class="text-base text-warm-subtle">Ráda s vámi proberu vaši situaci u nezávazné kávy.</p>
+                            </div>
+                            <div class="relative z-10 w-full sm:w-auto">
+                                <a href="#kontakt" class="btn-premium px-10 py-4 rounded-full text-base font-bold whitespace-nowrap shadow-lg inline-block w-full sm:w-auto text-center">
+                                    Sjednat schůzku
+                                </a>
+                            </div>
                         </div>
-                        <a href="#kontakt" class="px-10 py-4 btn-cta-highlight rounded-full text-base font-bold whitespace-nowrap shadow-lg">
-                            Chci nezávaznou konzultaci
-                        </a>
                     </div>
                 </div>
             </div>
@@ -307,7 +312,7 @@
                         
                         <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
                         
-                        <input type="textarea" name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
+                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
                         
                         <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all">Odeslat</button>
                     </form>
