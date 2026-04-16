@@ -3,12 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markéta Zedníčková - Finance</title>
+    <meta name="description" content="Markéta Zedníčková – finanční poradenství v Boskovicích a Blansku. Pojištění, hypotéky, důchody a investice bez zbytečného chaosu. Lidský přístup k financím.">
+    <meta name="theme-color" content="#D29156">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Markéta Zedníčková - Finance, které dají smysl">
+    <meta property="og:description" content="Finanční poradenství s lidským přístupem. Stavíme vaši budoucnost na pevných základech.">
+    <meta property="og:type" content="business.business">
+    <link rel="canonical" href="https://www.zednickova.cz">
+    <title>Markéta Zedníčková - Finance | Poradenství Boskovice</title>
     <link rel="icon" type="image/svg+xml" href="mz-logo.svg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data - Organization & Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Markéta Zedníčková",
+        "image": "https://www.zednickova.cz/markéta_profil.png",
+        "description": "Finanční poradenství a konzultace",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Komenského 295/44",
+            "addressLocality": "Boskovice",
+            "postalCode": "680 01",
+            "addressCountry": "CZ"
+        },
+        "telephone": "+420606055750",
+        "email": "marketa.zednickova@zfpa.cz",
+        "priceRange": "$$",
+        "sameAs": [],
+        "knowsAbout": ["Pojištění", "Hypotéky", "Penzijní spoření", "Investice", "Finanční poradenství"]
+    }
+    </script>
 
     <script>
         tailwind.config = {
@@ -146,6 +176,38 @@
             0%, 100% { transform: translateX(0); opacity: 0.6; }
             50% { transform: translateX(-15px); opacity: 0.2; }
         }
+
+        /* Vylepšená contrast pro accessibility */
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-input:focus {
+            border-color: rgba(210, 145, 86, 0.6);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(210, 145, 86, 0.1);
+        }
+
+        /* Icons místo emojis pro lepší accessibility */
+        .icon-emoji {
+            font-size: inherit;
+            line-height: 1;
+        }
+
+        /* Lazy loading indikátor */
+        .lazy-iframe {
+            background: linear-gradient(135deg, rgba(243, 229, 216, 0.3) 0%, rgba(210, 145, 86, 0.1) 100%);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8C7A6B;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -184,15 +246,15 @@
             
             <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-8">
                 <div class="flex items-center gap-2 text-warm-text/80 bg-warm-sand/30 px-3 py-1.5 rounded-full border border-warm-sand/50">
-                    <span class="text-sm">📍</span>
+                    <span class="text-sm icon-emoji" aria-hidden="true">📍</span>
                     <span class="text-[11px] md:text-xs font-medium uppercase tracking-wider">Boskovice, Blansko a okolí</span>
                 </div>
                 <div class="flex items-center gap-2 text-warm-text/80 bg-warm-sand/30 px-3 py-1.5 rounded-full border border-warm-sand/50">
-                    <span class="text-sm">🚗</span>
+                    <span class="text-sm icon-emoji" aria-hidden="true">🚗</span>
                     <span class="text-[11px] md:text-xs font-medium uppercase tracking-wider">Přijedu za vámi</span>
                 </div>
                 <div class="flex items-center gap-2 text-warm-text/80 bg-warm-sand/30 px-3 py-1.5 rounded-full border border-warm-sand/50">
-                    <span class="text-sm">💻</span>
+                    <span class="text-sm icon-emoji" aria-hidden="true">💻</span>
                     <span class="text-[11px] md:text-xs font-medium uppercase tracking-wider">Lze řešit i online</span>
                 </div>
             </div>
@@ -204,7 +266,7 @@
         </div>
         <div class="w-full md:w-1/2 mt-12 md:mt-0 relative" data-aos="zoom-in" data-aos-delay="200">
             <div class="w-60 h-60 sm:w-80 sm:h-80 md:w-[480px] md:h-[480px] bg-[#F3E5D8] rounded-full flex items-center justify-center mx-auto border-[8px] md:border-[12px] border-white shadow-2xl relative z-10 overflow-hidden">
-                <img src="markéta_profil.png" alt="Markéta Zedníčková" class="w-full h-full hero-image-fit">
+                <img src="markéta_profil.png" alt="Markéta Zedníčková – finanční poradkyně" class="w-full h-full hero-image-fit" loading="lazy">
             </div>
             <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-warm-accent/10 rounded-full blur-3xl z-0"></div>
         </div>
@@ -217,7 +279,7 @@
                 <div class="relative md:col-span-5 min-h-[400px] md:min-h-0 order-2 md:order-1" data-aos="fade-up">
                     <div class="absolute inset-0 z-10">
                         <div class="w-full h-full bg-[#F3E5D8] rounded-[2rem] md:rounded-[3rem] border-4 md:border-8 border-white shadow-xl overflow-hidden">
-                             <img src="makina_foto_2.JPG" alt="Markéta Zedníčková" class="w-full h-full object-cover">
+                             <img src="makina_foto_2.JPG" alt="Markéta Zedníčková v kanceláři" class="w-full h-full object-cover" loading="lazy">
                         </div>
                     </div>
                     <div class="absolute top-4 left-4 -bottom-4 -right-4 border-2 border-warm-sand rounded-[2rem] md:rounded-[3rem] z-0"></div>
@@ -237,7 +299,7 @@
 
                     <div class="pt-8 border-t border-warm-sand/40 flex flex-col sm:flex-row items-center gap-6">
                         <div class="flex-grow text-center sm:text-left">
-                            <h4 class="text-xl font-heading font-bold text-warm-text mb-1">Pojďme to probrat u kávy</h4>
+                            <h3 class="text-xl font-heading font-bold text-warm-text mb-1">Pojďme to probrat u kávy</h3>
                             <p class="text-sm text-warm-subtle">Nezávazně a v klidu zjistíme, co pro vás mohu udělat.</p>
                         </div>
                         <a href="#kontakt" class="btn-premium px-10 py-4 rounded-full text-base font-bold whitespace-nowrap shadow-lg">
@@ -260,39 +322,39 @@
             <div class="block md:hidden -mx-6 relative" data-aos="fade-up">
                 <div id="swipe-indicator" class="absolute -top-8 right-8 text-warm-accent/60 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest swipe-hint z-20">
                     <span>Swipe</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 </div>
                 <div id="services-carousel">
                     <div class="premium-card p-7 rounded-[2rem] flex flex-col flex-shrink-0 w-[280px]" style="scroll-snap-align:start;">
-                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl">🛡️</span></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl icon-emoji" aria-hidden="true">🛡️</span></div>
                         <h3 class="font-heading text-xl font-bold mb-4 text-warm-text">Životní a neživotní pojištění</h3>
                         <p class="text-warm-subtle text-sm leading-relaxed mb-6 flex-grow">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a váš klidný spánek.</p>
-                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                     </div>
                     <div class="premium-card p-7 rounded-[2rem] flex flex-col flex-shrink-0 w-[280px]" style="scroll-snap-align:start;">
-                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl">📈</span></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl icon-emoji" aria-hidden="true">📈</span></div>
                         <h3 class="font-heading text-xl font-bold mb-4 text-warm-text">Růst bez stresu</h3>
                         <p class="text-warm-subtle text-sm leading-relaxed mb-6 flex-grow">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu, ať už začínáte, nebo už budujete kapitál.</p>
-                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                     </div>
                     <div class="premium-card p-7 rounded-[2rem] flex flex-col flex-shrink-0 w-[280px]" style="scroll-snap-align:start;">
-                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl">☕</span></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl icon-emoji" aria-hidden="true">☕</span></div>
                         <h3 class="font-heading text-xl font-bold mb-4 text-warm-text">Finanční rezerva a důchod</h3>
                         <p class="text-warm-subtle text-sm leading-relaxed mb-6 flex-grow">Vytvoříme plán, díky kterému nebudete závislí na státu. Užívejte si stáří přesně tak, jak jste si vždy vysnili.</p>
-                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                     </div>
                     <div class="premium-card p-7 rounded-[2rem] flex flex-col flex-shrink-0 w-[280px]" style="scroll-snap-align:start;border-color:rgba(210,145,86,0.4);">
                         <span class="inline-block px-3 py-1 rounded-full bg-warm-sand text-warm-accent text-xs font-medium mb-4 border border-warm-accent/10">Nejoblíbenější</span>
-                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl">🏠</span></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl icon-emoji" aria-hidden="true">🏠</span></div>
                         <h3 class="font-heading text-xl font-bold mb-4 text-warm-text">Cesta k vlastnímu bydlení</h3>
                         <p class="text-warm-subtle text-sm leading-relaxed mb-6 flex-grow">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
-                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                     </div>
                     <div class="premium-card p-7 rounded-[2rem] flex flex-col flex-shrink-0 w-[280px]" style="scroll-snap-align:start;">
-                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl">🔍</span></div>
+                        <div class="w-14 h-14 rounded-2xl bg-[#F3E5D8] flex items-center justify-center mb-6 border border-warm-accent/20"><span class="text-3xl icon-emoji" aria-hidden="true">🔍</span></div>
                         <h3 class="font-heading text-xl font-bold mb-4 text-warm-text">Kontrola penzijního spoření</h3>
                         <p class="text-warm-subtle text-sm leading-relaxed mb-6 flex-grow">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení, která vám přinesou větší jistotu.</p>
-                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                        <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                     </div>
                 </div>
                 <div id="srv-dots" style="display:flex;justify-content:center;gap:6px;margin-top:8px;padding-bottom:4px;"></div>
@@ -300,22 +362,22 @@
 
             <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">🛡️</span></div>
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl icon-emoji" aria-hidden="true">🛡️</span></div>
                     <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Životní a neživotní pojištění</h3>
                     <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Ochrana, když život neplánuje podle vás. Nastavíme pojistku tak, aby chránila to nejcennější – rodinu a váš klidný spánek.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                 </div>
                 <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">📈</span></div>
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl icon-emoji" aria-hidden="true">📈</span></div>
                     <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Růst bez stresu</h3>
                     <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Zhodnocujte peníze chytře. Vybereme strategii, která odpovídá vašemu tempu, ať už začínáte, nebo už budujete kapitál.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                 </div>
                 <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">☕</span></div>
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl icon-emoji" aria-hidden="true">☕</span></div>
                     <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Finanční rezerva a důchod</h3>
                     <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Vytvoříme plán, díky kterému nebudete závislí na státu. Užívejte si stáří přesně tak, jak jste si vždy vysnili.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                 </div>
                 <div class="premium-card p-10 rounded-[2rem] md:col-span-2 flex flex-col sm:flex-row items-center gap-8 bg-white border-warm-accent/10" data-aos="fade-up">
                     <div class="flex-grow">
@@ -323,13 +385,13 @@
                         <h3 class="font-heading text-3xl font-bold mb-4 text-warm-text">Cesta k vlastnímu bydlení</h3>
                         <p class="text-warm-subtle text-base leading-relaxed mb-0">Stavíte, kupujete nebo chcete platit méně? Porovnáme trh a najdeme řešení, které vám nebude svazovat ruce.</p>
                     </div>
-                    <div class="text-9xl md:text-[10rem] text-warm-accent">🏠</div>
+                    <div class="text-9xl md:text-[10rem] text-warm-accent icon-emoji" aria-hidden="true">🏠</div>
                 </div>
                 <div class="premium-card p-7 md:p-9 rounded-[2rem] flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl">🔍</span></div>
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-[#F3E5D8] flex items-center justify-center mb-6 md:mb-8 border border-warm-accent/20"><span class="text-3xl md:text-4xl icon-emoji" aria-hidden="true">🔍</span></div>
                     <h3 class="font-heading text-xl md:text-2xl font-bold mb-4 text-warm-text">Kontrola penzijního spoření</h3>
                     <p class="text-warm-subtle text-sm md:text-base leading-relaxed mb-6 flex-grow">Zjistíme realitu vašeho spoření a navrhneme efektivní zlepšení, která vám přinesou větší jistotu.</p>
-                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5">→</span></a>
+                    <a href="#kontakt" class="text-warm-accent font-semibold inline-flex items-center group text-sm">Zjistit více <span class="group-hover:translate-x-1.5 transition-transform ml-1.5" aria-hidden="true">→</span></a>
                 </div>
             </div>
         </div>
@@ -345,14 +407,14 @@
                     <p class="text-warm-sand/60 mb-6 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
                     <div class="space-y-4">
                         <a href="tel:+420606055750" class="flex items-center gap-4 group">
-                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
-                                <span class="text-lg">📞</span>
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Zavolat">
+                                <span class="text-lg icon-emoji" aria-hidden="true">📞</span>
                             </div>
                             <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
                         </a>
                         <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
-                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
-                                <span class="text-lg">✉️</span>
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Poslat e-mail">
+                                <span class="text-lg icon-emoji" aria-hidden="true">✉️</span>
                             </div>
                             <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
                         </a>
@@ -360,16 +422,37 @@
                 </div>
 
                 <div id="form-container">
-                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans">
+                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans" novalidate>
                         <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
-                        <input type="text" name="_gotcha" class="hidden-field">
-                        <input type="text" name="name" required placeholder="Jméno" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                        <input type="tel" name="phone" required pattern="[0-9+ ]{9,}" title="Zadejte prosím platné telefonní číslo" placeholder="Telefon" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2 sm:col-span-1">
-                        <input type="email" name="email" required placeholder="E-mail" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent col-span-2">
-                        <textarea name="message" required placeholder="Jak vám mohu pomoci?" class="bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none h-32 col-span-2 transition focus:ring-2 focus:ring-warm-accent"></textarea>
-                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all">Odeslat</button>
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="honeypot" class="hidden-field" tabindex="-1" autocomplete="off">
+                        
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="form-name" class="block text-sm font-medium text-warm-sand mb-2">Jméno *</label>
+                            <input type="text" id="form-name" name="name" required placeholder="Vaše jméno" class="form-input w-full rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="form-phone" class="block text-sm font-medium text-warm-sand mb-2">Telefon *</label>
+                            <input type="tel" id="form-phone" name="phone" required inputmode="tel" placeholder="Vaše číslo" class="form-input w-full rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
+                            <p class="text-xs text-warm-sand/50 mt-1">Minimálně 9 číslic</p>
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="form-email" class="block text-sm font-medium text-warm-sand mb-2">E-mail *</label>
+                            <input type="email" id="form-email" name="email" required placeholder="Váš e-mail" class="form-input w-full rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="form-message" class="block text-sm font-medium text-warm-sand mb-2">Zpráva *</label>
+                            <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-4 text-white outline-none h-32 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
+                        </div>
+
+                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all hover:shadow-lg">
+                            Odeslat zprávu
+                        </button>
                     </form>
-                    <p id="form-status" class="mt-4 text-center hidden"></p>
+                    <p id="form-status" class="mt-4 text-center hidden text-warm-sand" role="status" aria-live="polite"></p>
                 </div>
 
                 <div class="hidden lg:block mt-8 pt-6 border-t border-white/10">
@@ -377,7 +460,7 @@
                     <div class="flex flex-wrap gap-3">
                         <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
                             <div class="w-8 h-8 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-xs leading-tight">Registrace ČNB</p>
@@ -386,7 +469,7 @@
                         </div>
                         <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
                             <div class="w-8 h-8 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-xs leading-tight">Vázaný zástupce</p>
@@ -397,13 +480,14 @@
                 </div>
             </div>
             <div class="lg:w-1/2 map-container relative min-h-[300px] md:min-h-[400px]">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2583.565158223403!2d16.657530377044813!3d49.48981245648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47129b63435d79e5%3A0xe5628b0f174ace05!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
+                <iframe id="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2583.565158223403!2d16.657530377044813!3d49.48981245648834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47129b63435d79e5%3A0xe5628b0f174ace05!2zS29tZW5za8OpaG8gMjk1LzQ0LCA2ODAgMDEgQm9za292aWNl!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" class="absolute inset-0 w-full h-full border-0 hidden" loading="lazy" title="Poloha kanceláře Boskovice na mapě"></iframe>
                 <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
                     <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
                     <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
-                        <li class="flex items-start gap-2"><span>📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
-                        <li class="flex items-start gap-2"><span>🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
-                        <li class="flex items-start gap-2"><span>💻</span> <span>Konzultace online</span></li>
+                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
+                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
+                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
                     </ul>
                 </div>
             </div>
@@ -413,7 +497,7 @@
                 <div class="flex flex-row justify-center gap-3">
                     <div class="flex-1 flex items-center gap-2 bg-white/8 border border-white/10 rounded-xl px-3 py-3">
                         <div class="w-7 h-7 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
                         </div>
                         <div class="overflow-hidden">
                             <p class="text-white font-semibold text-[10px] leading-tight truncate">Registrace ČNB</p>
@@ -422,7 +506,7 @@
                     </div>
                     <div class="flex-1 flex items-center gap-2 bg-white/8 border border-white/10 rounded-xl px-3 py-3">
                         <div class="w-7 h-7 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
                         </div>
                         <div class="overflow-hidden">
                             <p class="text-white font-semibold text-[10px] leading-tight truncate">Vázaný zástupce</p>
@@ -439,7 +523,7 @@
             <p class="font-heading text-lg font-bold text-warm-text mb-3">Markéta Zedníčková</p>
             <p class="mb-4">IČO: 88313531 | Vázaný zástupce společnosti ZFP akademie, a.s.</p>
             <p class="mb-6">
-                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" class="text-warm-accent hover:underline">Zpracování osobních údajů (GDPR)</a>
+                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" rel="noopener noreferrer" class="text-warm-accent hover:underline">Zpracování osobních údajů (GDPR)</a>
             </p>
             <p>© 2026 Markéta Zedníčková. Všechna práva vyzrazena.</p>
         </div>
@@ -460,30 +544,65 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS animations
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
+        // Form handling with improved validation
         const form = document.getElementById("contact-form");
         if(form) {
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
+                
+                // Basic client-side validation
+                const phoneInput = document.getElementById("form-phone");
+                const phoneValue = phoneInput.value.replace(/\s/g, '');
+                
+                if(phoneValue.length < 9) {
+                    const status = document.getElementById("form-status");
+                    status.innerText = "Prosím zadejte platné telefonní číslo (minimálně 9 číslic).";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+
                 const btn = document.getElementById("form-submit");
                 const status = document.getElementById("form-status");
-                btn.disabled = true; btn.innerText = "Odesílám...";
+                btn.disabled = true; 
+                btn.innerText = "Odesílám...";
+                
                 const data = new FormData(form);
-                fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-                .then(res => {
-                    if (res.ok) {
+                
+                try {
+                    const response = await fetch(form.action, { 
+                        method: 'POST', 
+                        body: data, 
+                        headers: { 'Accept': 'application/json' } 
+                    });
+                    
+                    if (response.ok) {
                         status.innerText = "Děkuji! Vaše zpráva byla odeslána.";
                         status.className = "mt-4 text-center success block";
-                        form.reset(); form.classList.add("hidden");
-                    } else { status.innerText = "Chyba při odesílání."; status.className = "mt-4 text-center error block"; }
-                }).finally(() => { btn.disabled = false; btn.innerText = "Odeslat"; });
+                        form.reset(); 
+                        form.classList.add("hidden");
+                    } else { 
+                        status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                        status.className = "mt-4 text-center error block"; 
+                    }
+                } catch(error) {
+                    status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                    status.className = "mt-4 text-center error block";
+                } finally { 
+                    btn.disabled = false; 
+                    btn.innerText = "Odeslat zprávu"; 
+                }
             });
         }
 
+        // Cookie banner
         window.addEventListener('load', function() {
             if (!localStorage.getItem('cookieConsent')) {
-                setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 1000);
+                setTimeout(() => { 
+                    document.getElementById('cookie-banner').classList.add('show'); 
+                }, 1000);
             }
         });
 
@@ -494,25 +613,54 @@
             setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
         }
 
+        // Lazy load map
+        const mapSection = document.getElementById('contact-map');
+        const mapPlaceholder = document.getElementById('map-placeholder');
+        
+        const mapObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    mapSection.classList.remove('hidden');
+                    mapPlaceholder.style.display = 'none';
+                    mapObserver.unobserve(mapSection);
+                }
+            });
+        }, { rootMargin: '50px' });
+        
+        if(mapSection) {
+            mapObserver.observe(mapSection);
+        }
+
+        // Services carousel with improved indicators
         const sc = document.getElementById('services-carousel');
         const sdots = document.getElementById('srv-dots');
         const swIndicator = document.getElementById('swipe-indicator');
+        
         if (sc && sdots) {
             const count = sc.children.length;
             for (let i = 0; i < count; i++) {
                 const d = document.createElement('div');
                 d.style.cssText = 'width:' + (i === 0 ? '18px' : '6px') + ';height:6px;border-radius:3px;background:' + (i === 0 ? '#D29156' : 'rgba(74,62,56,0.2)') + ';transition:all 0.3s;cursor:pointer;';
-                d.addEventListener('click', () => { sc.scrollTo({ left: i * (280 + 16), behavior: 'smooth' }); });
+                d.setAttribute('role', 'tab');
+                d.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                d.addEventListener('click', () => { 
+                    sc.scrollTo({ left: i * (280 + 16), behavior: 'smooth' }); 
+                });
                 sdots.appendChild(d);
             }
+            
             sc.addEventListener('scroll', () => {
                 const idx = Math.round(sc.scrollLeft / (280 + 16));
-                sdots.querySelectorAll('div').forEach((d, i) => {
+                sdots.querySelectorAll('[role="tab"]').forEach((d, i) => {
                     d.style.width = i === idx ? '18px' : '6px';
                     d.style.background = i === idx ? '#D29156' : 'rgba(74,62,56,0.2)';
+                    d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
                 });
+                
+                // Fade out swipe indicator after first scroll
                 if (sc.scrollLeft > 10 && swIndicator) {
                     swIndicator.style.opacity = '0';
+                    swIndicator.style.pointerEvents = 'none';
                     setTimeout(() => swIndicator.style.display = 'none', 300);
                 }
             });
