@@ -446,10 +446,10 @@
             <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-3 text-sm text-white outline-none h-24 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
         </div>
 
-        <div class="col-span-2 flex items-start gap-2 mb-1">
-            <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="mt-1 w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer">
-            <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-tight cursor-pointer">
-                Souhlasím se zpracováním osobních údajů. *
+        <div class="col-span-2 flex items-center gap-2 mb-1 py-1">
+            <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer flex-shrink-0">
+            <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-none cursor-pointer">
+                Souhlasím se zpracováním osobních údajů *
             </label>
         </div>
 
@@ -557,8 +557,17 @@
         // Form handling with improved validation
         const form = document.getElementById("contact-form");
         if(form) {
-            form.addEventListener("submit", async (e) => {
-                e.preventDefault();
+            form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+                // KONTROLA GDPR CHECKBOXU
+            const gdprCheckbox = document.getElementById('form-gdpr');
+            if (!gdprCheckbox.checked) {
+                status.textContent = "Pro odeslání musíte souhlasit se zpracováním údajů.";
+                status.classList.remove('hidden');
+                status.style.color = "#ff8888"; // Červená barva pro chybu
+                return;
+            }
                 
                 // Basic client-side validation
                 const phoneInput = document.getElementById("form-phone");
