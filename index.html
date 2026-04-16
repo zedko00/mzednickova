@@ -398,10 +398,10 @@
     </section>
 
 <section id="kontakt" class="py-8 md:py-12 max-w-7xl mx-auto px-4 md:px-6">
-    <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-5 md:p-8 shadow-2xl flex flex-col lg:flex-row gap-6 items-start border-2 md:border-4 border-white" data-aos="fade-up">
+    <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-5 md:p-8 shadow-2xl flex flex-col lg:flex-row gap-6 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
         
         <div class="lg:w-1/2 p-1 md:p-2 flex flex-col text-white">
-            <h2 class="font-heading text-2xl md:text-4xl font-bold mb-4 leading-tight text-white">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+            <h2 class="font-heading text-2xl md:text-4xl font-bold mb-4 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
             
             <div class="mb-4 md:mb-6">
                 <p class="text-warm-sand font-semibold mb-2 text-sm md:text-base italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
@@ -422,8 +422,8 @@
                 </div>
             </div>
 
-            <div id="form-container">
-                <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 flex-grow font-sans" novalidate>
+            <div id="form-container" class="flex-grow flex flex-col">
+                <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 font-sans" novalidate>
                     <input type="text" name="_gotcha" style="display:none">
                     <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
                     
@@ -448,14 +448,14 @@
                     </div>
 
                     <div class="col-span-2 flex flex-col gap-1">
-                        <div class="flex items-center gap-2 py-1">
-                            <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer flex-shrink-0">
-                            <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-none cursor-pointer">
-                                Souhlasím se zpracováním osobních údajů *
-                            </label>
-                        </div>
-                        <p id="gdpr-error" class="hidden text-[#ff8888] text-[10px] font-medium">Pro odeslání musíte potvrdit souhlas.</p>
-                    </div>
+    <div class="flex items-center gap-2 py-1">
+        <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer flex-shrink-0">
+        <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-none cursor-pointer">
+            Souhlasím se zpracováním osobních údajů *
+        </label>
+    </div>
+    <p id="gdpr-error" class="hidden text-[#ff8888] text-[10px] font-medium">Pro odeslání musíte potvrdit souhlas.</p>
+</div>
 
                     <button type="submit" id="form-submit" class="btn-premium py-3 rounded-xl col-span-2 font-semibold text-sm uppercase tracking-widest transition-all hover:shadow-lg">
                         Odeslat zprávu
@@ -464,14 +464,14 @@
                 <p id="form-status" class="mt-2 text-center hidden text-warm-sand text-xs" role="status" aria-live="polite"></p>
             </div>
 
-            <div class="hidden lg:block mt-6 pt-4 border-t border-white/10">
-                <p class="text-warm-sand/50 text-[10px] uppercase tracking-widest mb-3 font-medium">Certifikace & spolupráce</p>
-                <div class="flex flex-wrap gap-3">
+            <div class="mt-6 pt-4 border-t border-white/10">
+                <p class="text-warm-sand/50 text-[10px] uppercase tracking-widest mb-3 font-medium text-center">Certifikace & spolupráce</p>
+                <div class="flex flex-row justify-center gap-3">
                     <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-3 py-2">
                         <div class="w-7 h-7 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
                         </div>
-                        <div>
+                        <div class="text-left">
                             <p class="text-white font-semibold text-[10px] leading-tight">Registrace ČNB</p>
                             <p class="text-warm-sand/50 text-[8px] leading-tight">Česká národní banka</p>
                         </div>
@@ -480,7 +480,7 @@
                         <div class="w-7 h-7 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
                         </div>
-                        <div>
+                        <div class="text-left">
                             <p class="text-white font-semibold text-[10px] leading-tight">Vázaný zástupce</p>
                             <p class="text-warm-sand/50 text-[8px] leading-tight">ZFP akademie, a.s.</p>
                         </div>
@@ -489,16 +489,16 @@
             </div>
         </div>
 
-        <div class="lg:w-1/2 map-container relative w-full min-h-[350px] lg:min-h-[550px] rounded-[1.5rem] overflow-hidden align-self-stretch">
+        <div class="lg:w-1/2 map-container relative w-full min-h-[350px] lg:min-h-full rounded-[1.5rem] overflow-hidden lg:mb-[0px]">
             <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
-            <iframe id="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.442183204481!2d16.65886637713437!3d49.49504695570025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957017631339%3A0xc074697926941a29!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1715874242654!5m2!1scs!2scz" 
-                class="absolute inset-0 w-full h-full border-0 hidden" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe id="contact-map" src="http://googleusercontent.com/maps.google.com/9" 
+                class="absolute inset-0 w-full h-full border-0 hidden" allowfullscreen="" loading="lazy"></iframe>
             <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
                 <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
                 <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
-                    <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
-                    <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi</span></li>
-                    <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace i online</span></li>
+                    <li class="flex items-start gap-2 text-left"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
+                    <li class="flex items-start gap-2 text-left"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
+                    <li class="flex items-start gap-2 text-left"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
                 </ul>
             </div>
         </div>
@@ -563,61 +563,62 @@
         // Form handling with improved validation
         const form = document.getElementById("contact-form");
         if(form) {
-            form.addEventListener('submit', async function(e) {
+            form.addEventListener("submit", async (e) => {
             e.preventDefault();
-
-                // KONTROLA GDPR CHECKBOXU
+            
             const gdprCheckbox = document.getElementById('form-gdpr');
-            if (!gdprCheckbox.checked) {
-                status.textContent = "Pro odeslání musíte souhlasit se zpracováním údajů.";
-                status.classList.remove('hidden');
-                status.style.color = "#ff8888"; // Červená barva pro chybu
+            const gdprError = document.getElementById('gdpr-error');
+            const status = document.getElementById("form-status");
+
+            // 1. KONTROLA GDPR (Nová část)
+            if(!gdprCheckbox.checked) {
+                gdprError.classList.remove('hidden'); // Zobrazí hlášku
+                gdprCheckbox.classList.add('ring-2', 'ring-red-500'); // Červený okraj
+                gdprCheckbox.focus();
+                return;
+            } else {
+                gdprError.classList.add('hidden');
+                gdprCheckbox.classList.remove('ring-2', 'ring-red-500');
+            }
+            
+            // 2. KONTROLA TELEFONU
+            const phoneInput = document.getElementById("form-phone");
+            const phoneValue = phoneInput.value.replace(/\s/g, '');
+            if(phoneValue.length < 9) {
+                status.innerText = "Prosím zadejte platné telefonní číslo.";
+                status.className = "mt-4 text-center text-[#ff8888] block";
                 return;
             }
-                
-                // Basic client-side validation
-                const phoneInput = document.getElementById("form-phone");
-                const phoneValue = phoneInput.value.replace(/\s/g, '');
-                
-                if(phoneValue.length < 9) {
-                    const status = document.getElementById("form-status");
-                    status.innerText = "Prosím zadejte platné telefonní číslo (minimálně 9 číslic).";
-                    status.className = "mt-4 text-center error block";
-                    return;
-                }
 
-                const btn = document.getElementById("form-submit");
-                const status = document.getElementById("form-status");
-                btn.disabled = true; 
-                btn.innerText = "Odesílám...";
+            const btn = document.getElementById("form-submit");
+            btn.disabled = true; 
+            btn.innerText = "Odesílám...";
+            
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, { 
+                    method: 'POST', 
+                    body: data, 
+                    headers: { 'Accept': 'application/json' } 
+                });
                 
-                const data = new FormData(form);
-                
-                try {
-                    const response = await fetch(form.action, { 
-                        method: 'POST', 
-                        body: data, 
-                        headers: { 'Accept': 'application/json' } 
-                    });
-                    
-                    if (response.ok) {
-                        status.innerText = "Děkuji! Vaše zpráva byla odeslána.";
-                        status.className = "mt-4 text-center success block";
-                        form.reset(); 
-                        form.classList.add("hidden");
-                    } else { 
-                        status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
-                        status.className = "mt-4 text-center error block"; 
-                    }
-                } catch(error) {
-                    status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
-                    status.className = "mt-4 text-center error block";
-                } finally { 
-                    btn.disabled = false; 
-                    btn.innerText = "Odeslat zprávu"; 
+                if (response.ok) {
+                    status.innerText = "Děkuji! Vaše zpráva byla odeslána.";
+                    status.className = "mt-4 text-center success block font-bold text-warm-sand";
+                    form.reset(); 
+                    form.classList.add("hidden");
+                } else { 
+                    throw new Error();
                 }
-            });
-        }
+            } catch(error) {
+                status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                status.className = "mt-4 text-center text-[#ff8888] block"; 
+            } finally { 
+                btn.disabled = false; 
+                btn.innerText = "Odeslat zprávu"; 
+            }
+        });
 
         // Cookie banner
         window.addEventListener('load', function() {
