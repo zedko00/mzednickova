@@ -397,113 +397,107 @@
         </div>
     </section>
 
-<section id="kontakt" class="py-8 md:py-12 max-w-7xl mx-auto px-4 md:px-6">
-    <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-5 md:p-8 shadow-2xl flex flex-col lg:flex-row gap-6 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
-        
-        <div class="lg:w-1/2 p-1 md:p-2 flex flex-col text-white">
-            <h2 class="font-heading text-2xl md:text-4xl font-bold mb-4 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
-            
-            <div class="mb-4 md:mb-6">
-                <p class="text-warm-sand font-semibold mb-2 text-sm md:text-base italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
-                <p class="text-warm-sand/60 mb-4 max-w-md text-xs md:text-sm">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
-                <div class="space-y-3">
-                    <a href="tel:+420606055750" class="flex items-center gap-3 group">
-                        <div class="w-9 h-9 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
-                            <span class="text-base icon-emoji" aria-hidden="true">📞</span>
+    <section id="kontakt" class="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-6">
+        <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-10 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
+            <div class="lg:w-1/2 p-2 md:p-6 flex flex-col text-white">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+                
+                <div class="mb-8 md:mb-10">
+                    <p class="text-warm-sand font-semibold mb-4 text-base md:text-lg italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
+                    <p class="text-warm-sand/60 mb-6 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
+                    <div class="space-y-4">
+                        <a href="tel:+420606055750" class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Zavolat">
+                                <span class="text-lg icon-emoji" aria-hidden="true">📞</span>
+                            </div>
+                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
+                        </a>
+                        <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Poslat e-mail">
+                                <span class="text-lg icon-emoji" aria-hidden="true">✉️</span>
+                            </div>
+                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="form-container">
+                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans" novalidate>
+                        <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="honeypot" class="hidden-field" tabindex="-1" autocomplete="off">
+                        
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="form-name" class="block text-sm font-medium text-warm-sand mb-2">Jméno *</label>
+                            <input type="text" id="form-name" name="name" required placeholder="Vaše jméno" class="form-input w-full rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
                         </div>
-                        <span class="text-warm-sand font-medium text-base group-hover:text-white transition-colors">+420 606 055 750</span>
-                    </a>
-                    <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-3 group">
-                        <div class="w-9 h-9 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors">
-                            <span class="text-base icon-emoji" aria-hidden="true">✉️</span>
+
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="form-phone" class="block text-sm font-medium text-warm-sand mb-2">Telefon *</label>
+                            <input type="tel" id="form-phone" name="phone" required inputmode="tel" placeholder="Vaše číslo" class="form-input w-full rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
+                            <p class="text-xs text-warm-sand/50 mt-1">Minimálně 9 číslic</p>
                         </div>
-                        <span class="text-warm-sand font-medium text-base group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
-                    </a>
+
+                        <div class="col-span-2">
+                            <label for="form-email" class="block text-sm font-medium text-warm-sand mb-2">E-mail *</label>
+                            <input type="email" id="form-email" name="email" required placeholder="Váš e-mail" class="form-input w-full rounded-xl p-4 text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="form-message" class="block text-sm font-medium text-warm-sand mb-2">Zpráva *</label>
+                            <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-4 text-white outline-none h-32 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
+                        </div>
+
+                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all hover:shadow-lg">
+                            Odeslat zprávu
+                        </button>
+                    </form>
+                    <p id="form-status" class="mt-4 text-center hidden text-warm-sand" role="status" aria-live="polite"></p>
+                </div>
+
+                <div class="hidden lg:block mt-8 pt-6 border-t border-white/10">
+                    <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-4 font-medium">Certifikace & spolupráce</p>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
+                            <div class="w-8 h-8 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-xs leading-tight">Registrace ČNB</p>
+                                <p class="text-warm-sand/50 text-[10px] leading-tight">Česká národní banka</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
+                            <div class="w-8 h-8 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-xs leading-tight">Vázaný zástupce</p>
+                                <p class="text-warm-sand/50 text-[10px] leading-tight">ZFP akademie, a.s.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div id="form-container" class="flex-grow flex flex-col">
-                <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 font-sans" novalidate>
-                    <input type="text" name="_gotcha" style="display:none">
-                    <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
-                    
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="form-name" class="block text-xs font-medium text-warm-sand mb-1">Jméno *</label>
-                        <input type="text" id="form-name" name="name" required placeholder="Vaše jméno" class="form-input w-full rounded-xl p-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
-                    </div>
-
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="form-phone" class="block text-xs font-medium text-warm-sand mb-1">Telefon *</label>
-                        <input type="tel" id="form-phone" name="phone" required inputmode="tel" placeholder="Vaše číslo" class="form-input w-full rounded-xl p-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
-                    </div>
-
-                    <div class="col-span-2">
-                        <label for="form-email" class="block text-xs font-medium text-warm-sand mb-1">E-mail *</label>
-                        <input type="email" id="form-email" name="email" required placeholder="Váš e-mail" class="form-input w-full rounded-xl p-3 text-sm text-white outline-none transition focus:ring-2 focus:ring-warm-accent" aria-required="true">
-                    </div>
-
-                    <div class="col-span-2">
-                        <label for="form-message" class="block text-xs font-medium text-warm-sand mb-1">Zpráva *</label>
-                        <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-3 text-sm text-white outline-none h-24 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
-                    </div>
-
-                    <div class="col-span-2 flex flex-col gap-1">
-    <div class="flex items-center gap-2 py-1">
-        <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer flex-shrink-0">
-        <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-none cursor-pointer">
-            Souhlasím se zpracováním osobních údajů *
-        </label>
+           <div class="lg:w-1/2 map-container relative min-h-[300px] md:min-h-[400px]">
+    <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
+    <iframe id="contact-map" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
+        class="absolute inset-0 w-full h-full border-0 hidden" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Poloha kanceláře Boskovice na mapě">
+    </iframe>
+    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
+        <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
+        <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
+            <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
+            <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
+            <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
+        </ul>
     </div>
-    <p id="gdpr-error" class="hidden text-[#ff8888] text-[10px] font-medium">Pro odeslání musíte potvrdit souhlas.</p>
 </div>
-
-                    <button type="submit" id="form-submit" class="btn-premium py-3 rounded-xl col-span-2 font-semibold text-sm uppercase tracking-widest transition-all hover:shadow-lg">
-                        Odeslat zprávu
-                    </button>
-                </form>
-                <p id="form-status" class="mt-2 text-center hidden text-warm-sand text-xs" role="status" aria-live="polite"></p>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-white/10">
-                <p class="text-warm-sand/50 text-[10px] uppercase tracking-widest mb-3 font-medium text-center">Certifikace & spolupráce</p>
-                <div class="flex flex-row justify-center gap-3">
-                    <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-3 py-2">
-                        <div class="w-7 h-7 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
-                        </div>
-                        <div class="text-left">
-                            <p class="text-white font-semibold text-[10px] leading-tight">Registrace ČNB</p>
-                            <p class="text-warm-sand/50 text-[8px] leading-tight">Česká národní banka</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-3 py-2">
-                        <div class="w-7 h-7 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
-                        </div>
-                        <div class="text-left">
-                            <p class="text-white font-semibold text-[10px] leading-tight">Vázaný zástupce</p>
-                            <p class="text-warm-sand/50 text-[8px] leading-tight">ZFP akademie, a.s.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="lg:w-1/2 map-container relative w-full min-h-[350px] lg:min-h-full rounded-[1.5rem] overflow-hidden lg:mb-[0px]">
-            <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
-            <iframe id="contact-map" src="http://googleusercontent.com/maps.google.com/9" 
-                class="absolute inset-0 w-full h-full border-0 hidden" allowfullscreen="" loading="lazy"></iframe>
-            <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
-                <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
-                <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
-                    <li class="flex items-start gap-2 text-left"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
-                    <li class="flex items-start gap-2 text-left"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
-                    <li class="flex items-start gap-2 text-left"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
             
             <div class="lg:hidden mt-6 w-full">
                 <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-3 font-medium text-center">Certifikace & spolupráce</p>
@@ -564,61 +558,51 @@
         const form = document.getElementById("contact-form");
         if(form) {
             form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            
-            const gdprCheckbox = document.getElementById('form-gdpr');
-            const gdprError = document.getElementById('gdpr-error');
-            const status = document.getElementById("form-status");
-
-            // 1. KONTROLA GDPR (Nová část)
-            if(!gdprCheckbox.checked) {
-                gdprError.classList.remove('hidden'); // Zobrazí hlášku
-                gdprCheckbox.classList.add('ring-2', 'ring-red-500'); // Červený okraj
-                gdprCheckbox.focus();
-                return;
-            } else {
-                gdprError.classList.add('hidden');
-                gdprCheckbox.classList.remove('ring-2', 'ring-red-500');
-            }
-            
-            // 2. KONTROLA TELEFONU
-            const phoneInput = document.getElementById("form-phone");
-            const phoneValue = phoneInput.value.replace(/\s/g, '');
-            if(phoneValue.length < 9) {
-                status.innerText = "Prosím zadejte platné telefonní číslo.";
-                status.className = "mt-4 text-center text-[#ff8888] block";
-                return;
-            }
-
-            const btn = document.getElementById("form-submit");
-            btn.disabled = true; 
-            btn.innerText = "Odesílám...";
-            
-            const data = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, { 
-                    method: 'POST', 
-                    body: data, 
-                    headers: { 'Accept': 'application/json' } 
-                });
+                e.preventDefault();
                 
-                if (response.ok) {
-                    status.innerText = "Děkuji! Vaše zpráva byla odeslána.";
-                    status.className = "mt-4 text-center success block font-bold text-warm-sand";
-                    form.reset(); 
-                    form.classList.add("hidden");
-                } else { 
-                    throw new Error();
+                // Basic client-side validation
+                const phoneInput = document.getElementById("form-phone");
+                const phoneValue = phoneInput.value.replace(/\s/g, '');
+                
+                if(phoneValue.length < 9) {
+                    const status = document.getElementById("form-status");
+                    status.innerText = "Prosím zadejte platné telefonní číslo (minimálně 9 číslic).";
+                    status.className = "mt-4 text-center error block";
+                    return;
                 }
-            } catch(error) {
-                status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
-                status.className = "mt-4 text-center text-[#ff8888] block"; 
-            } finally { 
-                btn.disabled = false; 
-                btn.innerText = "Odeslat zprávu"; 
-            }
-        });
+
+                const btn = document.getElementById("form-submit");
+                const status = document.getElementById("form-status");
+                btn.disabled = true; 
+                btn.innerText = "Odesílám...";
+                
+                const data = new FormData(form);
+                
+                try {
+                    const response = await fetch(form.action, { 
+                        method: 'POST', 
+                        body: data, 
+                        headers: { 'Accept': 'application/json' } 
+                    });
+                    
+                    if (response.ok) {
+                        status.innerText = "Děkuji! Vaše zpráva byla odeslána.";
+                        status.className = "mt-4 text-center success block";
+                        form.reset(); 
+                        form.classList.add("hidden");
+                    } else { 
+                        status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                        status.className = "mt-4 text-center error block"; 
+                    }
+                } catch(error) {
+                    status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                    status.className = "mt-4 text-center error block";
+                } finally { 
+                    btn.disabled = false; 
+                    btn.innerText = "Odeslat zprávu"; 
+                }
+            });
+        }
 
         // Cookie banner
         window.addEventListener('load', function() {
