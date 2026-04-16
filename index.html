@@ -446,10 +446,15 @@
             <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-3 text-sm text-white outline-none h-24 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
         </div>
 
-        <div class="col-span-2 flex items-center gap-2 mb-1 py-1">
-            <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer flex-shrink-0">
-            <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-none cursor-pointer">
-                Souhlasím se zpracováním osobních údajů *
+        <div class="col-span-2 flex flex-col gap-1 mb-1 py-1">
+            <div class="flex items-center gap-2">
+                <input type="checkbox" id="form-gdpr" name="gdpr_consent" required class="w-4 h-4 rounded border-white/20 bg-white/10 text-warm-accent focus:ring-warm-accent cursor-pointer flex-shrink-0">
+                <label for="form-gdpr" class="text-[10px] md:text-xs text-warm-sand/80 leading-none cursor-pointer">
+                    Souhlasím se zpracováním osobních údajů *
+                </label>
+            </div>
+            <p id="gdpr-error" class="hidden text-[#ff8888] text-[10px] font-medium">Pro odeslání musíte potvrdit souhlas.</p>
+        </div>
             </label>
         </div>
 
