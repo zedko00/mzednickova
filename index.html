@@ -177,7 +177,7 @@
             50% { transform: translateX(-15px); opacity: 0.2; }
         }
 
-        /* Vylepšená contrast pro accessibility */
+        /* Form styles */
         .form-input {
             background: rgba(255, 255, 255, 0.1);
             border: 1.5px solid rgba(255, 255, 255, 0.2);
@@ -192,7 +192,6 @@
             box-shadow: 0 0 0 3px rgba(210, 145, 86, 0.1);
         }
 
-        /* Icons místo emojis pro lepší accessibility */
         .icon-emoji {
             font-size: inherit;
             line-height: 1;
@@ -208,13 +207,103 @@
             color: #8C7A6B;
             font-size: 14px;
         }
+
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top: 3px solid #D29156;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Kontakt sekce - responsivní úpravy */
+        .map-container {
+            max-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Zmenšit výšku mapy na různých zařízeních */
+        @media (min-width: 1024px) {
+            .map-container {
+                min-height: 350px;
+                max-height: 400px;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .map-container {
+                min-height: 280px;
+                max-height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .map-container {
+                min-height: 250px;
+                max-height: 300px;
+            }
+            .contact-section-container {
+                gap: 1rem !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .contact-section-container {
+                gap: 1.5rem !important;
+            }
+            .contact-form-wrapper {
+                max-width: 100%;
+            }
+        }
+
+        /* Vylepšené title na mobilu */
+        @media (max-width: 640px) {
+            header nav a.logo {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Offline indicator */
+        #offline-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ef4444;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 10000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        #offline-indicator.show {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="antialiased">
 
+    <div id="offline-indicator" role="alert" aria-live="polite">
+        🔴 Nejste připojeni k internetu. Zkontrolujte svoje připojení.
+    </div>
+
     <header class="fixed top-0 left-0 w-full z-50 px-3 pt-3 md:px-6 md:pt-6">
         <nav class="glass-nav max-w-7xl mx-auto rounded-full px-4 py-2.5 md:px-6 md:py-3 flex justify-between items-center shadow-lg border border-white/40">
-            <a href="#" class="font-heading text-lg md:text-xl font-bold tracking-tight text-warm-text whitespace-nowrap">
+            <a href="#" class="logo font-heading text-xl sm:text-2xl md:text-xl font-bold tracking-tight text-warm-text whitespace-nowrap">
                 Markéta Zedníčková<span class="text-warm-accent font-sans">.</span>
             </a>
 
@@ -398,9 +487,11 @@
     </section>
 
     <section id="kontakt" class="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-6">
-        <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-2xl flex flex-col lg:flex-row gap-10 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
-            <div class="lg:w-1/2 p-2 md:p-6 flex flex-col text-white">
-                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+        <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-8 lg:p-10 shadow-2xl contact-section-container flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
+            
+            <!-- Levá strana - formulář a info -->
+            <div class="lg:w-1/2 p-0 md:p-4 lg:p-6 flex flex-col text-white">
+                <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
                 
                 <div class="mb-8 md:mb-10">
                     <p class="text-warm-sand font-semibold mb-4 text-base md:text-lg italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
@@ -410,18 +501,18 @@
                             <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Zavolat">
                                 <span class="text-lg icon-emoji" aria-hidden="true">📞</span>
                             </div>
-                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
+                            <span class="text-warm-sand font-medium text-base md:text-lg group-hover:text-white transition-colors">+420 606 055 750</span>
                         </a>
                         <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
                             <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Poslat e-mail">
                                 <span class="text-lg icon-emoji" aria-hidden="true">✉️</span>
                             </div>
-                            <span class="text-warm-sand font-medium text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
+                            <span class="text-warm-sand font-medium text-base md:text-lg group-hover:text-white transition-colors">marketa.zednickova@zfpa.cz</span>
                         </a>
                     </div>
                 </div>
 
-                <div id="form-container">
+                <div id="form-container" class="contact-form-wrapper">
                     <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans" novalidate>
                         <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
                         <input type="hidden" name="_captcha" value="false">
@@ -448,7 +539,16 @@
                             <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-4 text-white outline-none h-32 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
                         </div>
 
-                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all hover:shadow-lg">
+                        <div class="col-span-2">
+                            <label for="form-gdpr" class="flex items-start gap-3 cursor-pointer group">
+                                <input type="checkbox" id="form-gdpr" name="gdpr" required class="w-5 h-5 mt-1 rounded border-2 border-warm-sand/40 bg-white/10 checked:bg-warm-accent checked:border-warm-accent cursor-pointer transition focus:ring-2 focus:ring-warm-accent focus:ring-offset-0" aria-required="true">
+                                <span class="text-sm text-warm-sand leading-relaxed pt-0.5">
+                                    Souhlasím se <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" rel="noopener noreferrer" class="text-warm-accent hover:text-white transition underline">zpracováním osobních údajů</a> <span class="text-warm-sand/70">*</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                             Odeslat zprávu
                         </button>
                     </form>
@@ -456,8 +556,8 @@
                 </div>
 
                 <div class="hidden lg:block mt-8 pt-6 border-t border-white/10">
-                    <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-4 font-medium">Certifikace & spolupráce</p>
-                    <div class="flex flex-wrap gap-3">
+                    <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-4 font-medium text-center">Certifikace & spolupráce</p>
+                    <div class="flex flex-wrap gap-3 justify-center">
                         <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
                             <div class="w-8 h-8 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
@@ -479,26 +579,29 @@
                     </div>
                 </div>
             </div>
-           <div class="lg:w-1/2 map-container relative min-h-[300px] md:min-h-[400px]">
-    <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
-    <iframe id="contact-map" 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
-        class="absolute inset-0 w-full h-full border-0 hidden" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Poloha kanceláře Boskovice na mapě">
-    </iframe>
-    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
-        <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
-        <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
-            <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
-            <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
-            <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
-        </ul>
-    </div>
-</div>
-            
+
+            <!-- Pravá strana - mapa -->
+            <div class="lg:w-1/2 map-container relative">
+                <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
+                <iframe id="contact-map" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
+                    class="absolute inset-0 w-full h-full border-0 hidden" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Poloha kanceláře Boskovice na mapě">
+                </iframe>
+                <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
+                    <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
+                    <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
+                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
+                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
+                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Certifikace na mobilu -->
             <div class="lg:hidden mt-6 w-full">
                 <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-3 font-medium text-center">Certifikace & spolupráce</p>
                 <div class="flex flex-row justify-center gap-3">
@@ -556,9 +659,57 @@
 
         // Form handling with improved validation
         const form = document.getElementById("contact-form");
+        const gdprCheckbox = document.getElementById("form-gdpr");
+        const submitBtn = document.getElementById("form-submit");
+        const offlineIndicator = document.getElementById("offline-indicator");
+
+        // Offline detection
+        const updateOnlineStatus = () => {
+            if (!navigator.onLine) {
+                offlineIndicator.classList.add("show");
+            } else {
+                offlineIndicator.classList.remove("show");
+            }
+        };
+
+        window.addEventListener("online", updateOnlineStatus);
+        window.addEventListener("offline", updateOnlineStatus);
+        updateOnlineStatus();
+
+        // Funkce pro aktualizaci stavu tlačítka
+        const updateSubmitButtonState = () => {
+            if (gdprCheckbox) {
+                submitBtn.disabled = !gdprCheckbox.checked;
+            }
+        };
+
+        // Inicializace - tlačítko je na začátku disabled
+        if (gdprCheckbox && submitBtn) {
+            updateSubmitButtonState();
+            
+            // Poslouchej změny checkboxu
+            gdprCheckbox.addEventListener("change", updateSubmitButtonState);
+        }
+
         if(form) {
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
+                
+                // Offline check
+                if (!navigator.onLine) {
+                    const status = document.getElementById("form-status");
+                    status.innerText = "❌ Nejste připojeni k internetu. Zkontrolujte připojení a zkuste znovu.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+                
+                // Kontrola checkboxu
+                if (!gdprCheckbox || !gdprCheckbox.checked) {
+                    const status = document.getElementById("form-status");
+                    status.innerText = "Prosím odsouhlaste zpracování osobních údajů.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
                 
                 // Basic client-side validation
                 const phoneInput = document.getElementById("form-phone");
@@ -571,10 +722,8 @@
                     return;
                 }
 
-                const btn = document.getElementById("form-submit");
-                const status = document.getElementById("form-status");
-                btn.disabled = true; 
-                btn.innerText = "Odesílám...";
+                submitBtn.disabled = true; 
+                submitBtn.innerHTML = '<span class="spinner"></span>Odesílám...';
                 
                 const data = new FormData(form);
                 
@@ -582,24 +731,33 @@
                     const response = await fetch(form.action, { 
                         method: 'POST', 
                         body: data, 
-                        headers: { 'Accept': 'application/json' } 
+                        headers: { 'Accept': 'application/json' },
+                        signal: AbortSignal.timeout(10000) // 10 sekund timeout
                     });
                     
                     if (response.ok) {
-                        status.innerText = "Děkuji! Vaše zpráva byla odeslána.";
+                        const status = document.getElementById("form-status");
+                        status.innerText = "✅ Děkuji! Vaše zpráva byla odeslána. Brzy se vám ozvu.";
                         status.className = "mt-4 text-center success block";
                         form.reset(); 
                         form.classList.add("hidden");
+                        updateSubmitButtonState();
                     } else { 
-                        status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                        const status = document.getElementById("form-status");
+                        status.innerText = "❌ Chyba při odesílání. Prosím zkuste znovu.";
                         status.className = "mt-4 text-center error block"; 
                     }
                 } catch(error) {
-                    status.innerText = "Chyba při odesílání. Prosím zkuste znovu.";
+                    const status = document.getElementById("form-status");
+                    if (error.name === 'AbortError') {
+                        status.innerText = "❌ Odesílání trvalo příliš dlouho. Zkuste prosím znovu.";
+                    } else {
+                        status.innerText = "❌ Chyba při odesílání. Zkontrolujte připojení a zkuste znovu.";
+                    }
                     status.className = "mt-4 text-center error block";
                 } finally { 
-                    btn.disabled = false; 
-                    btn.innerText = "Odeslat zprávu"; 
+                    submitBtn.disabled = !gdprCheckbox.checked; 
+                    submitBtn.innerHTML = 'Odeslat zprávu'; 
                 }
             });
         }
@@ -620,7 +778,7 @@
             setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
         }
 
-        // Lazy load map - opravený start
+        // Lazy load map
         const mapSection = document.getElementById('contact-map');
         const mapPlaceholder = document.getElementById('map-placeholder');
         
