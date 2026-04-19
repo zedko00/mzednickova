@@ -232,37 +232,31 @@
             overflow: hidden;
         }
 
+        /* Kontakt sekce - optimalizace výšky */
+        .map-container {
+            max-height: 100vh;
+            overflow: hidden;
+        }
+
         /* Zmenšit výšku mapy na různých zařízeních */
         @media (min-width: 1024px) {
             .map-container {
-                min-height: 350px;
-                max-height: 400px;
+                min-height: 280px;
+                max-height: 320px;
             }
         }
 
         @media (max-width: 1023px) {
             .map-container {
-                min-height: 280px;
-                max-height: 350px;
+                min-height: 250px;
+                max-height: 300px;
             }
         }
 
         @media (max-width: 768px) {
             .map-container {
-                min-height: 250px;
-                max-height: 300px;
-            }
-            .contact-section-container {
-                gap: 1rem !important;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .contact-section-container {
-                gap: 1.5rem !important;
-            }
-            .contact-form-wrapper {
-                max-width: 100%;
+                min-height: 200px;
+                max-height: 250px;
             }
         }
 
@@ -486,16 +480,16 @@
         </div>
     </section>
 
-    <section id="kontakt" class="py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-6">
-        <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-8 lg:p-10 shadow-2xl contact-section-container flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch border-2 md:border-4 border-white" data-aos="fade-up">
+    <section id="kontakt" class="py-12 md:py-16 max-w-7xl mx-auto px-4 md:px-6">
+        <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl flex flex-col lg:flex-row gap-8 items-start border-2 md:border-4 border-white" data-aos="fade-up">
             
             <!-- Levá strana - formulář a info -->
-            <div class="lg:w-1/2 p-0 md:p-4 lg:p-6 flex flex-col text-white">
-                <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
+            <div class="lg:w-1/2 flex flex-col text-white">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
                 
                 <div class="mb-8 md:mb-10">
                     <p class="text-warm-sand font-semibold mb-4 text-base md:text-lg italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
-                    <p class="text-warm-sand/60 mb-6 max-w-md text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
+                    <p class="text-warm-sand/60 mb-6 text-sm md:text-base">Pokud máte zájem o moje služby, můžete mě kontaktovat prostřednictvím telefonu nebo e-mailu.</p>
                     <div class="space-y-4">
                         <a href="tel:+420606055750" class="flex items-center gap-4 group">
                             <div class="w-10 h-10 rounded-full bg-warm-accent/20 flex items-center justify-center group-hover:bg-warm-accent transition-colors" title="Zavolat">
@@ -513,7 +507,7 @@
                 </div>
 
                 <div id="form-container" class="contact-form-wrapper">
-                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 flex-grow font-sans" novalidate>
+                    <form id="contact-form" action="https://formspree.io/f/xqegryno" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 font-sans" novalidate>
                         <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="text" name="honeypot" class="hidden-field" tabindex="-1" autocomplete="off">
@@ -536,7 +530,7 @@
 
                         <div class="col-span-2">
                             <label for="form-message" class="block text-sm font-medium text-warm-sand mb-2">Zpráva *</label>
-                            <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-4 text-white outline-none h-32 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
+                            <textarea id="form-message" name="message" required placeholder="Jak vám mohu pomoci?" class="form-input w-full rounded-xl p-4 text-white outline-none h-24 transition focus:ring-2 focus:ring-warm-accent resize-none" aria-required="true"></textarea>
                         </div>
 
                         <div class="col-span-2">
@@ -548,32 +542,32 @@
                             </label>
                         </div>
 
-                        <button type="submit" id="form-submit" class="btn-premium py-4 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <button type="submit" id="form-submit" class="btn-premium py-3 rounded-xl col-span-2 font-semibold text-base md:text-lg uppercase tracking-widest transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                             Odeslat zprávu
                         </button>
                     </form>
                     <p id="form-status" class="mt-4 text-center hidden text-warm-sand" role="status" aria-live="polite"></p>
                 </div>
 
-                <div class="hidden lg:block mt-8 pt-6 border-t border-white/10">
-                    <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-4 font-medium text-center">Certifikace & spolupráce</p>
-                    <div class="flex flex-wrap gap-3 justify-center">
-                        <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+                <div class="hidden lg:block mt-6 pt-6 border-t border-white/10 w-full">
+                    <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-3 font-medium text-center">Certifikace & spolupráce</p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <div class="flex items-center gap-2 bg-white/8 border border-white/10 rounded-lg px-3 py-2.5 hover:border-warm-accent/40 transition-colors">
+                            <div class="w-7 h-7 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
                             </div>
                             <div>
-                                <p class="text-white font-semibold text-xs leading-tight">Registrace ČNB</p>
-                                <p class="text-warm-sand/50 text-[10px] leading-tight">Česká národní banka</p>
+                                <p class="text-white font-semibold text-[11px] leading-tight">ČNB</p>
+                                <p class="text-warm-sand/50 text-[9px] leading-tight">Registrace</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2.5 bg-white/8 border border-white/10 rounded-xl px-4 py-3 hover:border-warm-accent/40 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
+                        <div class="flex items-center gap-2 bg-white/8 border border-white/10 rounded-lg px-3 py-2.5 hover:border-warm-accent/40 transition-colors">
+                            <div class="w-7 h-7 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
                             </div>
                             <div>
-                                <p class="text-white font-semibold text-xs leading-tight">Vázaný zástupce</p>
-                                <p class="text-warm-sand/50 text-[10px] leading-tight">ZFP akademie, a.s.</p>
+                                <p class="text-white font-semibold text-[11px] leading-tight">ZFP</p>
+                                <p class="text-warm-sand/50 text-[9px] leading-tight">Vázaný zástupce</p>
                             </div>
                         </div>
                     </div>
@@ -581,46 +575,46 @@
             </div>
 
             <!-- Pravá strana - mapa -->
-            <div class="lg:w-1/2 map-container relative">
-                <div id="map-placeholder" class="lazy-iframe">Načítání mapy...</div>
+            <div class="lg:w-1/2 map-container relative w-full">
+                <div id="map-placeholder" class="lazy-iframe rounded-2xl">Načítání mapy...</div>
                 <iframe id="contact-map" 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
-                    class="absolute inset-0 w-full h-full border-0 hidden" 
+                    class="absolute inset-0 w-full h-full border-0 hidden rounded-2xl" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade"
                     title="Poloha kanceláře Boskovice na mapě">
                 </iframe>
-                <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-white p-4 md:p-5 rounded-xl md:rounded-2xl shadow-xl border border-warm-sand z-10 max-w-[240px] md:max-w-xs font-sans">
-                    <p class="font-semibold text-warm-text text-sm md:text-base mb-2">Kde se potkáme?</p>
-                    <ul class="text-[11px] md:text-xs text-warm-subtle space-y-1.5">
-                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Kancelář Boskovice (Komenského 295/44)</span></li>
-                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Přijedu za vámi (Blansko, Boskovice i jinde)</span></li>
-                        <li class="flex items-start gap-2"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Konzultace online</span></li>
+                <div class="absolute bottom-3 left-3 md:bottom-4 md:left-4 bg-white p-3 md:p-4 rounded-lg md:rounded-xl shadow-lg border border-warm-sand z-10 max-w-[220px] font-sans">
+                    <p class="font-semibold text-warm-text text-xs md:text-sm mb-2">Kde se potkáme?</p>
+                    <ul class="text-[10px] md:text-xs text-warm-subtle space-y-1">
+                        <li class="flex items-start gap-1.5"><span class="icon-emoji" aria-hidden="true">📍</span> <span>Boskovice</span></li>
+                        <li class="flex items-start gap-1.5"><span class="icon-emoji" aria-hidden="true">🚗</span> <span>Nebo za vámi</span></li>
+                        <li class="flex items-start gap-1.5"><span class="icon-emoji" aria-hidden="true">💻</span> <span>Online</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Certifikace na mobilu -->
-            <div class="lg:hidden mt-6 w-full">
-                <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-3 font-medium text-center">Certifikace & spolupráce</p>
-                <div class="flex flex-row justify-center gap-3">
-                    <div class="flex-1 flex items-center gap-2 bg-white/8 border border-white/10 rounded-xl px-3 py-3">
-                        <div class="w-7 h-7 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+            <div class="lg:hidden mt-2 w-full">
+                <p class="text-warm-sand/50 text-xs uppercase tracking-widest mb-2 font-medium text-center">Certifikace & spolupráce</p>
+                <div class="flex flex-row justify-center gap-2">
+                    <div class="flex-1 flex items-center gap-1.5 bg-white/8 border border-white/10 rounded-lg px-2.5 py-2">
+                        <div class="w-6 h-6 rounded-lg bg-[#003F7A] flex items-center justify-center flex-shrink-0">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
                         </div>
                         <div class="overflow-hidden">
-                            <p class="text-white font-semibold text-[10px] leading-tight truncate">Registrace ČNB</p>
-                            <p class="text-warm-sand/50 text-[8px] leading-tight">ČNB</p>
+                            <p class="text-white font-semibold text-[9px] leading-tight">ČNB</p>
+                            <p class="text-warm-sand/50 text-[8px] leading-tight">Reg.</p>
                         </div>
                     </div>
-                    <div class="flex-1 flex items-center gap-2 bg-white/8 border border-white/10 rounded-xl px-3 py-3">
-                        <div class="w-7 h-7 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
+                    <div class="flex-1 flex items-center gap-1.5 bg-white/8 border border-white/10 rounded-lg px-2.5 py-2">
+                        <div class="w-6 h-6 rounded-lg bg-warm-accent flex items-center justify-center flex-shrink-0">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
                         </div>
                         <div class="overflow-hidden">
-                            <p class="text-white font-semibold text-[10px] leading-tight truncate">Vázaný zástupce</p>
-                            <p class="text-warm-sand/50 text-[8px] leading-tight">ZFP</p>
+                            <p class="text-white font-semibold text-[9px] leading-tight">ZFP</p>
+                            <p class="text-warm-sand/50 text-[8px] leading-tight">Zást.</p>
                         </div>
                     </div>
                 </div>
