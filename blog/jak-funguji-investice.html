@@ -3,65 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jak fungují investice | Markéta Zedníčková</title>
+<title>Peníze pod polštářem požírá inflace | Markéta Zedníčková</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --green: #2d7a4f;
+    --green-light: #e8f5ee;
     --dark: #1a2e23;
     --text: #374151;
     --muted: #6b7280;
     --border: #e5e7eb;
     --bg: #f9fafb;
     --white: #ffffff;
+    --accent: #f0faf4;
   }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.8;
-    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg);
-    margin: 0;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
   }
 
+  /* NAV */
   nav {
     background: var(--white);
     border-bottom: 1px solid var(--border);
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
-  .nav-brand { font-weight: 700; text-decoration: none; color: var(--dark); }
+  .nav-brand {
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+  }
   .nav-brand span { color: var(--green); }
 
-  .article-container {
-    max-width: 700px;
-    margin: 4rem auto;
-    padding: 0 1.5rem;
+  .nav-links a {
+    color: var(--green);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
   }
 
-  h1 { font-size: 2.5rem; color: var(--dark); line-height: 1.2; margin-bottom: 1.5rem; }
-  h2 { font-size: 1.8rem; color: var(--dark); margin-top: 2.5rem; }
+  /* ARTICLE HEADER */
+  .article-hero {
+    background: white;
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category-tag {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--dark);
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    line-height: 1.2;
+  }
+
+  .meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  h2 {
+    color: var(--dark);
+    margin: 2.5rem 0 1rem;
+    font-size: 1.5rem;
+  }
+
   p { margin-bottom: 1.5rem; }
-  
-  .highlight-box {
-    background: #f0faf4;
+
+  ul { margin-bottom: 1.5rem; padding-left: 1.2rem; }
+  li { margin-bottom: 0.5rem; }
+
+  .quote-box {
+    background: var(--accent);
     border-left: 4px solid var(--green);
     padding: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
+    color: var(--dark);
   }
 
-  .cta-section {
+  /* CTA */
+  .cta-box {
     background: var(--dark);
     color: white;
     padding: 3rem 2rem;
-    border-radius: 16px;
+    border-radius: 20px;
     text-align: center;
     margin-top: 4rem;
   }
+
+  .cta-box h3 { margin-bottom: 1rem; color: white; }
+  .cta-box p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
 
   .btn {
     display: inline-block;
@@ -71,56 +136,61 @@
     border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
-    margin-top: 1rem;
   }
 
-  footer { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.9rem; }
+  footer {
+    text-align: center;
+    padding: 3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="../index.html" class="nav-brand">Markéta <span>Zedníčková</span></a>
-  <a href="index_blog.html" style="text-decoration: none; color: var(--green); font-weight: 600;">← Zpět na blog</a>
+  <a href="https://zedko00.github.io/mzednickova/" class="nav-brand">Markéta <span>Zedníčková</span></a>
+  <div class="nav-links">
+    <a href="https://zedko00.github.io/mzednickova/blog/">← Zpět na blog</a>
+  </div>
 </nav>
 
-<article class="article-container">
-  <header>
-    <span style="color: var(--green); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Investování & Finance</span>
-    <h1>Peníze pod polštářem požírá inflace. Jak je nechat pracovat?</h1>
-    <p style="color: var(--muted);">Čtení na 8 minut · Aktualizováno v květnu 2026</p>
-  </header>
+<div class="article-hero">
+  <span class="category-tag">Investování</span>
+  <h1>Peníze pod polštářem požírá inflace. Jak je nechat pracovat?</h1>
+  <div class="meta">Květen 2026 · 8 min čtení · Tým ZFP Akademie</div>
+</div>
 
-  <p>Mnoho lidí má pocit, že investování je hazard. Vidí v něm složité grafy, riziko a nejistotu. Pravdou ale je, že v dnešní době je největším hazardem <strong>nedělat se svými penězi vůbec nic</strong>. Pokud vaše úspory leží na běžném účtu, jejich hodnota se kvůli inflaci každým dnem nenápadně rozpouští.</p>
+<div class="content">
+  <p>Mnoho lidí má pocit, že investování je hazard. Vidí v něm složité grafy a riziko. Pravdou ale je, že v dnešní době je největším hazardem <strong>nedělat se svými penězi vůbec nic</strong>. Pokud vaše úspory leží na běžném účtu, jejich hodnota se kvůli inflaci každým dnem nenápadně rozpouští.</p>
 
-  <h2>Proč vlastně investovat?</h2>
-  <p>Cílem investování není nutně stát se přes noc milionářem. Cílem je <strong>zachování kupní síly</strong> a postupné budování finančního polštáře, který vám v budoucnu zajistí svobodu. Ať už jde o dřívější odchod do důchodu, zajištění dětí na studiích nebo prostě klidný spánek.</p>
-
-  <div class="highlight-box">
+  <div class="quote-box">
     "Složené úročení je osmý div světa. Kdo mu rozumí, vydělává na něm; kdo ne, ten ho platí." – Albert Einstein
   </div>
 
-  <h2>Tři pilíře, na kterých stavíme v ZFP</h2>
-  <p>V ZFP Akademii učíme lidi systém, který je postavený na logice a maximální efektivitě. Nezačínáme riskantními nákupy na burze, ale pevnou základnou:</p>
-  
+  <h2>Síla složeného úročení</h2>
+  <p>Tento princip je základem bohatství. Znamená to, že se nezhodnocuje jen váš vklad, ale i úroky, které jste už získali. Čím dříve začnete, tím méně musíte měsíčně odkládat, abyste dosáhli stejného cíle. Čas je v investování důležitější než výše vkladu.</p>
+
+  <h2>Jak postupujeme v ZFP?</h2>
+  <p>Naše strategie stojí na logice a maximální efektivitě. Nezačínáme riskantními nákupy, ale budujeme pevnou pyramidu:</p>
   <ul>
-    <li><strong>Využití státních podpor:</strong> Proč nevyužít peníze, které nám stát nabízí? Stavební spoření či doplňkové penzijní spoření (DPS) s příspěvky státu a zaměstnavatele tvoří bezpečnou kotvu vašeho portfolia.</li>
-    <li><strong>Pravidelnost a čas:</strong> Nemusíte mít miliony. Důležité je začít i s málem (třeba 500 nebo 1 000 Kč měsíčně). Pravidelnost vás chrání před špatným načasováním trhu.</li>
-    <li><strong>Diverzifikace (Rozložení rizika):</strong> Své peníze dělíme. Část jde do konzervativních nástrojů, část do nemovitostních fondů (kde se stáváte spolumajiteli budov) a část do globálních akciových indexů (ZFP World Index), které profitují z růstu nejúspěšnějších firem světa jako Apple, Google nebo Microsoft.</li>
+    <li><strong>Státní podpory:</strong> Jako první využíváme peníze, které vám stát nabízí "zdarma" (stavební spoření, DPS).</li>
+    <li><strong>ZFP Realitní fond:</strong> Investujete do cihel. Stáváte se spolumajiteli prémiových budov, které generují stabilní nájem.</li>
+    <li><strong>ZFP World Index:</strong> Moderní cesta skrze ETF, kde jednou investicí vlastníte kousek největších firem světa jako Apple nebo Microsoft.</li>
   </ul>
 
-  <h2>Moderní trendy: Energie a technologie</h2>
-  <p>Investování v roce 2026 už není jen o starých fabrikách. Dnes peníze směřují do technologií umělé inteligence, zelené energetiky a udržitelnosti. Skrze naše portfolia se na tomto pokroku podílíte i vy – vaše peníze nestagnují, ale jsou součástí inovací, které hýbou světem.</p>
+  <h2>Diverzifikace jako štít</h2>
+  <p>Nedáváme všechna vejce do jednoho košíku. Správně nastavené portfolio kombinuje stabilitu nemovitostí, jistotu státních příspěvků a dynamiku světových trhů. Tím eliminujeme dopady výkyvů a zajišťujeme dlouhodobý růst vašeho majetku.</p>
 
-  <div class="cta-section">
-    <h3>Chcete vědět, kolik mohou vaše peníze vydělat?</h3>
-    <p>Ráda vám na konkrétních číslech ukážu, jak by vypadala investiční strategie přímo pro vás. Žádné sliby, jen čistá matematika a fakta.</p>
-    <a href="../index.html#kontakt" class="btn">Chci nezávazný výpočet</a>
+  <div class="cta-box">
+    <h3>Chcete vidět konkrétní čísla?</h3>
+    <p>Ráda vám na kalkulačce ukážu, jaký rozdíl udělá 10 let času ve vašem portfoliu. Nechte své peníze konečně vydělávat.</p>
+    <a href="https://zedko00.github.io/mzednickova/#kontakt" class="btn">Chci nezávaznou konzultaci</a>
   </div>
-</article>
+</div>
 
 <footer>
-  © 2026 Markéta Zedníčková · Vzdělávání v oblasti finanční gramotnosti
+  © 2026 Markéta Zedníčková · Vzdělávání a finanční gramotnost
 </footer>
 
 </body>
