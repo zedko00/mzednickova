@@ -250,7 +250,7 @@
         @media (min-width: 1024px) {
             .map-container {
                 height: 100%;
-                min-height: 480px; /* Upraveno pro lícování s tlačítkem */
+                min-height: 480px; 
             }
         }
     </style>
@@ -590,16 +590,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS animations
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
-        // Form handling with improved validation
         const form = document.getElementById("contact-form");
         const gdprCheckbox = document.getElementById("form-gdpr");
         const submitBtn = document.getElementById("form-submit");
         const offlineIndicator = document.getElementById("offline-indicator");
 
-        // Offline detection
         const updateOnlineStatus = () => {
             if (!navigator.onLine) {
                 offlineIndicator.classList.add("show");
@@ -612,18 +609,14 @@
         window.addEventListener("offline", updateOnlineStatus);
         updateOnlineStatus();
 
-        // Funkce pro aktualizaci stavu tlačítka
         const updateSubmitButtonState = () => {
             if (gdprCheckbox) {
                 submitBtn.disabled = !gdprCheckbox.checked;
             }
         };
 
-        // Inicializace - tlačítko je na začátku disabled
         if (gdprCheckbox && submitBtn) {
             updateSubmitButtonState();
-            
-            // Poslouchej změny checkboxu
             gdprCheckbox.addEventListener("change", updateSubmitButtonState);
         }
 
@@ -631,29 +624,34 @@
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 
-                // Offline check
+                const status = document.getElementById("form-status");
+                
+                // Kontrola, zda jsou všechna pole vyplněná
+                const name = document.getElementById("form-name").value.trim();
+                const phone = document.getElementById("form-phone").value.trim();
+                const email = document.getElementById("form-email").value.trim();
+                const message = document.getElementById("form-message").value.trim();
+
+                if (!name || !phone || !email || !message) {
+                    status.innerText = "❌ Prosím vyplňte všechna povinná pole.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+
                 if (!navigator.onLine) {
-                    const status = document.getElementById("form-status");
-                    status.innerText = "❌ Nejste připojeni k internetu. Zkontrolujte připojení a zkuste znovu.";
+                    status.innerText = "❌ Nejste připojeni k internetu.";
                     status.className = "mt-4 text-center error block";
                     return;
                 }
                 
-                // Kontrola checkboxu
                 if (!gdprCheckbox || !gdprCheckbox.checked) {
-                    const status = document.getElementById("form-status");
                     status.innerText = "Prosím odsouhlaste zpracování osobních údajů.";
                     status.className = "mt-4 text-center error block";
                     return;
                 }
                 
-                // Basic client-side validation
-                const phoneInput = document.getElementById("form-phone");
-                const phoneValue = phoneInput.value.replace(/\s/g, '');
-                
-                if(phoneValue.length < 9) {
-                    const status = document.getElementById("form-status");
-                    status.innerText = "Prosím zadejte platné telefonní číslo (minimálně 9 číslic).";
+                if(phone.replace(/\s/g, '').length < 9) {
+                    status.innerText = "Prosím zadejte platné telefonní číslo.";
                     status.className = "mt-4 text-center error block";
                     return;
                 }
@@ -668,27 +666,24 @@
                         method: 'POST', 
                         body: data, 
                         headers: { 'Accept': 'application/json' },
-                        signal: AbortSignal.timeout(10000) // 10 sekund timeout
+                        signal: AbortSignal.timeout(10000)
                     });
                     
                     if (response.ok) {
-                        const status = document.getElementById("form-status");
                         status.innerText = "✅ Děkuji! Vaše zpráva byla odeslána. Brzy se vám ozvu.";
                         status.className = "mt-4 text-center success block";
                         form.reset(); 
                         form.classList.add("hidden");
                         updateSubmitButtonState();
                     } else { 
-                        const status = document.getElementById("form-status");
                         status.innerText = "❌ Chyba při odesílání. Prosím zkuste znovu.";
                         status.className = "mt-4 text-center error block"; 
                     }
                 } catch(error) {
-                    const status = document.getElementById("form-status");
                     if (error.name === 'AbortError') {
-                        status.innerText = "❌ Odesílání trvalo příliš dlouho. Zkuste prosím znovu.";
+                        status.innerText = "❌ Odesílání trvalo příliš dlouho.";
                     } else {
-                        status.innerText = "❌ Chyba při odesílání. Zkontrolujte připojení a zkuste znovu.";
+                        status.innerText = "❌ Chyba při odesílání. Zkontrolujte připojení.";
                     }
                     status.className = "mt-4 text-center error block";
                 } finally { 
@@ -698,7 +693,6 @@
             });
         }
 
-        // Cookie banner
         window.addEventListener('load', function() {
             if (!localStorage.getItem('cookieConsent')) {
                 setTimeout(() => { 
@@ -714,7 +708,6 @@
             setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
         }
 
-        // Lazy load map
         const mapSection = document.getElementById('contact-map');
         const mapPlaceholder = document.getElementById('map-placeholder');
         
@@ -736,11 +729,9 @@
         
         if(mapSection) {
             mapObserver.observe(mapSection);
-            // Pojistka: Pokud se mapa nenačte do 3 sekund, vynutíme to
             setTimeout(loadMap, 3000);
         }
 
-        // Services carousel with improved indicators
         const sc = document.getElementById('services-carousel');
         const sdots = document.getElementById('srv-dots');
         const swIndicator = document.getElementById('swipe-indicator');
@@ -766,7 +757,6 @@
                     d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
                 });
                 
-                // Fade out swipe indicator after first scroll
                 if (sc.scrollLeft > 10 && swIndicator) {
                     swIndicator.style.opacity = '0';
                     swIndicator.style.pointerEvents = 'none';
