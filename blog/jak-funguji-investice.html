@@ -9,6 +9,7 @@
   :root {
     --green: #2d7a4f;
     --green-light: #e8f5ee;
+    --green-mid: #3a9962;
     --dark: #1a2e23;
     --text: #374151;
     --muted: #6b7280;
@@ -28,7 +29,6 @@
     line-height: 1.7;
   }
 
-  /* NAV */
   nav {
     background: var(--white);
     border-bottom: 1px solid var(--border);
@@ -39,159 +39,364 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
 
   .nav-brand {
     font-weight: 700;
+    font-size: 1.1rem;
     color: var(--dark);
     text-decoration: none;
   }
   .nav-brand span { color: var(--green); }
 
-  .nav-links a {
-    color: var(--green);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  /* ARTICLE HEADER */
-  .article-hero {
-    background: white;
-    padding: 4rem 1.5rem 3rem;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .category-tag {
-    display: inline-block;
-    background: var(--green-light);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
-    margin-bottom: 1rem;
-  }
-
-  h1 {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    color: var(--dark);
-    max-width: 800px;
-    margin: 0 auto 1rem;
-    line-height: 1.2;
-  }
-
-  .meta {
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--green); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e4a30 100%);
+    color: white;
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
   }
 
-  /* CONTENT */
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    flex-wrap: wrap;
+  }
+
   .content {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .intro-quote {
+    background: var(--white);
+    border-left: 4px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .intro-quote p {
+    font-size: 1.08rem;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.7;
   }
 
   h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--dark);
-    margin: 2.5rem 0 1rem;
-    font-size: 1.5rem;
+    margin: 2.5rem 0 0.8rem;
+    letter-spacing: -0.01em;
   }
 
-  p { margin-bottom: 1.5rem; }
+  p { margin-bottom: 1rem; color: var(--text); }
+  strong { font-weight: 600; color: var(--dark); }
 
-  ul { margin-bottom: 1.5rem; padding-left: 1.2rem; }
-  li { margin-bottom: 0.5rem; }
-
-  .quote-box {
+  .info-box {
     background: var(--accent);
-    border-left: 4px solid var(--green);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: var(--dark);
+    border: 1px solid #c3e6d2;
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0;
   }
+  .info-box-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .info-box p { margin: 0; font-size: 0.95rem; color: #2d4a38; }
 
-  /* CTA */
-  .cta-box {
-    background: var(--dark);
-    color: white;
-    padding: 3rem 2rem;
-    border-radius: 20px;
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+  @media (max-width: 580px) { .pillars { grid-template-columns: 1fr; } }
+
+  .pillar-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.2rem;
     text-align: center;
-    margin-top: 4rem;
+    transition: box-shadow 0.2s, transform 0.2s;
   }
+  .pillar-card:hover {
+    box-shadow: 0 6px 20px rgba(45,122,79,0.1);
+    transform: translateY(-2px);
+  }
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+  .pillar-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .pillar-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
+  .pillar-card p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.5; }
 
-  .cta-box h3 { margin-bottom: 1rem; color: white; }
-  .cta-box p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+  .stat-card {
+    background: linear-gradient(135deg, var(--dark), #1e4a30);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    color: white;
+  }
+  .stat-number {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #6ee89a;
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .stat-card p { margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  @media (max-width: 480px) { .stat-card { flex-direction: column; text-align: center; } }
 
-  .btn {
-    display: inline-block;
+  .steps { margin: 1.5rem 0; }
+  .step { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start; }
+  .step-num {
     background: var(--green);
     color: white;
-    padding: 0.8rem 2rem;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700;
+    flex-shrink: 0; margin-top: 0.15rem;
+  }
+  .step-body strong { display: block; font-size: 0.95rem; color: var(--dark); margin-bottom: 0.15rem; }
+  .step-body p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+  .checklist { list-style: none; margin: 1rem 0 1.5rem; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.97rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 0.9rem; margin-top: 0.1rem; flex-shrink: 0; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+  .cta-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .cta-box h3 { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 0.6rem; }
+  .cta-box p { color: var(--muted); font-size: 0.95rem; max-width: 380px; margin: 0 auto 1.5rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--green); color: white;
+    font-weight: 600; font-size: 0.95rem;
+    padding: 0.75rem 1.8rem;
     border-radius: 999px;
     text-decoration: none;
-    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+    font-family: inherit; border: none; cursor: pointer;
   }
+  .btn:hover { background: var(--dark); transform: translateY(-1px); }
 
-  footer {
-    text-align: center;
-    padding: 3rem;
-    color: var(--muted);
-    font-size: 0.85rem;
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .tag { background: var(--green-light); color: var(--green); font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 999px; }
+
+  .disclaimer { font-size: 0.82rem; color: var(--muted); text-align: center; margin-top: 1.5rem; font-style: italic; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
+  .hero > * { animation: fadeUp 0.5s ease both; }
+  .hero-tag  { animation-delay: 0.05s; }
+  .hero h1   { animation-delay: 0.15s; }
+  .hero p    { animation-delay: 0.25s; }
+  .hero-meta { animation-delay: 0.35s; }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="https://zedko00.github.io/mzednickova/" class="nav-brand">Markéta <span>Zedníčková</span></a>
-  <div class="nav-links">
-    <a href="https://zedko00.github.io/mzednickova/blog/">← Zpět na blog</a>
-  </div>
+  <a href="https://zedko00.github.io/mzednickova/blog/" class="nav-back">← Zpět na blog</a>
 </nav>
 
-<div class="article-hero">
-  <span class="category-tag">Investování</span>
-  <h1>Peníze pod polštářem požírá inflace. Jak je nechat pracovat?</h1>
-  <div class="meta">Květen 2026 · 8 min čtení · Tým ZFP Akademie</div>
+<div class="hero">
+  <div class="hero-tag">📈 Investování a majetek</div>
+  <h1>Peníze pod polštářem požírá inflace</h1>
+  <p>Jak nechat peníze pracovat za vás, proč začít hned a jakou roli v tom hraje strategie ZFP</p>
+  <div class="hero-meta">
+    <span>📅 Duben 2026</span>
+    <span>⏱ 8 minut čtení</span>
+    <span>✍️ Markéta Zedníčková</span>
+  </div>
 </div>
 
 <div class="content">
-  <p>Mnoho lidí má pocit, že investování je hazard. Vidí v něm složité grafy a riziko. Pravdou ale je, že v dnešní době je největším hazardem <strong>nedělat se svými penězi vůbec nic</strong>. Pokud vaše úspory leží na běžném účtu, jejich hodnota se kvůli inflaci každým dnem nenápadně rozpouští.</p>
 
-  <div class="quote-box">
-    "Složené úročení je osmý div světa. Kdo mu rozumí, vydělává na něm; kdo ne, ten ho platí." – Albert Einstein
+  <div class="intro-quote">
+    <p>Mnoho lidí má pocit, že investování je hazard. Vidí v něm složité grafy, riziko a nejistotu. Pravdou ale je, že v dnešní době je největším hazardem nedělat se svými penězi vůbec nic a nechat je napospas inflaci.</p>
   </div>
 
-  <h2>Síla složeného úročení</h2>
-  <p>Tento princip je základem bohatství. Znamená to, že se nezhodnocuje jen váš vklad, ale i úroky, které jste už získali. Čím dříve začnete, tím méně musíte měsíčně odkládat, abyste dosáhli stejného cíle. Čas je v investování důležitější než výše vkladu.</p>
+  <h2>Základní princip: Čas je váš největší spojenec</h2>
+  <p>Investování není o "rychlém zbohatnutí", ale o disciplíně a čase. Čím dříve své peníze pošlete do světa, tím déle mohou využívat sílu <strong>složeného úročení</strong>. To znamená, že úroky z vašich úspor generují další úroky, a vaše bohatství tak roste geometrickou řadou.</p>
 
-  <h2>Jak postupujeme v ZFP?</h2>
-  <p>Naše strategie stojí na logice a maximální efektivitě. Nezačínáme riskantními nákupy, ale budujeme pevnou pyramidu:</p>
-  <ul>
-    <li><strong>Státní podpory:</strong> Jako první využíváme peníze, které vám stát nabízí "zdarma" (stavební spoření, DPS).</li>
-    <li><strong>ZFP Realitní fond:</strong> Investujete do cihel. Stáváte se spolumajiteli prémiových budov, které generují stabilní nájem.</li>
-    <li><strong>ZFP World Index:</strong> Moderní cesta skrze ETF, kde jednou investicí vlastníte kousek největších firem světa jako Apple nebo Microsoft.</li>
+  <div class="info-box">
+    <span class="info-box-label">💡 Proč ne běžný účet?</span>
+    <p>Při inflaci 3 % ztratí vašich 100 000 Kč na kupní síle polovinu za 24 let. Investice jsou jediný způsob, jak tuto sílu nejen udržet, ale i navyšovat.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Tři pilíře úspěšného investora v ZFP</h2>
+  <p>V ZFP Akademii stavíme portfolia tak, aby byla bezpečná a zároveň výnosná. Využíváme k tomu osvědčenou kombinaci tří oblastí:</p>
+
+  <div class="pillars">
+    <div class="pillar-card">
+      <span class="pillar-icon">🏛️</span>
+      <span class="pillar-label">I. Pilíř</span>
+      <h3>Státní bonusy</h3>
+      <p>Stavební a penzijní spoření. Peníze "zdarma" od státu jako bezpečný základ.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">🏢</span>
+      <span class="pillar-label">II. Pilíř</span>
+      <h3>Realitní fondy</h3>
+      <p>Vlastníte kousek velkých budov. Stabilní výnosy z nájmů bez starostí o údržbu.</p>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">🌍</span>
+      <span class="pillar-label">III. Pilíř</span>
+      <h3>Světové trhy</h3>
+      <p>Indexové fondy (ETF). Profitujete z růstu firem jako Apple, Google nebo Tesla.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Proč je pravidelnost důležitější než výše vkladu?</h2>
+  <p>Nemusíte mít miliony, abyste mohli začít. Klíčem je <strong>pravidelnost</strong>:</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Zprůměrování ceny</strong>
+        <p>Když trhy klesají, nakupujete se slevou. Když rostou, vaše portfolio nabírá na hodnotě. Pravidelnost vás chrání před špatným načasováním.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Automatizace návyku</strong>
+        <p>Peníze, které se zainvestují hned po výplatě, nebudete mít tendenci utratit. Stávají se vaším budoucím já.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-number">2,4 mil. Kč</div>
+    <p>Tolik může činit vaše rezerva po 30 letech při investici pouhých 2 000 Kč měsíčně (při 7% zhodnocení). Síla pravidelnosti je neuvěřitelná.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Checklist pro vaše finance</h2>
+  <p>Než začnete investovat velké částky, ujistěte se, že máte v pořádku základy:</p>
+
+  <ul class="checklist">
+    <li>Mám vytvořenou likvidní rezervu pro případ výpadku příjmu</li>
+    <li>Mám nastavené maximální státní příspěvky (peníze zdarma)</li>
+    <li>Moje investice jsou diverzifikované (rozložené mezi více oborů)</li>
+    <li>Rozumím tomu, do čeho své peníze posílám</li>
   </ul>
 
-  <h2>Diverzifikace jako štít</h2>
-  <p>Nedáváme všechna vejce do jednoho košíku. Správně nastavené portfolio kombinuje stabilitu nemovitostí, jistotu státních příspěvků a dynamiku světových trhů. Tím eliminujeme dopady výkyvů a zajišťujeme dlouhodobý růst vašeho majetku.</p>
+  <hr class="divider">
 
   <div class="cta-box">
-    <h3>Chcete vidět konkrétní čísla?</h3>
-    <p>Ráda vám na kalkulačce ukážu, jaký rozdíl udělá 10 let času ve vašem portfoliu. Nechte své peníze konečně vydělávat.</p>
-    <a href="https://zedko00.github.io/mzednickova/#kontakt" class="btn">Chci nezávaznou konzultaci</a>
+    <h3>Chcete vědět, kolik mohou vaše peníze vydělat?</h3>
+    <p>Pojďme se na to podívat společně. Spočítám vám, jak by mohla vypadat vaše cesta k finanční nezávislosti.</p>
+    <a href="https://zedko00.github.io/mzednickova/#kontakt" class="btn">☕ Chci nezávaznou konzultaci</a>
   </div>
+
+  <div class="tags">
+    <span class="tag">Investice</span>
+    <span class="tag">Složené úročení</span>
+    <span class="tag">ZFP Akademie</span>
+    <span class="tag">Osobní finance</span>
+    <span class="tag">Budování majetku</span>
+  </div>
+
+  <p class="disclaimer">Tento článek má pouze informační charakter a nepředstavuje konkrétní investiční doporučení. Investování s sebou nese rizika.</p>
+
 </div>
-
-<footer>
-  © 2026 Markéta Zedníčková · Vzdělávání a finanční gramotnost
-</footer>
-
 </body>
 </html>
