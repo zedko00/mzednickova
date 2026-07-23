@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:fo="http://www.w3.org/1999/XSL/Format"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
   <loc>https://www.marketazednickova.cz/</loc>
-  <lastmod>2026-07-05T15:37:58+00:00</lastmod>
+  <lastmod>2026-07-05</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.marketazednickova.cz/blog/</loc>
-  <lastmod>2026-07-05T15:37:59+00:00</lastmod>
+  <lastmod>2026-07-05</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.marketazednickova.cz/index.html</loc>
-  <lastmod>2026-07-05T15:37:58+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://www.marketazednickova.cz/blog/jak-funguji-investice.html</loc>
-  <lastmod>2026-07-05T15:37:59+00:00</lastmod>
+  <lastmod>2026-07-05</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.marketazednickova.cz/blog/duchodovy-system.html</loc>
-  <lastmod>2026-07-05T15:37:58+00:00</lastmod>
+  <lastmod>2026-07-05</lastmod>
   <priority>0.64</priority>
 </url>
 
