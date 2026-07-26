@@ -128,9 +128,6 @@
         .map-container iframe {
             filter: sepia(10%) contrast(95%);
             border-radius: 1.5rem;
-            width: 100%;
-            height: 100%;
-            min-height: 350px;
         }
 
         #cookie-banner {
@@ -154,8 +151,8 @@
             object-position: 50% 10%;
         }
 
-        #form-status.success { color: #4ade80; font-weight: bold; }
-        #form-status.error { color: #f87171; font-weight: bold; }
+        #form-status.success { color: #D29156; font-weight: bold; }
+        #form-status.error { color: #ef4444; font-weight: bold; }
 
         .hidden-field { display: none !important; }
 
@@ -197,6 +194,23 @@
         .icon-emoji {
             font-size: inherit;
             line-height: 1;
+        }
+
+        /* Anti-spam ochrana e-mailu */
+        .email-protection {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+
+        /* Lazy loading indikátor */
+        .lazy-iframe {
+            background: linear-gradient(135deg, rgba(243, 229, 216, 0.1) 0%, rgba(210, 145, 86, 0.05) 100%);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8C7A6B;
+            font-size: 14px;
         }
 
         /* Loading spinner */
@@ -454,11 +468,11 @@
                             </div>
                             <span class="text-warm-sand group-hover:text-white transition-colors font-medium">+420 606 055 750</span>
                         </a>
-                        <a href="mailto:marketa.zednickova@zfpa.cz" class="flex items-center gap-4 group">
+                        <a href="#" onclick="this.href='mailto:' + 'marketa.zednickova' + '@' + 'zfpa.cz';" class="flex items-center gap-4 group">
                             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-warm-accent transition-all duration-300">
                                 <span class="text-lg icon-emoji" aria-hidden="true">✉️</span>
                             </div>
-                            <span class="text-warm-sand group-hover:text-white transition-colors font-medium">marketa.zednickova@zfpa.cz</span>
+                            <span class="text-warm-sand group-hover:text-white transition-colors font-medium email-protection">zc.apfz@avokcindez.atekram</span>
                         </a>
                     </div>
                 </div>
@@ -491,168 +505,269 @@
 
                         <div class="col-span-2">
                             <label for="form-gdpr" class="flex items-start gap-3 cursor-pointer group">
-                                <input type="checkbox" id="form-gdpr" name="gdpr" required class="w-5 h-5 mt-0.5 rounded border-2 border-white/20 bg-white/5 checked:bg-warm-accent checked:border-warm-accent cursor-pointer accent-[#D29156]">
-                                <span class="text-xs text-warm-sand/80 leading-snug">
-                                    Souhlasím se zpracováním osobních údajů podle GDPR pro účely kontaktu.
+                                <input type="checkbox" id="form-gdpr" name="gdpr" required class="w-5 h-5 mt-0.5 rounded border-2 border-white/20 bg-white/5 checked:bg-warm-accent checked:border-warm-accent cursor-pointer transition focus:ring-0 flex-shrink-0" aria-required="true">
+                                <span class="text-[11px] md:text-xs text-warm-sand/70 leading-snug">
+                                    Souhlasím se <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" rel="noopener noreferrer" class="text-warm-accent hover:text-white transition underline">zpracováním osobních údajů</a> *
                                 </span>
                             </label>
                         </div>
 
-                        <div class="col-span-2 mt-2">
-                            <button type="submit" id="btn-submit" class="btn-cta-highlight w-full py-3.5 rounded-xl font-bold text-base transition flex items-center justify-center">
-                                <span id="btn-text">Odeslat zprávu</span>
-                            </button>
-                        </div>
-                        
-                        <div class="col-span-2">
-                            <div id="form-status" class="text-center text-sm mt-2"></div>
-                        </div>
+                        <button type="submit" id="form-submit" class="btn-premium py-3.5 rounded-xl col-span-2 font-bold text-sm uppercase tracking-widest transition-all hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            Odeslat zprávu
+                        </button>
                     </form>
+                    <p id="form-status" class="mt-3 text-center hidden text-warm-sand text-xs" role="status" aria-live="polite"></p>
                 </div>
             </div>
 
-            <div class="lg:w-1/2 map-container rounded-[1.5rem] overflow-hidden min-h-[350px]">
-                <iframe src="https://maps.google.com/maps?q=Komensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kancelář Boskovice"></iframe>
-            </div>
+            <div class="lg:w-1/2 flex flex-col gap-6">
+                <div class="map-container relative w-full overflow-hidden rounded-[1.5rem] md:rounded-[2rem] flex-grow">
+                    <div id="map-placeholder" class="lazy-iframe absolute inset-0 z-0">
+                        <span class="text-xs uppercase tracking-widest font-semibold opacity-50">Načítání mapy...</span>
+                    </div>
+                    <iframe id="contact-map" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
+                        class="absolute inset-0 w-full h-full border-0 hidden z-10" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Poloha kanceláře Boskovice na mapě">
+                    </iframe>
+                    <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-warm-sand/20 z-20 font-sans md:max-w-[280px]">
+                        <p class="font-bold text-warm-text text-sm mb-2 flex items-center gap-2">
+                            <span class="icon-emoji">📍</span> Kde mě najdete?
+                        </p>
+                        <p class="text-xs text-warm-subtle leading-relaxed">
+                            Kancelář Boskovice<br>
+                            <span class="text-warm-accent font-medium">Parkování je možné přímo u objektu.</span>
+                        </p>
+                    </div>
+                </div>
 
+                <div class="w-full">
+                    <div class="flex gap-4">
+                        <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 hover:bg-white/10 transition-all duration-300 flex-1">
+                            <div class="w-10 h-10 rounded-xl bg-[#003F7A] flex items-center justify-center flex-shrink-0 shadow-inner">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-xs">ČNB</p>
+                                <p class="text-warm-sand/50 text-[10px]">Licencovaný poradce</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 hover:bg-white/10 transition-all duration-300 flex-1">
+                            <div class="w-10 h-10 rounded-xl bg-warm-accent flex items-center justify-center flex-shrink-0 shadow-inner">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="white" stroke-width="1.5"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-xs">ZFP</p>
+                                <p class="text-warm-sand/50 text-[10px]">Akreditované zázemí</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-warm-base border-t border-warm-sand/50 py-10 px-6 mt-12 text-center text-sm text-warm-subtle">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <p class="font-heading font-semibold text-warm-text text-base">Markéta Zedníčková</p>
-                <p class="text-xs mt-1">Finanční poradenství Boskovice & Blansko</p>
-            </div>
-            <div class="text-xs">
-                © <span id="current-year"></span> Markéta Zedníčková. Všechna práva vyhrazena.
-            </div>
+    <footer class="py-12 bg-warm-base border-t border-warm-sand text-center text-warm-subtle text-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-heading text-lg font-bold text-warm-text mb-3">Markéta Zedníčková</p>
+            <p class="mb-4">IČO: 88313531 | Vázaný zástupce společnosti ZFP akademie, a.s.</p>
+            <p class="mb-6">
+                <a href="https://www.zfpgroup.cz/getContentAsset/ed9ea719-cae3-4cba-aeb4-c4f58b6fe0bc/1f304fa2-3c33-4679-a12e-164d6cb4606e/ZasadyZpracovaniOsobnichUdaju_231220_VS_2024.pdf?language=cs-CZ" target="_blank" rel="noopener noreferrer" class="text-warm-accent hover:underline">Zpracování osobních údajů (GDPR)</a>
+            </p>
+            <p>© 2026 Markéta Zedníčková. Všechna práva vyhrazena.</p>
         </div>
     </footer>
 
-    <!-- Cookie Banner -->
-    <div id="cookie-banner" class="bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-warm-sand max-w-md w-[calc(100%-2rem)]">
-        <h4 class="font-heading font-bold text-warm-text text-lg mb-2">Cookies na webu 🍪</h4>
-        <p class="text-xs text-warm-subtle mb-4 leading-relaxed">
-            Tento web používá pouze nezbytná cookies k zajištění správné funkčnosti webu. Procházením vyjadřujete souhlas s jejich užíváním.
-        </p>
-        <div class="flex gap-3">
-            <button id="cookie-accept" class="btn-premium px-5 py-2 rounded-xl text-xs font-semibold w-full">Rozumím</button>
+    <div id="cookie-banner" class="w-[92%] md:max-w-3xl glass-nav p-5 md:p-6 rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl border border-white/50">
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+            <div class="flex-grow text-center md:text-left">
+                <h4 class="font-heading font-bold text-warm-text mb-1 text-sm md:text-base">Ochrana vašeho soukromí</h4>
+                <p class="text-xs md:text-sm text-warm-subtle leading-relaxed">Používáme cookies k analýze návštěvnosti a zlepšení webu.</p>
+            </div>
+            <div class="flex gap-2 w-full md:w-auto">
+                <button onclick="acceptCookies('essential')" class="flex-1 md:flex-none px-4 py-2.5 md:px-6 md:py-3 btn-secondary rounded-xl md:rounded-2xl text-xs md:text-sm font-semibold whitespace-nowrap text-warm-text">Nezbytné</button>
+                <button onclick="acceptCookies('all')" class="flex-1 md:flex-none px-4 py-2.5 md:px-6 md:py-3 btn-premium rounded-xl md:rounded-2xl text-xs md:text-sm font-bold whitespace-nowrap">Vše</button>
+            </div>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializace AOS animací
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50
-        });
+        AOS.init({ duration: 1000, once: true, offset: 50 });
 
-        // Nastavení roku v patičce
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        const form = document.getElementById("contact-form");
+        const gdprCheckbox = document.getElementById("form-gdpr");
+        const submitBtn = document.getElementById("form-submit");
+        const offlineIndicator = document.getElementById("offline-indicator");
 
-        // Detekce offline stavu
-        const offlineInd = document.getElementById('offline-indicator');
-        window.addEventListener('offline', () => offlineInd.classList.add('show'));
-        window.addEventListener('online', () => offlineInd.classList.remove('show'));
+        const updateOnlineStatus = () => {
+            if (!navigator.onLine) {
+                offlineIndicator.classList.add("show");
+            } else {
+                offlineIndicator.classList.remove("show");
+            }
+        };
 
-        // Cookie Banner
-        const cookieBanner = document.getElementById('cookie-banner');
-        const cookieAccept = document.getElementById('cookie-accept');
-        
-        if (!localStorage.getItem('cookiesAccepted')) {
-            setTimeout(() => {
-                cookieBanner.classList.add('show');
-            }, 1000);
+        window.addEventListener("online", updateOnlineStatus);
+        window.addEventListener("offline", updateOnlineStatus);
+        updateOnlineStatus();
+
+        const updateSubmitButtonState = () => {
+            if (gdprCheckbox) {
+                submitBtn.disabled = !gdprCheckbox.checked;
+            }
+        };
+
+        if (gdprCheckbox && submitBtn) {
+            updateSubmitButtonState();
+            gdprCheckbox.addEventListener("change", updateSubmitButtonState);
         }
 
-        cookieAccept.addEventListener('click', () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieBanner.classList.remove('show');
-        });
-
-        // Kontaktní formulář (AJAX přes Formspree)
-        const form = document.getElementById('contact-form');
-        const formStatus = document.getElementById('form-status');
-        const btnSubmit = document.getElementById('btn-submit');
-        const btnText = document.getElementById('btn-text');
-
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Základní kontrola GDPR
-            const gdpr = document.getElementById('form-gdpr');
-            if (!gdpr.checked) {
-                formStatus.className = 'error';
-                formStatus.textContent = 'Prosím, potvrďte souhlas se zpracováním osobních údajů.';
-                return;
-            }
-
-            // Ochrana proti spamu (Honeypot)
-            const honeypot = form.querySelector('input[name="honeypot"]').value;
-            if (honeypot) return;
-
-            btnSubmit.disabled = true;
-            btnText.innerHTML = '<span class="spinner"></span> Odesílám...';
-            formStatus.textContent = '';
-
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    formStatus.className = 'success';
-                    formStatus.textContent = 'Děkuji! Zpráva byla úspěšně odeslána. Brzy se vám ozvu.';
-                    form.reset();
-                } else {
-                    const data = await response.json();
-                    formStatus.className = 'error';
-                    if (Object.hasOwn(data, 'errors')) {
-                        formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
-                    } else {
-                        formStatus.textContent = 'Apoň některé pole bylo vyplněno neplatně. Zkontrolujte údaje.';
-                    }
-                }
-            } catch (error) {
-                formStatus.className = 'error';
-                formStatus.textContent = 'Došlo k chybě při odesílání. Zkontrolujte připojení k internetu.';
-            } finally {
-                btnSubmit.disabled = false;
-                btnText.textContent = 'Odeslat zprávu';
-            }
-        });
-
-        // Mobilní karusel tečky
-        const carousel = document.getElementById('services-carousel');
-        const dotsContainer = document.getElementById('srv-dots');
-
-        if (carousel && dotsContainer) {
-            const cards = carousel.querySelectorAll('.premium-card');
-            cards.forEach((_, idx) => {
-                const dot = document.createElement('div');
-                dot.style.cssText = 'width: 8px; height: 8px; border-radius: 50%; background: #D29156; opacity: 0.3; transition: all 0.3s;';
-                if (idx === 0) dot.style.opacity = '1';
-                dotsContainer.appendChild(dot);
-            });
-
-            carousel.addEventListener('scroll', () => {
-                const scrollPos = carousel.scrollLeft;
-                const cardWidth = cards[0].offsetWidth + 16;
-                const activeIndex = Math.round(scrollPos / cardWidth);
+        if(form) {
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
                 
-                Array.from(dotsContainer.children).forEach((dot, idx) => {
-                    dot.style.opacity = idx === activeIndex ? '1' : '0.3';
-                    dot.style.transform = idx === activeIndex ? 'scale(1.2)' : 'scale(1)';
+                const status = document.getElementById("form-status");
+                
+                // Kontrola, zda jsou všechna pole vyplněná
+                const name = document.getElementById("form-name").value.trim();
+                const phone = document.getElementById("form-phone").value.trim();
+                const email = document.getElementById("form-email").value.trim();
+                const message = document.getElementById("form-message").value.trim();
+
+                if (!name || !phone || !email || !message) {
+                    status.innerText = "❌ Prosím vyplňte všechna povinná pole.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+
+                if (!navigator.onLine) {
+                    status.innerText = "❌ Nejste připojeni k internetu.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+                
+                if (!gdprCheckbox || !gdprCheckbox.checked) {
+                    status.innerText = "Prosím odsouhlaste zpracování osobních údajů.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+                
+                if(phone.replace(/\s/g, '').length < 9) {
+                    status.innerText = "Prosím zadejte platné telefonní číslo.";
+                    status.className = "mt-4 text-center error block";
+                    return;
+                }
+
+                submitBtn.disabled = true; 
+                submitBtn.innerHTML = '<span class="spinner"></span>Odesílám...';
+                
+                const data = new FormData(form);
+                
+                try {
+                    const response = await fetch(form.action, { 
+                        method: 'POST', 
+                        body: data, 
+                        headers: { 'Accept': 'application/json' },
+                        signal: AbortSignal.timeout(10000)
+                    });
+                    
+                    if (response.ok) {
+                        status.innerText = "✅ Děkuji! Vaše zpráva byla odeslána. Brzy se vám ozvu.";
+                        status.className = "mt-4 text-center success block";
+                        form.reset(); 
+                        form.classList.add("hidden");
+                        updateSubmitButtonState();
+                    } else { 
+                        status.innerText = "❌ Chyba při odesílání. Prosím zkuste znovu.";
+                        status.className = "mt-4 text-center error block"; 
+                    }
+                } catch(error) {
+                    if (error.name === 'AbortError') {
+                        status.innerText = "❌ Odesílání trvalo příliš dlouho.";
+                    } else {
+                        status.innerText = "❌ Chyba při odesílání. Zkontrolujte připojení.";
+                    }
+                    status.className = "mt-4 text-center error block";
+                } finally { 
+                    submitBtn.disabled = !gdprCheckbox.checked; 
+                    submitBtn.innerHTML = 'Odeslat zprávu'; 
+                }
+            });
+        }
+
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('cookieConsent')) {
+                setTimeout(() => { 
+                    document.getElementById('cookie-banner').classList.add('show'); 
+                }, 1000);
+            }
+        });
+
+        function acceptCookies(type) {
+            localStorage.setItem('cookieConsent', type);
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.remove('show');
+            setTimeout(() => { banner.style.visibility = 'hidden'; }, 600);
+        }
+
+        const mapSection = document.getElementById('contact-map');
+        const mapPlaceholder = document.getElementById('map-placeholder');
+        
+        const loadMap = () => {
+            if (mapSection && mapSection.classList.contains('hidden')) {
+                mapSection.classList.remove('hidden');
+                if (mapPlaceholder) mapPlaceholder.style.display = 'none';
+            }
+        };
+
+        const mapObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    loadMap();
+                    mapObserver.unobserve(mapSection);
+                }
+            });
+        }, { rootMargin: '100px' });
+        
+        if(mapSection) {
+            mapObserver.observe(mapSection);
+            setTimeout(loadMap, 3000);
+        }
+
+        const sc = document.getElementById('services-carousel');
+        const sdots = document.getElementById('srv-dots');
+        const swIndicator = document.getElementById('swipe-indicator');
+        
+        if (sc && sdots) {
+            const count = sc.children.length;
+            for (let i = 0; i < count; i++) {
+                const d = document.createElement('div');
+                d.style.cssText = 'width:' + (i === 0 ? '18px' : '6px') + ';height:6px;border-radius:3px;background:' + (i === 0 ? '#D29156' : 'rgba(74,62,56,0.2)') + ';transition:all 0.3s;cursor:pointer;';
+                d.setAttribute('role', 'tab');
+                d.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                d.addEventListener('click', () => { 
+                    sc.scrollTo({ left: i * (280 + 16), behavior: 'smooth' }); 
                 });
+                sdots.appendChild(d);
+            }
+            
+            sc.addEventListener('scroll', () => {
+                const idx = Math.round(sc.scrollLeft / (280 + 16));
+                sdots.querySelectorAll('[role="tab"]').forEach((d, i) => {
+                    d.style.width = i === idx ? '18px' : '6px';
+                    d.style.background = i === idx ? '#D29156' : 'rgba(74,62,56,0.2)';
+                    d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+                });
+                
+                if (sc.scrollLeft > 10 && swIndicator) {
+                    swIndicator.style.opacity = '0';
+                    swIndicator.style.pointerEvents = 'none';
+                    setTimeout(() => swIndicator.style.display = 'none', 300);
+                }
             });
         }
     </script>
