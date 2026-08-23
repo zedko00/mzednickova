@@ -32,7 +32,6 @@
             "addressCountry": "CZ"
         },
         "telephone": "+420606055750",
-        "email": "marketa.zednickova@zfpa.cz",
         "priceRange": "$$",
         "sameAs": [],
         "knowsAbout": ["Pojištění", "Hypotéky", "Penzijní spoření", "Investice", "Finanční poradenství"]
@@ -194,12 +193,6 @@
         .icon-emoji {
             font-size: inherit;
             line-height: 1;
-        }
-
-        /* Anti-spam ochrana e-mailu */
-        .email-protection {
-            unicode-bidi: bidi-override;
-            direction: rtl;
         }
 
         /* Lazy loading indikátor */
@@ -468,11 +461,11 @@
                             </div>
                             <span class="text-warm-sand group-hover:text-white transition-colors font-medium">+420 606 055 750</span>
                         </a>
-                        <a href="#" onclick="this.href='mailto:' + 'marketa.zednickova' + '@' + 'zfpa.cz';" class="flex items-center gap-4 group">
+                        <a href="#" id="email-link" rel="nofollow" class="flex items-center gap-4 group">
                             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-warm-accent transition-all duration-300">
                                 <span class="text-lg icon-emoji" aria-hidden="true">✉️</span>
                             </div>
-                            <span class="text-warm-sand group-hover:text-white transition-colors font-medium email-protection">zc.apfz@avokcindez.atekram</span>
+                            <span id="email-text" class="text-warm-sand group-hover:text-white transition-colors font-medium">Zobrazit e-mail</span>
                         </a>
                     </div>
                 </div>
@@ -625,6 +618,42 @@
             updateSubmitButtonState();
             gdprCheckbox.addEventListener("change", updateSubmitButtonState);
         }
+
+        // Ochrana e-mailu proti scraperům: adresa se skládá z kódů znaků
+        // a do stránky se vloží až při interakci uživatele (fokus/hover/klik),
+        // ne hned při načtení – boti to typicky nespustí.
+        (function() {
+            var emailLink = document.getElementById("email-link");
+            var emailText = document.getElementById("email-text");
+            if (!emailLink || !emailText) return;
+
+            var userPart = [109,97,114,107,101,116,97,46,122,101,100,110,105,99,107,111,118,97];
+            var domainPart = [122,102,112,97,46,99,122];
+
+            function decode(codes) {
+                return codes.map(function (c) { return String.fromCharCode(c); }).join("");
+            }
+
+            var revealed = false;
+            function revealEmail() {
+                if (revealed) return;
+                revealed = true;
+                var email = decode(userPart) + "@" + decode(domainPart);
+                emailLink.setAttribute("href", "mailto:" + email);
+                emailText.textContent = email;
+                emailLink.setAttribute("aria-label", "Napsat e-mail na adresu " + email);
+            }
+
+            emailLink.addEventListener("mouseenter", revealEmail);
+            emailLink.addEventListener("focus", revealEmail);
+            emailLink.addEventListener("click", function (e) {
+                if (!revealed) {
+                    e.preventDefault();
+                    revealEmail();
+                    window.location.href = emailLink.getAttribute("href");
+                }
+            });
+        })();
 
         if(form) {
             form.addEventListener("submit", async (e) => {
