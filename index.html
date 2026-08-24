@@ -6,13 +6,27 @@
     <meta name="description" content="Markéta Zedníčková – finanční poradenství v Boskovicích a Blansku. Pojištění, hypotéky, důchody a investice bez zbytečného chaosu. Lidský přístup k financím.">
     <meta name="theme-color" content="#D29156">
     <meta name="robots" content="index, follow">
+
     <meta property="og:title" content="Markéta Zedníčková - Finance, které dají smysl">
     <meta property="og:description" content="Finanční poradenství s lidským přístupem. Stavíme vaši budoucnost na pevných základech.">
     <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://www.zednickova.cz">
+    <meta property="og:image" content="https://www.zednickova.cz/markéta_profil.png">
+    <meta property="og:locale" content="cs_CZ">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Markéta Zedníčková - Finance, které dají smysl">
+    <meta name="twitter:description" content="Finanční poradenství s lidským přístupem. Stavíme vaši budoucnost na pevných základech.">
+    <meta name="twitter:image" content="https://www.zednickova.cz/markéta_profil.png">
+
     <link rel="canonical" href="https://www.zednickova.cz">
     <title>Markéta Zedníčková - Finance | Poradenství Boskovice</title>
     <link rel="icon" type="image/svg+xml" href="mz-logo.svg">
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -23,6 +37,7 @@
         "@type": "LocalBusiness",
         "name": "Markéta Zedníčková",
         "image": "https://www.zednickova.cz/markéta_profil.png",
+        "url": "https://www.zednickova.cz",
         "description": "Finanční poradenství a konzultace",
         "address": {
             "@type": "PostalAddress",
@@ -31,8 +46,20 @@
             "postalCode": "680 01",
             "addressCountry": "CZ"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 49.48554215640304,
+            "longitude": 16.659163276873
+        },
         "telephone": "+420606055750",
         "priceRange": "$$",
+        "areaServed": ["Boskovice", "Blansko", "Jihomoravský kraj"],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "17:00"
+        },
         "sameAs": [],
         "knowsAbout": ["Pojištění", "Hypotéky", "Penzijní spoření", "Investice", "Finanční poradenství"]
     }
@@ -64,7 +91,7 @@
     <style>
         body { background-color: #FFFBF7; color: #4A3E38; overflow-x: hidden; font-family: 'Inter', sans-serif; }
         h1, h2, h3, .font-heading { font-family: 'Lora', serif; }
-        
+
         .glass-nav {
             background: rgba(255, 251, 247, 0.8);
             backdrop-filter: blur(12px);
@@ -139,8 +166,8 @@
             z-index: 9999;
             visibility: hidden;
         }
-        #cookie-banner.show { 
-            transform: translate(-50%, 0); 
+        #cookie-banner.show {
+            transform: translate(-50%, 0);
             opacity: 1;
             visibility: visible;
         }
@@ -166,7 +193,7 @@
             scrollbar-width: none;
         }
         #services-carousel::-webkit-scrollbar { display: none; }
-        
+
         .swipe-hint {
             animation: swipeHand 2s ease-in-out infinite;
         }
@@ -249,19 +276,47 @@
         @media (min-width: 1024px) {
             .map-container {
                 height: 100%;
-                min-height: 480px; 
+                min-height: 480px;
             }
+        }
+
+        /* Skip link – viditelný pouze při fokusu (přístupnost) */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            z-index: 10001;
+            background: #D29156;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .skip-link:focus {
+            left: 16px;
+            top: 16px;
+        }
+
+        /* Mobilní menu */
+        #mobile-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 12px;
+            right: 12px;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <div id="offline-indicator" role="alert" aria-live="polite">
+    <a href="#hlavni-obsah" class="skip-link">Přeskočit na hlavní obsah</a>
+
+    <div id="offline-indicator" role="alert">
         🔴 Nejste připojeni k internetu. Zkontrolujte svoje připojení.
     </div>
 
     <header class="fixed top-0 left-0 w-full z-50 px-3 pt-3 md:px-6 md:pt-6">
-        <nav class="glass-nav max-w-7xl mx-auto rounded-full px-4 py-2.5 md:px-6 md:py-3 flex justify-between items-center shadow-lg border border-white/40">
+        <nav class="glass-nav max-w-7xl mx-auto rounded-full px-4 py-2.5 md:px-6 md:py-3 flex justify-between items-center shadow-lg border border-white/40 relative">
             <a href="#" class="logo font-heading text-xl sm:text-2xl md:text-xl font-bold tracking-tight text-warm-text whitespace-nowrap">
                 Markéta Zedníčková<span class="text-warm-accent font-sans">.</span>
             </a>
@@ -272,13 +327,27 @@
                 <a href="blog/" class="nav-link text-warm-text">Blog</a>
             </div>
 
-            <div class="flex items-center">
+            <div class="flex items-center gap-2">
+                <button id="mobile-menu-btn" type="button" class="sm:hidden w-9 h-9 flex items-center justify-center rounded-full text-warm-text hover:bg-warm-sand/50 transition" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otevřít navigační menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
                 <a href="#kontakt" class="px-5 py-2 md:px-7 md:py-3 btn-premium rounded-full text-[11px] md:text-sm font-semibold tracking-wide">
                     Konzultace
                 </a>
             </div>
+
+            <div id="mobile-menu" class="hidden sm:hidden glass-nav rounded-2xl p-4 flex flex-col gap-1 shadow-xl border border-white/40" role="menu" aria-label="Mobilní navigace">
+                <a href="#sluzby" role="menuitem" class="px-3 py-2.5 rounded-xl text-warm-text font-medium hover:bg-warm-sand/50 transition">Služby</a>
+                <a href="#o-mne" role="menuitem" class="px-3 py-2.5 rounded-xl text-warm-text font-medium hover:bg-warm-sand/50 transition">O mně</a>
+            </div>
         </nav>
     </header>
+
+    <main id="hlavni-obsah">
 
     <section class="relative px-6 pt-24 pb-12 md:pt-48 md:pb-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center">
         <div class="w-full md:w-1/2 md:pr-12 text-center md:text-left" data-aos="fade-right">
@@ -291,7 +360,7 @@
             <p class="text-base md:text-lg text-warm-subtle mb-6 max-w-md mx-auto md:mx-0 leading-relaxed">
                 Stavíme vaši budoucnost na pevných a srozumitelných základech. Bez tlaku a zbytečného chaosu.
             </p>
-            
+
             <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-8">
                 <div class="flex items-center gap-2 text-warm-text/80 bg-warm-sand/30 px-3 py-1.5 rounded-full border border-warm-sand/50">
                     <span class="text-sm icon-emoji" aria-hidden="true">📍</span>
@@ -314,7 +383,7 @@
         </div>
         <div class="w-full md:w-1/2 mt-12 md:mt-0 relative" data-aos="zoom-in" data-aos-delay="200">
             <div class="w-60 h-60 sm:w-80 sm:h-80 md:w-[480px] md:h-[480px] bg-[#F3E5D8] rounded-full flex items-center justify-center mx-auto border-[8px] md:border-[12px] border-white shadow-2xl relative z-10 overflow-hidden">
-                <img src="markéta_profil.png" alt="Markéta Zedníčková – finanční poradkyně" class="w-full h-full hero-image-fit" loading="lazy">
+                <img src="markéta_profil.png" alt="Markéta Zedníčková – finanční poradkyně" width="480" height="480" class="w-full h-full hero-image-fit" loading="eager" fetchpriority="high">
             </div>
             <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-warm-accent/10 rounded-full blur-3xl z-0"></div>
         </div>
@@ -323,11 +392,11 @@
     <section id="o-mne" class="py-16 md:py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-stretch">
-                
+
                 <div class="relative md:col-span-5 min-h-[400px] md:min-h-0 order-2 md:order-1" data-aos="fade-up">
                     <div class="absolute inset-0 z-10">
                         <div class="w-full h-full bg-[#F3E5D8] rounded-[2rem] md:rounded-[3rem] border-4 md:border-8 border-white shadow-xl overflow-hidden">
-                             <img src="makina_foto_2.JPG" alt="Markéta Zedníčková v kanceláři" class="w-full h-full object-cover" loading="lazy">
+                             <img src="makina_foto_2.JPG" alt="Markéta Zedníčková v kanceláři" width="600" height="600" class="w-full h-full object-cover" loading="lazy">
                         </div>
                     </div>
                     <div class="absolute top-4 left-4 -bottom-4 -right-4 border-2 border-warm-sand rounded-[2rem] md:rounded-[3rem] z-0"></div>
@@ -447,13 +516,13 @@
 
     <section id="kontakt" class="py-8 md:py-12 max-w-7xl mx-auto px-4 md:px-6">
         <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-5 md:p-10 shadow-2xl flex flex-col lg:flex-row gap-8 border-2 md:border-4 border-white" data-aos="fade-up">
-            
+
             <div class="lg:w-1/2 flex flex-col text-white">
                 <h2 class="font-heading text-2xl md:text-4xl font-bold mb-6 leading-tight">Pojďme probrat vaše priority <br class="hidden md:block"> <span class="italic text-warm-sand font-light">u kávy.</span></h2>
-                
+
                 <div class="mb-8">
                     <p class="text-warm-sand font-semibold mb-4 text-sm md:text-lg italic">Pracuji v okolí Boskovic a Blanska, ale ráda za vámi přijedu i jinam, případně vše vyřešíme online.</p>
-                    
+
                     <div class="space-y-4">
                         <a href="tel:+420606055750" class="flex items-center gap-4 group">
                             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-warm-accent transition-all duration-300">
@@ -475,7 +544,7 @@
                         <input type="hidden" name="_subject" value="Nová zpráva z webu Zednickova.cz">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="text" name="honeypot" class="hidden-field" tabindex="-1" autocomplete="off">
-                        
+
                         <div class="col-span-2 sm:col-span-1">
                             <label for="form-name" class="block text-xs font-semibold text-warm-sand/80 uppercase tracking-wider mb-1.5 ml-1">Jméno *</label>
                             <input type="text" id="form-name" name="name" required placeholder="Vaše jméno" class="form-input w-full rounded-xl p-3 text-white outline-none transition text-sm" aria-required="true">
@@ -518,11 +587,11 @@
                     <div id="map-placeholder" class="lazy-iframe absolute inset-0 z-0">
                         <span class="text-xs uppercase tracking-widest font-semibold opacity-50">Načítání mapy...</span>
                     </div>
-                    <iframe id="contact-map" 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz" 
-                        class="absolute inset-0 w-full h-full border-0 hidden z-10" 
-                        allowfullscreen="" 
-                        loading="lazy" 
+                    <iframe id="contact-map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.946377755831!2d16.659163276873!3d49.48554215640304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712957111451d4d%3A0x3348005396556b6!2sKomensk%C3%A9ho%20295%2F44%2C%20680%2001%20Boskovice!5e0!3m2!1scs!2scz!4v1710000000000!5m2!1scs!2scz"
+                        class="absolute inset-0 w-full h-full border-0 hidden z-10"
+                        allowfullscreen=""
+                        loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Poloha kanceláře Boskovice na mapě">
                     </iframe>
@@ -562,6 +631,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="py-12 bg-warm-base border-t border-warm-sand text-center text-warm-subtle text-sm">
         <div class="max-w-7xl mx-auto px-6">
@@ -658,9 +729,9 @@
         if(form) {
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
-                
+
                 const status = document.getElementById("form-status");
-                
+
                 // Kontrola, zda jsou všechna pole vyplněná
                 const name = document.getElementById("form-name").value.trim();
                 const phone = document.getElementById("form-phone").value.trim();
@@ -678,41 +749,41 @@
                     status.className = "mt-4 text-center error block";
                     return;
                 }
-                
+
                 if (!gdprCheckbox || !gdprCheckbox.checked) {
                     status.innerText = "Prosím odsouhlaste zpracování osobních údajů.";
                     status.className = "mt-4 text-center error block";
                     return;
                 }
-                
+
                 if(phone.replace(/\s/g, '').length < 9) {
                     status.innerText = "Prosím zadejte platné telefonní číslo.";
                     status.className = "mt-4 text-center error block";
                     return;
                 }
 
-                submitBtn.disabled = true; 
+                submitBtn.disabled = true;
                 submitBtn.innerHTML = '<span class="spinner"></span>Odesílám...';
-                
+
                 const data = new FormData(form);
-                
+
                 try {
-                    const response = await fetch(form.action, { 
-                        method: 'POST', 
-                        body: data, 
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: data,
                         headers: { 'Accept': 'application/json' },
                         signal: AbortSignal.timeout(10000)
                     });
-                    
+
                     if (response.ok) {
                         status.innerText = "✅ Děkuji! Vaše zpráva byla odeslána. Brzy se vám ozvu.";
                         status.className = "mt-4 text-center success block";
-                        form.reset(); 
+                        form.reset();
                         form.classList.add("hidden");
                         updateSubmitButtonState();
-                    } else { 
+                    } else {
                         status.innerText = "❌ Chyba při odesílání. Prosím zkuste znovu.";
-                        status.className = "mt-4 text-center error block"; 
+                        status.className = "mt-4 text-center error block";
                     }
                 } catch(error) {
                     if (error.name === 'AbortError') {
@@ -721,17 +792,17 @@
                         status.innerText = "❌ Chyba při odesílání. Zkontrolujte připojení.";
                     }
                     status.className = "mt-4 text-center error block";
-                } finally { 
-                    submitBtn.disabled = !gdprCheckbox.checked; 
-                    submitBtn.innerHTML = 'Odeslat zprávu'; 
+                } finally {
+                    submitBtn.disabled = !gdprCheckbox.checked;
+                    submitBtn.innerHTML = 'Odeslat zprávu';
                 }
             });
         }
 
         window.addEventListener('load', function() {
             if (!localStorage.getItem('cookieConsent')) {
-                setTimeout(() => { 
-                    document.getElementById('cookie-banner').classList.add('show'); 
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.add('show');
                 }, 1000);
             }
         });
@@ -745,7 +816,7 @@
 
         const mapSection = document.getElementById('contact-map');
         const mapPlaceholder = document.getElementById('map-placeholder');
-        
+
         const loadMap = () => {
             if (mapSection && mapSection.classList.contains('hidden')) {
                 mapSection.classList.remove('hidden');
@@ -761,7 +832,7 @@
                 }
             });
         }, { rootMargin: '100px' });
-        
+
         if(mapSection) {
             mapObserver.observe(mapSection);
             setTimeout(loadMap, 3000);
@@ -770,7 +841,7 @@
         const sc = document.getElementById('services-carousel');
         const sdots = document.getElementById('srv-dots');
         const swIndicator = document.getElementById('swipe-indicator');
-        
+
         if (sc && sdots) {
             const count = sc.children.length;
             for (let i = 0; i < count; i++) {
@@ -778,12 +849,12 @@
                 d.style.cssText = 'width:' + (i === 0 ? '18px' : '6px') + ';height:6px;border-radius:3px;background:' + (i === 0 ? '#D29156' : 'rgba(74,62,56,0.2)') + ';transition:all 0.3s;cursor:pointer;';
                 d.setAttribute('role', 'tab');
                 d.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-                d.addEventListener('click', () => { 
-                    sc.scrollTo({ left: i * (280 + 16), behavior: 'smooth' }); 
+                d.addEventListener('click', () => {
+                    sc.scrollTo({ left: i * (280 + 16), behavior: 'smooth' });
                 });
                 sdots.appendChild(d);
             }
-            
+
             sc.addEventListener('scroll', () => {
                 const idx = Math.round(sc.scrollLeft / (280 + 16));
                 sdots.querySelectorAll('[role="tab"]').forEach((d, i) => {
@@ -791,7 +862,7 @@
                     d.style.background = i === idx ? '#D29156' : 'rgba(74,62,56,0.2)';
                     d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
                 });
-                
+
                 if (sc.scrollLeft > 10 && swIndicator) {
                     swIndicator.style.opacity = '0';
                     swIndicator.style.pointerEvents = 'none';
@@ -799,6 +870,44 @@
                 }
             });
         }
+
+        // Mobilní hamburger menu (přístupné, ovládatelné klávesnicí i mimo dotyk mimo menu)
+        (function() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (!btn || !menu) return;
+
+            function closeMenu() {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+            function openMenu() {
+                menu.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+
+            btn.addEventListener('click', () => {
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                isOpen ? closeMenu() : openMenu();
+            });
+
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                    btn.focus();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
