@@ -514,6 +514,146 @@
         </div>
     </section>
 
+<!-- ============ KALKULAČKY: vložit před <section id="kontakt"> ============ -->
+<section id="kalkulacky" class="py-12 md:py-16 bg-white">
+    <style>
+        #kalkulacky .kc-card{max-width:880px;margin:0 auto;background:#FFFBF7;border:1px solid rgba(210,145,86,.15);border-radius:2rem;padding:20px}
+        @media(min-width:768px){#kalkulacky .kc-card{padding:28px}}
+        #kalkulacky .kc-tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+        #kalkulacky .kc-tab{padding:8px 18px;border-radius:9999px;border:0;cursor:pointer;font:600 13px 'Inter',sans-serif;color:#4A3E38;background:rgba(243,229,216,.5);transition:background .3s}
+        #kalkulacky .kc-tab:hover{background:#F3E5D8}
+        #kalkulacky .kc-tab[aria-selected="true"]{background:#D29156;color:#fff;box-shadow:0 4px 14px 0 rgba(210,145,86,.3)}
+        #kalkulacky .kc-grid{display:grid;grid-template-columns:1fr;gap:20px}
+        @media(min-width:768px){#kalkulacky .kc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px}}
+        #kalkulacky .kc-field{margin-bottom:12px}
+        #kalkulacky .kc-field label{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600;font-size:13px;color:#4A3E38;margin-bottom:4px}
+        #kalkulacky .kc-val{display:flex;align-items:center;gap:4px;font-weight:400}
+        #kalkulacky .kc-val input{width:88px;padding:4px 8px;border:1.5px solid #F3E5D8;border-radius:8px;background:#fff;font:inherit;font-size:13px;color:#4A3E38;text-align:right}
+        #kalkulacky .kc-val input:focus{outline:none;border-color:#D29156}
+        #kalkulacky .kc-unit{color:#8C7A6B;font-size:12px;min-width:20px}
+        #kalkulacky input[type=range]{width:100%;accent-color:#D29156;margin:0}
+        #kalkulacky .kc-res{background:#fff;border:1px solid #F3E5D8;border-radius:1.25rem;padding:16px}
+        #kalkulacky .kc-big{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+        #kalkulacky .kc-big span{display:block;color:#8C7A6B;font-size:11px;line-height:1.3}
+        #kalkulacky .kc-big strong{font:700 1.15rem 'Lora',serif;font-variant-numeric:tabular-nums}
+        #kalkulacky .kc-big div:first-child strong{color:#B4743C}
+        #kalkulacky .kc-big div:last-child strong{color:#4A3E38}
+        #kalkulacky svg{width:100%;height:auto;display:block}
+        #kalkulacky .kc-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11px;color:#8C7A6B;margin:4px 0 8px}
+        #kalkulacky .kc-legend i{display:inline-block;width:12px;height:3px;margin-right:5px;vertical-align:middle;border-radius:2px}
+        #kalkulacky table{width:100%;border-collapse:collapse;font-size:12px;color:#4A3E38}
+        #kalkulacky td{padding:5px 0;border-top:1px solid #F3E5D8}
+        #kalkulacky td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+        #kalkulacky .kc-note{max-width:880px;margin:12px auto 0;padding:0 8px;text-align:center;font-size:11px;color:#8C7A6B;line-height:1.5}
+        #kalkulacky .kc-tab:focus-visible,#kalkulacky input:focus-visible{outline:2px solid #D29156;outline-offset:2px}
+    </style>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-8" data-aos="fade-up">
+            <h2 class="font-heading text-2xl md:text-4xl font-bold mb-2 text-warm-text">Finanční kalkulačky</h2>
+            <p class="text-sm md:text-base text-warm-subtle max-w-xl mx-auto">Rychlý orientační výpočet, než si spolu sedneme ke konkrétnímu řešení.</p>
+        </div>
+
+        <div class="kc-card" data-aos="fade-up">
+            <div class="kc-tabs" role="tablist" aria-label="Výběr kalkulačky" id="kc-tabs"></div>
+            <div class="kc-grid">
+                <div id="kc-fields"></div>
+                <div class="kc-res" aria-live="polite">
+                    <div class="kc-big" id="kc-big"></div>
+                    <svg id="kc-chart" viewBox="0 0 560 200" role="img" aria-label="Graf vývoje v čase"></svg>
+                    <div class="kc-legend" id="kc-legend"></div>
+                    <table id="kc-rows"></table>
+                </div>
+            </div>
+        </div>
+        <p class="kc-note">Orientační výpočty bez poplatků, daní a kolísání výnosů či sazeb. Nejde o investiční doporučení, nabídku úvěru ani příslib budoucího výnosu.</p>
+    </div>
+
+    <script>
+    (function(){
+        var $=function(i){return document.getElementById(i)};
+        var nf=new Intl.NumberFormat('cs-CZ',{maximumFractionDigits:0});
+        var fmt=function(v){return nf.format(Math.round(v))+'\u00a0Kč'};
+        var C={grey:'#8C7A6B',accent:'#D29156',dark:'#4A3E38',warm:'#A65D37'};
+
+        // [id, popisek, jednotka, min, max, krok, max pro číselné pole]
+        var calcs=[
+        {name:'Investice a inflace',
+         fields:[['init','Jednorázová částka','Kč',0,2000000,10000,1e9],['month','Měsíční vklad','Kč',0,50000,500,1e7],['years','Doba','let',1,50,1,50],['ret','Výnos p. a.','%',0,15,0.1,20],['inf','Inflace p. a.','%',0,15,0.1,20]],
+         def:{init:100000,month:5000,years:20,ret:6,inf:3},
+         run:function(v){
+            var Y=Math.max(1,Math.round(v.years)),mr=Math.pow(1+v.ret/100,1/12)-1,f=v.inf/100,b=v.init,inv=v.init,p=[{y:0,a:inv,b:b,c:b}];
+            for(var m=1;m<=Y*12;m++){b=(b+v.month)*(1+mr);inv+=v.month;if(m%12===0)p.push({y:m/12,a:inv,b:b,c:b/Math.pow(1+f,m/12)})}
+            var l=p[p.length-1];
+            return{Y:Y,pts:p,tiles:[['Hodnota na konci',fmt(l.b)],['V dnešní kupní síle',fmt(l.c)]],
+              series:[['a',C.grey,2,'Vloženo'],['b',C.accent,3,'Hodnota'],['c',C.warm,3,'Po inflaci']],
+              rows:[['Celkem vloženo',fmt(l.a)],['Výnos před inflací',fmt(l.b-l.a)],['Reálný výnos',fmt(l.c-l.a)],['Ukousne inflace',fmt(l.b-l.c)]]}}},
+        {name:'Hypotéka',
+         fields:[['amt','Výše úvěru','Kč',200000,15000000,50000,1e8],['rate','Úroková sazba p. a.','%',0.5,12,0.01,20],['yrs','Doba splácení','let',1,40,1,40],['own','Vlastní zdroje (pro LTV)','Kč',0,10000000,50000,1e8]],
+         def:{amt:3000000,rate:5,yrs:30,own:750000},
+         run:function(v){
+            var A=v.amt,Y=Math.max(1,Math.round(v.yrs)),i=v.rate/1200,n=Y*12,pay=i===0?A/n:A*i/(1-Math.pow(1+i,-n)),b=A,s=0,h=null,p=[{y:0,a:A,b:0,c:0}];
+            for(var m=1;m<=n;m++){var it=b*i;s+=it;b=Math.max(0,b-(pay-it));if(h===null&&b<=A/2)h=m;if(m%12===0)p.push({y:m/12,a:b,b:s,c:pay*m})}
+            return{Y:Y,pts:p,tiles:[['Měsíční splátka',fmt(pay)],['Úroky celkem',fmt(s)]],
+              series:[['c',C.warm,2,'Zaplaceno celkem'],['b',C.accent,3,'Zaplacené úroky'],['a',C.grey,3,'Zbývající dluh']],
+              rows:[['Celkem zaplatíte',fmt(pay*n)],['Úroky z úvěru',A>0?Math.round(s/A*100)+' %':'–'],['Polovina jistiny splacena po',h?Math.floor(h/12)+' r. '+(h%12)+' m.':'–'],['LTV',(A+v.own)>0?Math.round(A/(A+v.own)*100)+' %':'–']]}}},
+        {name:'Cíl spoření',
+         fields:[['goal','Cíl (v dnešních cenách)','Kč',50000,20000000,50000,1e9],['start','Už našetřeno','Kč',0,5000000,10000,1e9],['yrs','Do kdy','let',1,40,1,40],['ret','Výnos p. a.','%',0,15,0.1,20],['inf','Inflace p. a.','%',0,15,0.1,20]],
+         def:{goal:1000000,start:50000,yrs:10,ret:5,inf:3},
+         run:function(v){
+            var Y=Math.max(1,Math.round(v.yrs)),n=Y*12,mr=Math.pow(1+v.ret/100,1/12)-1,f=v.inf/100,T=v.goal*Math.pow(1+f,Y);
+            var need=Math.max(0,T-v.start*Math.pow(1+mr,n)),d=need===0?0:(mr===0?need/n:need*mr/((Math.pow(1+mr,n)-1)*(1+mr)));
+            var b=v.start,inv=v.start,p=[{y:0,a:inv,b:b}];
+            for(var m=1;m<=n;m++){b=(b+d)*(1+mr);inv+=d;if(m%12===0)p.push({y:m/12,a:inv,b:b})}
+            return{Y:Y,pts:p,tiles:[['Měsíční vklad',fmt(d)],['Cíl v budoucích Kč',fmt(T)]],
+              series:[['a',C.grey,2,'Vloženo'],['b',C.accent,3,'Hodnota úspor']],
+              rows:[['Celkem vložíte',fmt(inv)],['Přinese výnos',fmt(b-inv)],['Totéž v dnešní kupní síle',fmt(b/Math.pow(1+f,Y))]]}}}
+        ];
+        var cur=0,vals=calcs.map(function(c){return Object.assign({},c.def)});
+
+        function chart(r){
+            var W=560,H=200,L=60,R=10,T=8,B=24,max=0;
+            r.pts.forEach(function(p){r.series.forEach(function(s){max=Math.max(max,p[s[0]])})});if(max<=0)max=1;
+            var st=Math.pow(10,Math.floor(Math.log10(max))),nice=[1,2,2.5,5,10];
+            for(var k=0;k<nice.length;k++){if(nice[k]*st>=max){max=nice[k]*st;break}}
+            var x=function(y){return L+(W-L-R)*y/r.Y},yy=function(v){return T+(H-T-B)*(1-v/max)},s='';
+            for(var g=0;g<=4;g++){var v=max*g/4,py=yy(v),lab=v===0?'0':v>=1e6?(v/1e6).toLocaleString('cs-CZ',{maximumFractionDigits:1})+' mil.':nf.format(v/1000)+' tis.';
+                s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+py+'" y2="'+py+'" stroke="#F3E5D8"/><text x="'+(L-6)+'" y="'+(py+4)+'" text-anchor="end" font-size="10" fill="#8C7A6B">'+lab+'</text>'}
+            var tk=r.Y<=10?1:r.Y<=20?2:r.Y<=30?5:10;
+            for(var t=0;t<=r.Y;t+=tk)s+='<text x="'+x(t)+'" y="'+(H-6)+'" text-anchor="middle" font-size="10" fill="#8C7A6B">'+t+'</text>';
+            r.series.forEach(function(sr){s+='<polyline fill="none" stroke="'+sr[1]+'" stroke-width="'+sr[2]+'" stroke-linejoin="round" points="'+r.pts.map(function(p){return x(p.y).toFixed(1)+','+yy(p[sr[0]]).toFixed(1)}).join(' ')+'"/>'});
+            $('kc-chart').innerHTML=s}
+
+        function update(){
+            var r=calcs[cur].run(vals[cur]);
+            $('kc-big').innerHTML=r.tiles.map(function(t){return '<div><span>'+t[0]+'</span><strong>'+t[1]+'</strong></div>'}).join('');
+            $('kc-legend').innerHTML=r.series.map(function(s){return '<span><i style="background:'+s[1]+'"></i>'+s[3]+'</span>'}).join('');
+            $('kc-rows').innerHTML=r.rows.map(function(w){return '<tr><td>'+w[0]+'</td><td>'+w[1]+'</td></tr>'}).join('');
+            chart(r)}
+
+        function build(){
+            $('kc-fields').innerHTML=calcs[cur].fields.map(function(f){
+                return '<div class="kc-field"><label for="kc-'+f[0]+'">'+f[1]+' <span class="kc-val"><input type="number" id="kc-'+f[0]+'-n" min="'+f[3]+'" max="'+f[6]+'" step="'+f[5]+'"><span class="kc-unit">'+f[2]+'</span></span></label><input type="range" id="kc-'+f[0]+'" min="'+f[3]+'" max="'+f[4]+'" step="'+f[5]+'"></div>'}).join('');
+            calcs[cur].fields.forEach(function(f){
+                var r=$('kc-'+f[0]),n=$('kc-'+f[0]+'-n'),id=f[0];
+                r.value=vals[cur][id];n.value=vals[cur][id];
+                var set=function(x){var q=parseFloat(x);vals[cur][id]=isNaN(q)?0:Math.max(0,q);update()};
+                r.addEventListener('input',function(){n.value=r.value;set(r.value)});
+                n.addEventListener('input',function(){r.value=n.value;set(n.value)})});
+            update()}
+
+        $('kc-tabs').innerHTML=calcs.map(function(c,i){return '<button type="button" class="kc-tab" role="tab" aria-selected="'+(i===0)+'" data-i="'+i+'">'+c.name+'</button>'}).join('');
+        $('kc-tabs').addEventListener('click',function(e){
+            var b=e.target.closest('.kc-tab');if(!b)return;
+            cur=+b.getAttribute('data-i');
+            Array.prototype.forEach.call(document.querySelectorAll('#kc-tabs .kc-tab'),function(t,i){t.setAttribute('aria-selected',i===cur)});
+            build()});
+        build();
+    })();
+    </script>
+</section>
+<!-- ============ /KALKULAČKY ============ -->
+
     <section id="kontakt" class="py-8 md:py-12 max-w-7xl mx-auto px-4 md:px-6">
         <div class="bg-warm-text rounded-[2rem] md:rounded-[3rem] p-5 md:p-10 shadow-2xl flex flex-col lg:flex-row gap-8 border-2 md:border-4 border-white" data-aos="fade-up">
 
